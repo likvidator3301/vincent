@@ -27,6 +27,7 @@ namespace Assets.Scripts.Player
             DirectionHelper.Instance.Direction = Direction.Right;
             
             //likvidator: в будущем планирую втащить DI-контейнер
+            //sadovnichek: круто. А что это?:)
             AddMovementService();
             AddDirectionService();
 
