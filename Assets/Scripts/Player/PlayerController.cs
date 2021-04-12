@@ -1,33 +1,30 @@
-﻿using System.Collections.Generic;
-using System.Linq.Expressions;
+﻿using System;
+using System.Collections.Generic;
 using Assets.Scripts.Common;
 using Assets.Scripts.Player.Movement.Configs;
 using Assets.Scripts.Player.Movement.Helpers;
 using Assets.Scripts.Player.Movement.Services;
 using JetBrains.Annotations;
+using Microsoft.Extensions.DependencyInjection;
 using UnityEngine;
 
 
-//lividator: я очень сильно за то, чтобы пихать скрипты по неймспейсам. юнити из коробки это не делает, но горячие клавиши от студии позволяют это делать очень быстро
 namespace Assets.Scripts.Player
 {
-    //likvidator: концепция коротко. цепляем контроллер к объекту. контроллер знает, какие сервисы должны работать с объектом, поэтому он их сам добавляет из кода, чтобы их можно было менеджить
-    public class PlayerController : MonoBehaviour
+    public class PlayerController : ControllerBase
     {
         private readonly List<ServiceBase> services;
 
-        public PlayerController()
+        public PlayerController(GameObject gameObject, IServiceProvider serviceProvider): base(gameObject, serviceProvider)
         {
             services = new List<ServiceBase>();
         }
 
-        [UsedImplicitly] //lividator: говорит студии, что этот код будет вызываться откуда-то извне, поэтому выключает предупредждение о неиспользуемом методе
-        private void Start()
+        [UsedImplicitly] 
+        public override void Start()
         {
-            DirectionHelper.Instance.Direction = Direction.Right;
-            
-            //likvidator: в будущем планирую втащить DI-контейнер
-            //sadovnichek: круто. А что это?:)
+            var directionHelper = ServiceProvider.GetService<DirectionHelper>();
+            directionHelper.Direction = Direction.Right;
             AddMovementService();
             AddDirectionService();
 
@@ -37,31 +34,33 @@ namespace Assets.Scripts.Player
 
         private void AddMovementService()
         {
-            var movementConfig = new MovementConfig(1); //todo(likvidator): в будущем читать из файла или из графической обертки, которую мы придумаем и напишем
+            var movementConfig = ServiceProvider.GetService<MovementConfig>();
+            var directionHelper = ServiceProvider.GetService<DirectionHelper>();
 
-            var player = gameObject;
+            var player = GameObject;
 
-            var service = new MovementService(movementConfig, player.transform, DirectionHelper.Instance);
+            var service = new MovementService(movementConfig, player.transform, directionHelper);
             services.Add(service);
         }
 
         private void AddDirectionService()
         {
-            var player = gameObject;
+            var directionHelper = ServiceProvider.GetService<DirectionHelper>();
+            var player = GameObject;
 
-            var service = new DirectionService(player.transform, DirectionHelper.Instance);
+            var service = new DirectionService(player.transform, directionHelper);
             services.Add(service);
         }
 
         [UsedImplicitly]
-        private void Update()
+        public override void Update()
         {
             foreach(var service in services)
                 service.Update();
         }
 
         [UsedImplicitly]
-        private void FixedUpdate()
+        public override void FixedUpdate()
         {
             foreach (var service in services)
                 service.FixedUpdate();
