@@ -25,7 +25,6 @@ namespace Assets.Scripts.Player
         {
             var directionHelper = ServiceProvider.GetService<DirectionHelper>();
             directionHelper.Direction = Direction.Right;
-
             AddMovementService();
             AddDirectionService();
 
