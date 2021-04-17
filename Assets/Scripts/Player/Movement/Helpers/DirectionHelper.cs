@@ -1,6 +1,4 @@
-﻿using UnityEngine;
-
-namespace Assets.Scripts.Player.Movement.Helpers
+﻿namespace Assets.Scripts.Player.Movement.Helpers
 {
     public class DirectionHelper
     {
