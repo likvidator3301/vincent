@@ -10,30 +10,30 @@ namespace Assets.Scripts.Player.Movement.Services
     public class MovementService : ServiceBase
     {
         private readonly MovementConfig config;
-        private readonly DirectionHelper directionHelper;
         private readonly Transform player;
+        private readonly MovementHelper movementHelper;
 
-        public MovementService(MovementConfig config, Transform player, DirectionHelper directionHelper)
+        public MovementService(MovementConfig config, Transform player, MovementHelper movementHelper)
         {
             this.config = config ?? throw new ArgumentNullException(nameof(config));
-            this.directionHelper = directionHelper ?? throw new ArgumentNullException(nameof(directionHelper));
+            this.movementHelper = movementHelper ?? throw new ArgumentNullException(nameof(movementHelper));
             this.player = player; //lividator: не проверяю на нулл, потому что юнити не умеет проверять игровые объекты и их свойства на нулл (они всегда не нулл)
         }
 
-        
+
         public override void Update()
         {
-            if (Input.GetKey(KeyCode.A))
-            {
-                player.position += Vector3.left.WithDeltaTime() * config.Speed;
-                directionHelper.Direction = Direction.Left;
-            }
+            if (!movementHelper.IsInMovement || movementHelper.MovementEvent == null)
+                return;
 
-            if (Input.GetKey(KeyCode.D))
-            {
-                player.position += Vector3.right.WithDeltaTime() * config.Speed;
-                directionHelper.Direction = Direction.Right;
-            }
+            var destination = movementHelper.MovementEvent.Destination;
+
+            if (Math.Abs(destination.x - player.position.x) <= config.CriticalDistance)
+                movementHelper.Stop();
+
+            player.position += destination.x > player.position.x
+                ? new Vector3(config.Speed, 0).WithDeltaTime()
+                : new Vector3(-config.Speed, 0).WithDeltaTime();
         }
     }
 }

@@ -27,19 +27,31 @@ namespace Assets.Scripts.Player
             directionHelper.Direction = Direction.Right;
             AddMovementService();
             AddDirectionService();
+            AddMouseControlService();
 
             foreach (var service in services) 
                 service.Start();
         }
 
-        private void AddMovementService()
+        private void AddMouseControlService()
         {
-            var movementConfig = ServiceProvider.GetService<MovementConfig>();
             var directionHelper = ServiceProvider.GetService<DirectionHelper>();
+            var movementHelper = ServiceProvider.GetService<MovementHelper>();
 
             var player = GameObject;
 
-            var service = new MovementService(movementConfig, player.transform, directionHelper);
+            var service = new MouseControlService(player.transform, movementHelper, directionHelper);
+            services.Add(service);
+        }
+
+        private void AddMovementService()
+        {
+            var movementConfig = ServiceProvider.GetService<MovementConfig>();
+            var movementHelper = ServiceProvider.GetService<MovementHelper>();
+
+            var player = GameObject;
+
+            var service = new MovementService(movementConfig, player.transform, movementHelper);
             services.Add(service);
         }
 

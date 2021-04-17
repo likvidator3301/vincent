@@ -43,8 +43,9 @@ namespace Assets.Scripts.Common
         private void ConfigureServices(IServiceCollection services)
         {
             //todo(likvidator): читать из конфигурации
-            services.AddSingleton(sp => new MovementConfig(1));
+            services.AddSingleton(sp => new MovementConfig(1, .5f));
             services.AddSingleton<DirectionHelper>();
+            services.AddSingleton<MovementHelper>();
         }
 
         private void CreateControllers()
