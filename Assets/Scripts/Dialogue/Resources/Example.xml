@@ -1,0 +1,5 @@
+<dialogue name="Example">
+  <node id="0" npcText="Hi! How is your day!">
+    <answer text="It was nice!" exit="True" />
+  </node>
+</dialogue>
