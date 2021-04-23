@@ -1,6 +1,7 @@
 ﻿using System;
 using Assets.Scripts.Common;
 using Assets.Scripts.Common.Extensions;
+using Assets.Scripts.Common.Helpers;
 using Assets.Scripts.Player.Movement.Configs;
 using Assets.Scripts.Player.Movement.Helpers;
 using UnityEngine;
@@ -11,25 +12,25 @@ namespace Assets.Scripts.Player.Movement.Services
     {
         private readonly MovementConfig config;
         private readonly Transform player;
-        private readonly MovementHelper movementHelper;
+        private readonly MovementEventRepository movementEventRepository;
 
-        public MovementService(MovementConfig config, Transform player, MovementHelper movementHelper)
+        public MovementService(MovementConfig config, Transform player, MovementEventRepository movementEventRepository)
         {
             this.config = config ?? throw new ArgumentNullException(nameof(config));
-            this.movementHelper = movementHelper ?? throw new ArgumentNullException(nameof(movementHelper));
-            this.player = player; //lividator: не проверяю на нулл, потому что юнити не умеет проверять игровые объекты и их свойства на нулл (они всегда не нулл)
+            this.movementEventRepository = movementEventRepository ?? throw new ArgumentNullException(nameof(movementEventRepository));
+            this.player = player;
         }
 
 
         public override void Update()
         {
-            if (!movementHelper.IsInMovement || movementHelper.MovementEvent == null)
+            if (!movementEventRepository.HasEvent)
                 return;
 
-            var destination = movementHelper.MovementEvent.Destination;
+            var destination = movementEventRepository.Event.Destination;
 
-            if (Math.Abs(destination.x - player.position.x) <= config.CriticalDistance)
-                movementHelper.Stop();
+            if (PositionHelper.GetDistance(destination, player.position) <= config.CriticalDistance)
+                movementEventRepository.RemoveEvent();
 
             player.position += destination.x > player.position.x
                 ? new Vector3(config.Speed, 0).WithDeltaTime()
