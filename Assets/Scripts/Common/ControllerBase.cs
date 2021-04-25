@@ -12,11 +12,13 @@ namespace Assets.Scripts.Common
     {
         protected readonly GameObject GameObject;
         protected readonly IServiceProvider ServiceProvider;
+        protected readonly List<ServiceBase> Services;
 
         protected ControllerBase(GameObject gameObject, IServiceProvider serviceProvider)
         {
             GameObject = gameObject;
             ServiceProvider = serviceProvider;
+            Services = new List<ServiceBase>();
         }
 
         public virtual void Start() { }

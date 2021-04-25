@@ -5,6 +5,7 @@
         public static class Tags
         {
             public const string Ground = "Ground";
+            public const string PickupableItem = "PickupableItem";
         }
     }
 }

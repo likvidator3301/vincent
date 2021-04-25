@@ -1,9 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using Assets.Scripts.Common;
+using Assets.Scripts.PickupableItem;
 using Assets.Scripts.Player.Movement.Configs;
 using Assets.Scripts.Player.Movement.Helpers;
 using Assets.Scripts.Player.Movement.Services;
+using Assets.Scripts.Player.PickUp.Configs;
+using Assets.Scripts.Player.PickUp.Repositories;
+using Assets.Scripts.Player.PickUp.Services;
 using JetBrains.Annotations;
 using Microsoft.Extensions.DependencyInjection;
 using UnityEngine;
@@ -13,12 +17,8 @@ namespace Assets.Scripts.Player
 {
     public class PlayerController : ControllerBase
     {
-        private readonly List<ServiceBase> services;
-
         public PlayerController(GameObject gameObject, IServiceProvider serviceProvider): base(gameObject, serviceProvider)
-        {
-            services = new List<ServiceBase>();
-        }
+        { }
 
         [UsedImplicitly] 
         public override void Start()
@@ -28,31 +28,50 @@ namespace Assets.Scripts.Player
             AddMovementService();
             AddDirectionService();
             AddMouseControlService();
+            AddPickUpService();
 
-            foreach (var service in services) 
+            foreach (var service in Services) 
                 service.Start();
+        }
+
+        private void AddPickUpService()
+        {
+            var pickupEventRepository = ServiceProvider.GetService<PickupEventRepository>();
+            var movementEventRepository = ServiceProvider.GetService<MovementEventRepository>();
+            var addToInventoryEventRepository = ServiceProvider.GetService<AddToInventoryEventRepository>();
+
+            var player = GameObject;
+
+            var config = ServiceProvider.GetService<PickupConfig>();
+
+            var service = new PickupService(pickupEventRepository, movementEventRepository,
+                addToInventoryEventRepository, player.transform, config);
+
+            Services.Add(service);
         }
 
         private void AddMouseControlService()
         {
             var directionHelper = ServiceProvider.GetService<DirectionHelper>();
-            var movementHelper = ServiceProvider.GetService<MovementHelper>();
+            var movementHelper = ServiceProvider.GetService<MovementEventRepository>();
+
+            var pickupEventRepository = ServiceProvider.GetService<PickupEventRepository>();
 
             var player = GameObject;
 
-            var service = new MouseControlService(player.transform, movementHelper, directionHelper);
-            services.Add(service);
+            var service = new MouseControlService(player.transform, movementHelper, directionHelper, pickupEventRepository);
+            Services.Add(service);
         }
 
         private void AddMovementService()
         {
             var movementConfig = ServiceProvider.GetService<MovementConfig>();
-            var movementHelper = ServiceProvider.GetService<MovementHelper>();
+            var movementHelper = ServiceProvider.GetService<MovementEventRepository>();
 
             var player = GameObject;
 
             var service = new MovementService(movementConfig, player.transform, movementHelper);
-            services.Add(service);
+            Services.Add(service);
         }
 
         private void AddDirectionService()
@@ -61,20 +80,20 @@ namespace Assets.Scripts.Player
             var player = GameObject;
 
             var service = new DirectionService(player.transform, directionHelper);
-            services.Add(service);
+            Services.Add(service);
         }
 
         [UsedImplicitly]
         public override void Update()
         {
-            foreach(var service in services)
+            foreach(var service in Services)
                 service.Update();
         }
 
         [UsedImplicitly]
         public override void FixedUpdate()
         {
-            foreach (var service in services)
+            foreach (var service in Services)
                 service.FixedUpdate();
         }
     }

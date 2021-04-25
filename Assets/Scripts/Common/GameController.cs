@@ -4,11 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Assets.Scripts.Exceptions;
+using Assets.Scripts.Inventory;
 using Assets.Scripts.Markers;
+using Assets.Scripts.PickupableItem;
+using Assets.Scripts.PickupableItem.Configs;
 using Assets.Scripts.Player;
 using Assets.Scripts.Player.Movement.Configs;
 using Assets.Scripts.Player.Movement.Helpers;
 using Assets.Scripts.Player.Movement.Services;
+using Assets.Scripts.Player.PickUp.Configs;
+using Assets.Scripts.Player.PickUp.Repositories;
 using JetBrains.Annotations;
 using UnityEngine;
 using Microsoft.Extensions.DependencyInjection;
@@ -43,14 +48,54 @@ namespace Assets.Scripts.Common
         private void ConfigureServices(IServiceCollection services)
         {
             //todo(likvidator): читать из конфигурации
-            services.AddSingleton(sp => new MovementConfig(1, .5f));
+            services.AddSingleton(_ => new MovementConfig(1, .5f));
+            services.AddSingleton(_ => new PickupConfig(.7f));
+
             services.AddSingleton<DirectionHelper>();
-            services.AddSingleton<MovementHelper>();
+            services.AddSingleton<MovementEventRepository>();
+            services.AddSingleton<PickupEventRepository>();
+
+            services.AddSingleton<AddToInventoryEventRepository>();
+
+            services.AddSingleton<PlayerInventory>();
         }
 
         private void CreateControllers()
         {
             CreatePlayerController();
+            CreateInteractiveObjectControllers();
+            CreateInventoryController();
+        }
+
+        private void CreateInventoryController()
+        {
+            var inventories = FindObjectsOfType(typeof(InventoryMarker)) as InventoryMarker[];
+
+            if (inventories == null || inventories.Length == 0)
+                throw new GameInitializationException("Inventory not found");
+
+            if (inventories.Length > 1)
+                throw new GameInitializationException($"Found '{inventories.Length}' inventories. Expected one inventory");
+
+            var inventory = inventories.First();
+            var controller = new InventoryController(inventory.gameObject, serviceProvider);
+
+            controllers.Add(controller);
+        }
+
+        private void CreateInteractiveObjectControllers()
+        {
+            var interactiveObjects = FindObjectsOfType(typeof(PickupableItemMarker)) as PickupableItemMarker[];
+
+            if (interactiveObjects == null)
+                return;
+
+            foreach (var interactiveObject in interactiveObjects)
+            {
+                var config = PickupableItemConfig.FromMarker(interactiveObject);
+                var controller = new PickupableItemController(interactiveObject.gameObject, serviceProvider, config);
+                controllers.Add(controller);
+            }
         }
 
         private void CreatePlayerController()
