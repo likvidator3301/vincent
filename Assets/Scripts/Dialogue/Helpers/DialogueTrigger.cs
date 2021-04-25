@@ -4,10 +4,8 @@ using System.Collections;
 
 namespace Assets.Scripts.Dialogue.Helpers
 {
-	public class ButtonComponent : MonoBehaviour
+	public class DialogueTrigger : MonoBehaviour
 	{
-		public Button button;
-		public Text text;
-		public RectTransform rect;
+		public string fileName;
 	}
 }

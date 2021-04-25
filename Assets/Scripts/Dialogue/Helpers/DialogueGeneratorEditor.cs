@@ -3,20 +3,22 @@ using UnityEngine;
 using System.Collections;
 using UnityEditor;
 
-[CustomEditor(typeof(DialogueGenerator))]
-
-public class DialogueGeneratorEditor : Editor
+namespace Assets.Scripts.Dialogue.Helpers
 {
+	[CustomEditor(typeof(DialogueGenerator))]
 
-	public override void OnInspectorGUI()
+	public class DialogueGeneratorEditor : Editor
 	{
-		DrawDefaultInspector();
-		GUILayout.Space(15);
-		DialogueGenerator e = (DialogueGenerator)target;
-		if (GUILayout.Button("Generate Dialogue XML"))
+		public override void OnInspectorGUI()
 		{
-			e.Generate();
+			DrawDefaultInspector();
+			GUILayout.Space(15);
+			DialogueGenerator e = (DialogueGenerator)target;
+			if (GUILayout.Button("Generate Dialogue XML"))
+			{
+				e.Generate();
+			}
 		}
 	}
-}
 #endif
+}

@@ -4,10 +4,11 @@ using System.Collections;
 
 namespace Assets.Scripts.Dialogue.Helpers
 {
-	public class ButtonComponent : MonoBehaviour
+	[System.Serializable]
+	public class PlayerAnswer
 	{
-		public Button button;
-		public Text text;
-		public RectTransform rect;
+		public string text;
+		public int toNode;
+		public bool exit;
 	}
 }

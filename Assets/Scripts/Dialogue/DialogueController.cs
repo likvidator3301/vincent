@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Assets.Scripts.Common;
+using Assets.Scripts.Dialogue.Services;
 using Assets.Scripts.Player.Movement.Configs;
 using Assets.Scripts.Player.Movement.Helpers;
 using Assets.Scripts.Player.Movement.Services;
@@ -18,6 +19,21 @@ namespace Assets.Scripts.Dialogue
         public DialogueController(GameObject gameObject, IServiceProvider serviceProvider): base(gameObject, serviceProvider)
         {
             services = new List<ServiceBase>();
+        }
+
+        [UsedImplicitly]
+        public override void Start()
+        {
+            AddTriggerService();
+
+            foreach (var service in services)
+                service.Start();
+        }
+
+        private void AddTriggerService()
+        {
+            var service = new TriggerService();
+            services.Add(service);
         }
 
         [UsedImplicitly]
