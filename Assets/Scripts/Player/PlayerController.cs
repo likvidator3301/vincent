@@ -1,11 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
 using Assets.Scripts.Common;
+using Assets.Scripts.Npc.Dialogues.Repositories;
 using Assets.Scripts.PickupableItem;
-using Assets.Scripts.Player.Movement.Configs;
+using Assets.Scripts.Player.Configs;
 using Assets.Scripts.Player.Movement.Helpers;
 using Assets.Scripts.Player.Movement.Services;
-using Assets.Scripts.Player.PickUp.Configs;
+using Assets.Scripts.Player.NpcInteraction;
+using Assets.Scripts.Player.NpcInteraction.Repositories;
 using Assets.Scripts.Player.PickUp.Repositories;
 using Assets.Scripts.Player.PickUp.Services;
 using JetBrains.Annotations;
@@ -29,9 +30,26 @@ namespace Assets.Scripts.Player
             AddDirectionService();
             AddMouseControlService();
             AddPickUpService();
+            AddNpcInteractionService();
 
             foreach (var service in Services) 
                 service.Start();
+        }
+
+        private void AddNpcInteractionService()
+        {
+            var interactEventRepository = ServiceProvider.GetService<InteractWithNpcEventRepository>();
+            var movementEventRepository = ServiceProvider.GetService<MovementEventRepository>();
+            var startDialogueEventRepository = ServiceProvider.GetService<StartDialogueEventRepository>();
+
+            var player = GameObject;
+
+            var config = ServiceProvider.GetService<PlayerConfig>();
+
+            var service = new NpcInteractionService(config, movementEventRepository, interactEventRepository,
+                startDialogueEventRepository, player.transform);
+
+            Services.Add(service);
         }
 
         private void AddPickUpService()
@@ -42,7 +60,7 @@ namespace Assets.Scripts.Player
 
             var player = GameObject;
 
-            var config = ServiceProvider.GetService<PickupConfig>();
+            var config = ServiceProvider.GetService<PlayerConfig>();
 
             var service = new PickupService(pickupEventRepository, movementEventRepository,
                 addToInventoryEventRepository, player.transform, config);
@@ -56,16 +74,19 @@ namespace Assets.Scripts.Player
             var movementHelper = ServiceProvider.GetService<MovementEventRepository>();
 
             var pickupEventRepository = ServiceProvider.GetService<PickupEventRepository>();
+            var interactEventRepository = ServiceProvider.GetService<InteractWithNpcEventRepository>();
+
+            var playerConfig = ServiceProvider.GetService<PlayerConfig>();
 
             var player = GameObject;
 
-            var service = new MouseControlService(player.transform, movementHelper, directionHelper, pickupEventRepository);
+            var service = new MouseControlService(player.transform, movementHelper, directionHelper, pickupEventRepository, interactEventRepository, playerConfig);
             Services.Add(service);
         }
 
         private void AddMovementService()
         {
-            var movementConfig = ServiceProvider.GetService<MovementConfig>();
+            var movementConfig = ServiceProvider.GetService<PlayerConfig>();
             var movementHelper = ServiceProvider.GetService<MovementEventRepository>();
 
             var player = GameObject;

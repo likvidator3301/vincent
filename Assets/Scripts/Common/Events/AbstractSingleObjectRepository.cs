@@ -2,20 +2,20 @@
 {
     public abstract class AbstractSingleObjectRepository<T> where T: class
     {
-        public T Event { get; private set; }
+        public T Value { get; private set; }
 
-        public bool HasEvent { get; private set; }
+        public bool HasValue { get; private set; }
 
-        public void SetEvent(T @event)
+        public void SetValue(T @event)
         {
-            Event = @event;
-            HasEvent = true;
+            Value = @event;
+            HasValue = true;
         }
 
-        public void RemoveEvent()
+        public void RemoveValue()
         {
-            HasEvent = false;
-            Event = null;
+            HasValue = false;
+            Value = null;
         }
     }
 }

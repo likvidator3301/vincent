@@ -24,14 +24,14 @@ namespace Assets.Scripts.PickupableItem.Services
 
         public override void Update()
         {
-            if (!addToInventoryEventRepository.HasEvent || addToInventoryEventRepository.Event.ItemId != config.Id)
+            if (!addToInventoryEventRepository.HasValue || addToInventoryEventRepository.Value.ItemId != config.Id)
                 return;
 
             inventory.Add(new PlayerInventoryItem(config.Id, config.Name));
 
             Object.Destroy(gameObject);
 
-            addToInventoryEventRepository.RemoveEvent();
+            addToInventoryEventRepository.RemoveValue();
         }
     }
 }

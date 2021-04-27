@@ -1,18 +1,16 @@
 ﻿using System;
+using Assets.Scripts.Markers;
 using UnityEngine;
 
 namespace Assets.Scripts.Player.PickUp.Repositories
 {
     public class PickupEvent
     {
-        public string Id { get; }
+        public PickupableItemMarker Marker { get; }
 
-        public GameObject GameObject { get; }
-
-        public PickupEvent(string id, GameObject gameObject)
+        public PickupEvent(PickupableItemMarker marker)
         {
-            Id = id ?? throw new ArgumentNullException(nameof(id));
-            GameObject = gameObject;
+            Marker = marker ?? throw new ArgumentNullException(nameof(marker));
         }
     }
 }
