@@ -1,10 +1,9 @@
 ﻿using System;
-using System.Transactions;
 using Assets.Scripts.Common;
 using Assets.Scripts.Common.Helpers;
 using Assets.Scripts.PickupableItem;
+using Assets.Scripts.Player.Configs;
 using Assets.Scripts.Player.Movement.Helpers;
-using Assets.Scripts.Player.PickUp.Configs;
 using Assets.Scripts.Player.PickUp.Repositories;
 using UnityEngine;
 
@@ -16,9 +15,9 @@ namespace Assets.Scripts.Player.PickUp.Services
         private readonly MovementEventRepository movementEventRepository;
         private readonly AddToInventoryEventRepository addToInventoryEventRepository;
         private readonly Transform player;
-        private readonly PickupConfig config;
+        private readonly PlayerConfig config;
 
-        public PickupService(PickupEventRepository pickupEventRepository, MovementEventRepository movementEventRepository, AddToInventoryEventRepository addToInventoryEventRepository, Transform player, PickupConfig config)
+        public PickupService(PickupEventRepository pickupEventRepository, MovementEventRepository movementEventRepository, AddToInventoryEventRepository addToInventoryEventRepository, Transform player, PlayerConfig config)
         {
             this.pickupEventRepository = pickupEventRepository ?? throw new ArgumentNullException(nameof(pickupEventRepository));
             this.movementEventRepository = movementEventRepository ?? throw new ArgumentNullException(nameof(movementEventRepository));
@@ -29,19 +28,19 @@ namespace Assets.Scripts.Player.PickUp.Services
 
         public override void Update()
         {
-            if (!pickupEventRepository.HasEvent)
+            if (!pickupEventRepository.HasValue)
                 return;
 
-            var pickupEvent = pickupEventRepository.Event;
+            var pickupEvent = pickupEventRepository.Value;
 
-            var gameObject = pickupEvent.GameObject;
+            var gameObject = pickupEvent.Marker.gameObject;
 
-            if (PositionHelper.GetDistance(player, gameObject.transform) <= config.CriticalDistance)
+            if (PositionHelper.GetDistance(player, gameObject.transform) <= config.InteractCriticalDistance)
             {
-                pickupEventRepository.RemoveEvent();
-                movementEventRepository.RemoveEvent();
+                pickupEventRepository.RemoveValue();
+                movementEventRepository.RemoveValue();
 
-                addToInventoryEventRepository.SetEvent(new AddToInventoryEvent(pickupEvent.Id));
+                addToInventoryEventRepository.SetValue(new AddToInventoryEvent(pickupEvent.Marker.Id));
             }
         }
     }

@@ -1,18 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Assets.Scripts.Exceptions;
 using Assets.Scripts.Inventory;
 using Assets.Scripts.Markers;
+using Assets.Scripts.Npc;
+using Assets.Scripts.Npc.Dialogues.Repositories;
 using Assets.Scripts.PickupableItem;
 using Assets.Scripts.PickupableItem.Configs;
 using Assets.Scripts.Player;
-using Assets.Scripts.Player.Movement.Configs;
+using Assets.Scripts.Player.Configs;
 using Assets.Scripts.Player.Movement.Helpers;
-using Assets.Scripts.Player.Movement.Services;
-using Assets.Scripts.Player.PickUp.Configs;
+using Assets.Scripts.Player.NpcInteraction.Repositories;
 using Assets.Scripts.Player.PickUp.Repositories;
 using JetBrains.Annotations;
 using UnityEngine;
@@ -48,16 +47,18 @@ namespace Assets.Scripts.Common
         private void ConfigureServices(IServiceCollection services)
         {
             //todo(likvidator): читать из конфигурации
-            services.AddSingleton(_ => new MovementConfig(1, .5f));
-            services.AddSingleton(_ => new PickupConfig(.7f));
+            services.AddSingleton(_ => new PlayerConfig(1, .7f, 1));
 
             services.AddSingleton<DirectionHelper>();
             services.AddSingleton<MovementEventRepository>();
             services.AddSingleton<PickupEventRepository>();
 
             services.AddSingleton<AddToInventoryEventRepository>();
-
             services.AddSingleton<PlayerInventory>();
+
+            services.AddSingleton<InteractWithNpcEventRepository>();
+            services.AddSingleton<StartDialogueEventRepository>();
+            services.AddSingleton<DialogueRepository>();
         }
 
         private void CreateControllers()
@@ -65,6 +66,21 @@ namespace Assets.Scripts.Common
             CreatePlayerController();
             CreateInteractiveObjectControllers();
             CreateInventoryController();
+            CreateNpcControllers();
+        }
+
+        private void CreateNpcControllers()
+        {
+            var npcs = FindObjectsOfType(typeof(NpcMarker)) as NpcMarker[];
+
+            if (npcs == null)
+                return;
+
+            foreach (var npc in npcs)
+            {
+                var controller = new NpcController(npc.gameObject, serviceProvider);
+                controllers.Add(controller);
+            }
         }
 
         private void CreateInventoryController()

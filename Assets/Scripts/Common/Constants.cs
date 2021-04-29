@@ -6,6 +6,7 @@
         {
             public const string Ground = "Ground";
             public const string PickupableItem = "PickupableItem";
+            public const string Npc = "Npc";
         }
     }
 }
