@@ -16,6 +16,9 @@ using Assets.Scripts.Player.PickUp.Repositories;
 using JetBrains.Annotations;
 using UnityEngine;
 using Microsoft.Extensions.DependencyInjection;
+using Assets.Scripts.TextPanel;
+using Assets.Scripts.TextPanel.Repositories;
+using UnityEngine.UI;
 
 namespace Assets.Scripts.Common
 {
@@ -58,6 +61,7 @@ namespace Assets.Scripts.Common
 
             services.AddSingleton<InteractWithNpcEventRepository>();
             services.AddSingleton<StartDialogueEventRepository>();
+            services.AddSingleton<NewTextEventRepository>();
             services.AddSingleton<DialogueRepository>();
         }
 
@@ -67,6 +71,7 @@ namespace Assets.Scripts.Common
             CreateInteractiveObjectControllers();
             CreateInventoryController();
             CreateNpcControllers();
+            CreateTextPanelController();
         }
 
         private void CreateNpcControllers()
@@ -81,6 +86,20 @@ namespace Assets.Scripts.Common
                 var controller = new NpcController(npc.gameObject, serviceProvider);
                 controllers.Add(controller);
             }
+        }
+
+        private void CreateTextPanelController()
+        {
+            var textPanel = (FindObjectsOfType(typeof(TextBoxMarker)) as TextBoxMarker[]).First();
+            var scrollRect = (FindObjectsOfType(typeof(ScrollRect)) as ScrollRect[]).First();
+            var button = (FindObjectOfType(typeof(ButtonMarker)) as ButtonMarker);
+            if (textPanel == null)
+                return;
+
+             var controller = new TextPanelController(textPanel.gameObject, serviceProvider, scrollRect, button);
+             scrollRect.gameObject.SetActive(false);
+
+             controllers.Add(controller);
         }
 
         private void CreateInventoryController()

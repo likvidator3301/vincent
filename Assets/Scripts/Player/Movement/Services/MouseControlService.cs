@@ -7,6 +7,7 @@ using Assets.Scripts.Player.Configs;
 using Assets.Scripts.Player.Movement.Helpers;
 using Assets.Scripts.Player.NpcInteraction.Repositories;
 using Assets.Scripts.Player.PickUp.Repositories;
+using Assets.Scripts.TextPanel.Repositories;
 using UnityEngine;
 
 namespace Assets.Scripts.Player.Movement.Services
@@ -18,6 +19,7 @@ namespace Assets.Scripts.Player.Movement.Services
         private readonly Transform player;
         private readonly PickupEventRepository pickupEventRepository;
         private readonly InteractWithNpcEventRepository interactWithNpcEventRepository;
+        private readonly NewTextEventRepository newTextEventRepository;
         private readonly PlayerConfig config;
 
         public MouseControlService(
@@ -26,12 +28,14 @@ namespace Assets.Scripts.Player.Movement.Services
             DirectionHelper directionHelper,
             PickupEventRepository pickupEventRepository,
             InteractWithNpcEventRepository interactWithNpcEventRepository,
+            NewTextEventRepository newTextEventRepository,
             PlayerConfig config)
         {
             this.movementEventRepository = movementEventRepository ?? throw new ArgumentNullException(nameof(movementEventRepository));
             this.directionHelper = directionHelper ?? throw new ArgumentNullException(nameof(directionHelper)); 
             this.pickupEventRepository = pickupEventRepository ?? throw new ArgumentNullException(nameof(pickupEventRepository));
             this.player = player;
+            this.newTextEventRepository = newTextEventRepository ?? throw new ArgumentNullException(nameof(newTextEventRepository));
             this.interactWithNpcEventRepository = interactWithNpcEventRepository ?? throw new ArgumentNullException(nameof(interactWithNpcEventRepository));
             this.config = config ?? throw new ArgumentNullException(nameof(config));
         }
@@ -43,6 +47,7 @@ namespace Assets.Scripts.Player.Movement.Services
                 movementEventRepository.RemoveValue();
                 pickupEventRepository.RemoveValue();
                 interactWithNpcEventRepository.RemoveValue();
+                newTextEventRepository.RemoveValue();
 
                 if (MouseHelper.IsMouseAboveObjectWithTag(Constants.Tags.Ground))
                     ProcessMovement();
@@ -52,7 +57,16 @@ namespace Assets.Scripts.Player.Movement.Services
 
                 if (MouseHelper.IsMouseAboveObjectWithTag(Constants.Tags.Npc))
                     ProcessNpc();
+
+                if (MouseHelper.IsMouseAboveObjectWithTag(Constants.Tags.Button))
+                    ProcessButton();
             }
+        }
+
+        private void ProcessButton()
+        {
+            var button = MouseHelper.GetComponentOnGameObjectUnderMouse<ButtonMarker>();
+            newTextEventRepository.SetValue(new NewTextEvent(button.dialogueNode));
         }
 
         private void ProcessNpc()

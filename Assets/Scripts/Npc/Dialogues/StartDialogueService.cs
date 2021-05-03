@@ -31,8 +31,6 @@ namespace Assets.Scripts.Npc.Dialogues
             if (startDialogueEvent.NpcId != npcId)
                 return;
 
-            Debug.Log("Типа начал разговаривать");
-
             dialogueRepository.SetValue(dialogue);
             startDialogueEventRepository.RemoveValue();
         }

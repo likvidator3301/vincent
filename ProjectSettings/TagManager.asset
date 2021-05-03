@@ -8,6 +8,7 @@ TagManager:
   - Background
   - PickupableItem
   - Npc
+  - Button
   layers:
   - Default
   - TransparentFX
