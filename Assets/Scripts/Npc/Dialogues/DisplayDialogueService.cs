@@ -4,7 +4,6 @@ using Assets.Scripts.Npc.Dialogues.Models;
 using Assets.Scripts.Npc.Dialogues.Repositories;
 using Assets.Scripts.TextPanel.Repositories;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace Assets.Scripts.Npc.Dialogues
 {

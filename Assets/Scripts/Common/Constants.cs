@@ -7,7 +7,7 @@
             public const string Ground = "Ground";
             public const string PickupableItem = "PickupableItem";
             public const string Npc = "Npc";
-            public const string Button = "Button";
+            public const string DialogueButton = "DialogueButton";
         }
     }
 }

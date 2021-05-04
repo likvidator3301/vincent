@@ -6,8 +6,8 @@ namespace Assets.Scripts.Markers
 {
     public class ButtonMarker: MonoBehaviour
     {
-        public Text buttonText;
-        public DialogueNode dialogueNode;
+        public Text ButtonText;
+        public DialogueNode DialogueNode;
 
         public ButtonMarker Instantiate()
         {

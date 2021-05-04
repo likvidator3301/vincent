@@ -9,6 +9,7 @@ TagManager:
   - PickupableItem
   - Npc
   - Button
+  - DialogueButton
   layers:
   - Default
   - TransparentFX

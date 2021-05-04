@@ -2,7 +2,6 @@
 using Assets.Scripts.Common;
 using Assets.Scripts.Common.Helpers;
 using Assets.Scripts.Markers;
-using Assets.Scripts.PickupableItem;
 using Assets.Scripts.Player.Configs;
 using Assets.Scripts.Player.Movement.Helpers;
 using Assets.Scripts.Player.NpcInteraction.Repositories;
@@ -21,6 +20,7 @@ namespace Assets.Scripts.Player.Movement.Services
         private readonly InteractWithNpcEventRepository interactWithNpcEventRepository;
         private readonly NewTextEventRepository newTextEventRepository;
         private readonly PlayerConfig config;
+        private Vector3 previousPointClicked;
 
         public MouseControlService(
             Transform player,
@@ -38,35 +38,40 @@ namespace Assets.Scripts.Player.Movement.Services
             this.newTextEventRepository = newTextEventRepository ?? throw new ArgumentNullException(nameof(newTextEventRepository));
             this.interactWithNpcEventRepository = interactWithNpcEventRepository ?? throw new ArgumentNullException(nameof(interactWithNpcEventRepository));
             this.config = config ?? throw new ArgumentNullException(nameof(config));
+            this.previousPointClicked = new Vector3(0, 0, 0);
         }
 
         public override void Update()
         {
             if (Input.GetMouseButtonDown(0))
             {
-                movementEventRepository.RemoveValue();
-                pickupEventRepository.RemoveValue();
-                interactWithNpcEventRepository.RemoveValue();
-                newTextEventRepository.RemoveValue();
+                if (Input.mousePosition != previousPointClicked) // у нас происходит двойной клик. Для кнопок это критично
+                {                                                // Поэтому я сохраняю предыдущую точку нажатия и сравниваю её с текущей
+                    previousPointClicked = Input.mousePosition;
+                    movementEventRepository.RemoveValue();
+                    pickupEventRepository.RemoveValue();
+                    interactWithNpcEventRepository.RemoveValue();
+                    newTextEventRepository.RemoveValue();
 
-                if (MouseHelper.IsMouseAboveObjectWithTag(Constants.Tags.Ground))
-                    ProcessMovement();
+                    if (MouseHelper.IsMouseAboveObjectWithTag(Constants.Tags.Ground))
+                        ProcessMovement();
 
-                if (MouseHelper.IsMouseAboveObjectWithTag(Constants.Tags.PickupableItem))
-                    ProcessPickup();
+                    if (MouseHelper.IsMouseAboveObjectWithTag(Constants.Tags.PickupableItem))
+                        ProcessPickup();
 
-                if (MouseHelper.IsMouseAboveObjectWithTag(Constants.Tags.Npc))
-                    ProcessNpc();
+                    if (MouseHelper.IsMouseAboveObjectWithTag(Constants.Tags.Npc))
+                        ProcessNpc();
 
-                if (MouseHelper.IsMouseAboveObjectWithTag(Constants.Tags.Button))
-                    ProcessButton();
+                    if (MouseHelper.IsMouseAboveObjectWithTag(Constants.Tags.DialogueButton))
+                        ProcessButton();
+                }
             }
         }
 
         private void ProcessButton()
         {
             var button = MouseHelper.GetComponentOnGameObjectUnderMouse<ButtonMarker>();
-            newTextEventRepository.SetValue(new NewTextEvent(button.dialogueNode));
+            newTextEventRepository.SetValue(new NewTextEvent(button.DialogueNode));
         }
 
         private void ProcessNpc()

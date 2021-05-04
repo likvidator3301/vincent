@@ -262,7 +262,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -526.3, y: 247.22}
+  m_AnchoredPosition: {x: -526.30005, y: 247.22}
   m_SizeDelta: {x: -1086.31, y: -540.83}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &69850758
@@ -400,7 +400,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.00005888909, y: -0.000010043383}
+  m_AnchoredPosition: {x: -0.00010078201, y: 0.000014658938}
   m_SizeDelta: {x: 0, y: 100}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &174540829
@@ -1014,7 +1014,7 @@ GameObject:
   - component: {fileID: 622365685}
   m_Layer: 0
   m_Name: Button
-  m_TagString: Button
+  m_TagString: DialogueButton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1091,7 +1091,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8aa28b0a7d8c8094baf4c48ff7007855, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonText: {fileID: 407901782}
+  ButtonText: {fileID: 407901782}
 --- !u!61 &622365685
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1199,7 +1199,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 926778203}
   m_HandleRect: {fileID: 926778202}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -1269,7 +1269,7 @@ RectTransform:
   m_GameObject: {fileID: 659430462}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 0.5}
   m_Children:
   - {fileID: 967771799}
   - {fileID: 638800221}
@@ -1732,8 +1732,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1083654264}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.17653988, y: 2.175467, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0.123, y: 2.175467, z: 0}
+  m_LocalScale: {x: 1.4937501, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 443995340}
   m_RootOrder: 0
@@ -2401,7 +2401,7 @@ Canvas:
   serializedVersion: 3
   m_RenderMode: 1
   m_Camera: {fileID: 1338496232}
-  m_PlaneDistance: 100
+  m_PlaneDistance: 5
   m_PixelPerfect: 1
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
@@ -2764,6 +2764,16 @@ PrefabInstance:
       propertyPath: m_OcclusionCulling
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2814186606925576866, guid: 3f5c77d1b4d45f64289903eb92ecfbe5,
+        type: 3}
+      propertyPath: far clip plane
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 2814186606925576866, guid: 3f5c77d1b4d45f64289903eb92ecfbe5,
+        type: 3}
+      propertyPath: near clip plane
+      value: 0.3
+      objectReference: {fileID: 0}
     - target: {fileID: 2814186607243421762, guid: 3f5c77d1b4d45f64289903eb92ecfbe5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3000,7 +3010,7 @@ PrefabInstance:
     - target: {fileID: 8693877332052862843, guid: c253ed4361cf6834eb64ee21b567b381,
         type: 3}
       propertyPath: m_TagString
-      value: Button
+      value: DialogueButton
       objectReference: {fileID: 0}
     - target: {fileID: 8693877332052862843, guid: c253ed4361cf6834eb64ee21b567b381,
         type: 3}

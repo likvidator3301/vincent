@@ -6,7 +6,6 @@ using Assets.Scripts.Npc.Dialogues.Repositories;
 using Assets.Scripts.TextPanel.Repositories;
 using Microsoft.Extensions.DependencyInjection;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace Assets.Scripts.Npc
 {
@@ -19,6 +18,7 @@ namespace Assets.Scripts.Npc
         public override void Start()
         {
             CreateStartDialogueService();
+            CreateDisplayDialogueService();
 
             foreach (var service in Services)
                 service.Start();
@@ -32,12 +32,19 @@ namespace Assets.Scripts.Npc
 
             var startDialogueEventRepository = ServiceProvider.GetService<StartDialogueEventRepository>();
             var dialogueRepository = ServiceProvider.GetService<DialogueRepository>();
-            var newTextEventRepository = ServiceProvider.GetService<NewTextEventRepository>();
 
             var startDialogueService = new StartDialogueService(dialogue, startDialogueEventRepository, dialogueRepository, id);
-            var displayDialogueService = new DisplayDialogueService(dialogueRepository, newTextEventRepository);
 
             Services.Add(startDialogueService);
+        }
+
+        private void CreateDisplayDialogueService()
+        {
+            var dialogueRepository = ServiceProvider.GetService<DialogueRepository>();
+            var newTextEventRepository = ServiceProvider.GetService<NewTextEventRepository>();
+
+            var displayDialogueService = new DisplayDialogueService(dialogueRepository, newTextEventRepository);
+
             Services.Add(displayDialogueService);
         }
 

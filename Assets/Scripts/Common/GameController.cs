@@ -90,11 +90,11 @@ namespace Assets.Scripts.Common
 
         private void CreateTextPanelController()
         {
-            var textPanel = (FindObjectsOfType(typeof(TextBoxMarker)) as TextBoxMarker[]).First();
+            var textPanel = (FindObjectsOfType(typeof(TextBoxMarker)) as TextBoxMarker[]).FirstOrDefault();
             var scrollRect = (FindObjectsOfType(typeof(ScrollRect)) as ScrollRect[]).First();
             var button = (FindObjectOfType(typeof(ButtonMarker)) as ButtonMarker);
             if (textPanel == null)
-                return;
+                throw new GameInitializationException("Text Panel not found");
 
              var controller = new TextPanelController(textPanel.gameObject, serviceProvider, scrollRect, button);
              scrollRect.gameObject.SetActive(false);

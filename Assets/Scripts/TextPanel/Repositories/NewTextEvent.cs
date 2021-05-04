@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts.Npc.Dialogues.Models;
+using System;
 
 namespace Assets.Scripts.TextPanel.Repositories
 {
@@ -8,7 +9,7 @@ namespace Assets.Scripts.TextPanel.Repositories
 
         public NewTextEvent (DialogueNode node)
         {
-            this.node = node;
+            this.node = node ?? throw new ArgumentNullException(nameof(node));
         }
     }
 }

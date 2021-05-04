@@ -2,7 +2,6 @@
 using Assets.Scripts.Common;
 using Assets.Scripts.Npc.Dialogues.Models;
 using Assets.Scripts.Npc.Dialogues.Repositories;
-using UnityEngine;
 
 namespace Assets.Scripts.Npc.Dialogues
 {
