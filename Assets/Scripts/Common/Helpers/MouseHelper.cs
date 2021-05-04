@@ -12,7 +12,6 @@ namespace Assets.Scripts.Common.Helpers
                 var clickedOnTag = hitInfo.collider.gameObject.tag;
                 if (clickedOnTag == tag)
                 {
-                    Debug.Log(hitInfo.collider.gameObject.tag);
                     return true;
                 }
             }
