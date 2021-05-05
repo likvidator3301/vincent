@@ -18,17 +18,6 @@ namespace Assets.Scripts.Npc.Dialogues
             this.newTextEventRepository = newTextEventRepository ?? throw new ArgumentNullException(nameof(newTextEventRepository));
         }
 
-        public static void ShowText(DialogueNode node)
-        {
-            if (node == null)
-                return;
-            Debug.Log("Text: " + node.Text);
-            foreach(var answer in node.Answers)
-            {
-                Debug.Log("Answer: " + answer.Key);
-            }
-        }
-
         public override void Update()
         {
             if (!dialogueRepository.HasValue)
@@ -36,7 +25,6 @@ namespace Assets.Scripts.Npc.Dialogues
 
             var dialogue = dialogueRepository.Value;
 
-            //ShowText(dialogue.Value);
             newTextEventRepository.SetValue(new NewTextEvent(dialogue.Value));
             dialogueRepository.RemoveValue();
         }

@@ -91,15 +91,23 @@ namespace Assets.Scripts.Common
         private void CreateTextPanelController()
         {
             var textPanel = (FindObjectsOfType(typeof(TextBoxMarker)) as TextBoxMarker[]).FirstOrDefault();
-            var scrollRect = (FindObjectsOfType(typeof(ScrollRect)) as ScrollRect[]).First();
-            var button = (FindObjectOfType(typeof(ButtonMarker)) as ButtonMarker);
+            var scrollRect = (FindObjectsOfType(typeof(ScrollRect)) as ScrollRect[]).FirstOrDefault();
+            var originButton = (FindObjectOfType(typeof(ButtonMarker)) as ButtonMarker);
             if (textPanel == null)
                 throw new GameInitializationException("Text Panel not found");
 
-             var controller = new TextPanelController(textPanel.gameObject, serviceProvider, scrollRect, button);
-             scrollRect.gameObject.SetActive(false);
+            if (scrollRect == null)
+                throw new GameInitializationException("Scroll Rect not found");
 
-             controllers.Add(controller);
+            if (originButton == null)
+                throw new GameInitializationException("Origin Button not found");
+
+            var controller = new TextPanelController(textPanel.gameObject, serviceProvider, scrollRect, originButton);
+            scrollRect.gameObject.SetActive(false);
+            originButton.gameObject.SetActive(false);
+            originButton.DialogueNode = new Npc.Dialogues.Models.DialogueNode("end");
+
+            controllers.Add(controller);
         }
 
         private void CreateInventoryController()

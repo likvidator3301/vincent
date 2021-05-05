@@ -22,6 +22,7 @@ namespace Assets.Scripts.TextPanel
         public override void Start()
         {
             AddDisplayTextService();
+            AddCancelButtonService();
 
             foreach (var service in Services)
                 service.Start();
@@ -32,6 +33,14 @@ namespace Assets.Scripts.TextPanel
             var newTextEventRepository = ServiceProvider.GetService<NewTextEventRepository>();
             var text = GameObject.GetComponent<Text>();
             var service = new DisplayTextService(text, newTextEventRepository, scrollRect, button);
+
+            Services.Add(service);
+        }
+
+        private void AddCancelButtonService()
+        {
+            var newTextEventRepository = ServiceProvider.GetService<NewTextEventRepository>();
+            var service = new CancelButtonService(newTextEventRepository, scrollRect, button);
 
             Services.Add(service);
         }

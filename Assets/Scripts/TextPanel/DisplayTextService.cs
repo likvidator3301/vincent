@@ -15,7 +15,7 @@ namespace Assets.Scripts.TextPanel
         private readonly NewTextEventRepository newTextEventRepository;
         private readonly ScrollRect scrollRect;
         private readonly ButtonMarker button;
-        private List<ButtonMarker> buttons = new List<ButtonMarker>();
+        public List<ButtonMarker> buttons = new List<ButtonMarker>();
 
         private const int ScrollRectWidth = 818;
 
@@ -29,25 +29,24 @@ namespace Assets.Scripts.TextPanel
 
         private void ShowDialogueState(DialogueNode node)
         {
-            var width = scrollRect.flexibleWidth;
             DestroyButtons(buttons);
             dialogueText.text = node.Text;
             var posX = -280;
             var dx = ScrollRectWidth / (node.Answers.Count + 1);
             foreach(var answer in node.Answers)
             {
-                var newButton = button.Instantiate();
-                newButton.gameObject.transform.localPosition = new Vector3(posX, 115);
-                newButton.DialogueNode = answer.Value;
-                newButton.ButtonText.text = answer.Key;
-                buttons.Add(newButton);
+                MakeButton(answer.Key, answer.Value, posX);
                 posX += dx;
             }
-            var finishButton = button.Instantiate();
-            finishButton.gameObject.transform.localPosition = new Vector3(posX, 115);
-            finishButton.ButtonText.text = "Завершить диалог";
-            finishButton.DialogueNode = new DialogueNode("end");
-            buttons.Add(finishButton);
+        }
+
+        private void MakeButton(string buttonText, DialogueNode node, int buttonPosition)
+        {
+            var newButton = button.Instantiate();
+            newButton.gameObject.transform.localPosition = new Vector3(buttonPosition, button.gameObject.transform.localPosition.y);
+            newButton.DialogueNode = node;
+            newButton.ButtonText.text = buttonText;
+            buttons.Add(newButton);
         }
 
         private void DestroyButtons(List<ButtonMarker> buttons)
@@ -64,17 +63,16 @@ namespace Assets.Scripts.TextPanel
             if (!newTextEventRepository.HasValue)
                 return;
             var currentNode = newTextEventRepository.Value.node;
+
             if (currentNode.Text != "end")
             {
+                button.gameObject.SetActive(true);
                 scrollRect.gameObject.SetActive(true);
                 ShowDialogueState(currentNode);
+                newTextEventRepository.RemoveValue();
             }
             else
-            {
-                scrollRect.gameObject.SetActive(false);
                 DestroyButtons(buttons);
-            }
-            newTextEventRepository.RemoveValue();
         }
     }
 }
