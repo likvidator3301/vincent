@@ -93,6 +93,8 @@ namespace Assets.Scripts.Common
             var textPanel = (FindObjectsOfType(typeof(TextBoxMarker)) as TextBoxMarker[]).FirstOrDefault();
             var scrollRect = (FindObjectsOfType(typeof(ScrollRect)) as ScrollRect[]).FirstOrDefault();
             var originButton = (FindObjectOfType(typeof(ButtonMarker)) as ButtonMarker);
+            var npcImage = scrollRect.content.GetComponentInChildren<Image>();
+
             if (textPanel == null)
                 throw new GameInitializationException("Text Panel not found");
 
@@ -102,7 +104,11 @@ namespace Assets.Scripts.Common
             if (originButton == null)
                 throw new GameInitializationException("Origin Button not found");
 
-            var controller = new TextPanelController(textPanel.gameObject, serviceProvider, scrollRect, originButton);
+            if (npcImage == null)
+                throw new GameInitializationException("Origin Button not found");
+
+            var controller = new TextPanelController(textPanel.gameObject, serviceProvider, scrollRect, originButton, npcImage);
+
             scrollRect.gameObject.SetActive(false);
             originButton.gameObject.SetActive(false);
             originButton.DialogueNode = new Npc.Dialogues.Models.DialogueNode("end");

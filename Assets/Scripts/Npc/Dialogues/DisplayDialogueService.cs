@@ -11,11 +11,13 @@ namespace Assets.Scripts.Npc.Dialogues
     {
         private readonly DialogueRepository dialogueRepository;
         private readonly NewTextEventRepository newTextEventRepository;
+        private readonly Sprite npcSprite;
 
-        public DisplayDialogueService(DialogueRepository dialogueRepository, NewTextEventRepository newTextEventRepository)
+        public DisplayDialogueService(DialogueRepository dialogueRepository, NewTextEventRepository newTextEventRepository, Sprite npcSprite)
         {
             this.dialogueRepository = dialogueRepository ?? throw new ArgumentNullException(nameof(dialogueRepository));
             this.newTextEventRepository = newTextEventRepository ?? throw new ArgumentNullException(nameof(newTextEventRepository));
+            this.npcSprite = npcSprite ?? throw new ArgumentNullException(nameof(npcSprite));
         }
 
         public override void Update()
@@ -25,7 +27,7 @@ namespace Assets.Scripts.Npc.Dialogues
 
             var dialogue = dialogueRepository.Value;
 
-            newTextEventRepository.SetValue(new NewTextEvent(dialogue.Value));
+            newTextEventRepository.SetValue(new NewTextEvent(dialogue.Value, npcSprite));
             dialogueRepository.RemoveValue();
         }
     }

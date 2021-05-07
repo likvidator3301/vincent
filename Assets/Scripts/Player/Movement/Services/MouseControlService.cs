@@ -8,6 +8,7 @@ using Assets.Scripts.Player.NpcInteraction.Repositories;
 using Assets.Scripts.Player.PickUp.Repositories;
 using Assets.Scripts.TextPanel.Repositories;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Assets.Scripts.Player.Movement.Services
 {
@@ -71,7 +72,8 @@ namespace Assets.Scripts.Player.Movement.Services
         private void ProcessButton()
         {
             var button = MouseHelper.GetComponentOnGameObjectUnderMouse<ButtonMarker>();
-            newTextEventRepository.SetValue(new NewTextEvent(button.DialogueNode));
+            var npcImage = GameObject.Find("NpcImage").GetComponent<Image>();
+            newTextEventRepository.SetValue(new NewTextEvent(button.DialogueNode, npcImage.sprite));
         }
 
         private void ProcessNpc()

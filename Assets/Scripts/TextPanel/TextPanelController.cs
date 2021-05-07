@@ -12,20 +12,32 @@ namespace Assets.Scripts.TextPanel
     {
         private readonly ScrollRect scrollRect;
         private readonly ButtonMarker button;
+        private readonly Image npcImage;
 
-        public TextPanelController(GameObject gameObject, IServiceProvider serviceProvider, ScrollRect scrollRect, ButtonMarker button) : base(gameObject, serviceProvider)
+        public TextPanelController(GameObject gameObject, IServiceProvider serviceProvider, 
+            ScrollRect scrollRect, ButtonMarker button, Image npcImage) : base(gameObject, serviceProvider)
         {
             this.scrollRect = scrollRect;
             this.button = button;
+            this.npcImage = npcImage;
         }
 
         public override void Start()
         {
+            AddNpcImageService();
             AddDisplayTextService();
             AddCancelButtonService();
-
+            
             foreach (var service in Services)
                 service.Start();
+        }
+
+        private void AddNpcImageService()
+        {
+            var newTextEventRepository = ServiceProvider.GetService<NewTextEventRepository>();
+            var service = new NpcImageService(newTextEventRepository, npcImage);
+
+            Services.Add(service);
         }
 
         private void AddDisplayTextService()

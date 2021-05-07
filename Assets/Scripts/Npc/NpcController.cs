@@ -42,8 +42,9 @@ namespace Assets.Scripts.Npc
         {
             var dialogueRepository = ServiceProvider.GetService<DialogueRepository>();
             var newTextEventRepository = ServiceProvider.GetService<NewTextEventRepository>();
-
-            var displayDialogueService = new DisplayDialogueService(dialogueRepository, newTextEventRepository);
+            var marker = GameObject.GetComponent<NpcMarker>();
+            var npcSprite = marker.GetComponentInChildren<SpriteRenderer>().sprite;
+            var displayDialogueService = new DisplayDialogueService(dialogueRepository, newTextEventRepository, npcSprite);
 
             Services.Add(displayDialogueService);
         }
