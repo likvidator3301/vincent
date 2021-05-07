@@ -9,6 +9,7 @@ using Assets.Scripts.Player.NpcInteraction;
 using Assets.Scripts.Player.NpcInteraction.Repositories;
 using Assets.Scripts.Player.PickUp.Repositories;
 using Assets.Scripts.Player.PickUp.Services;
+using Assets.Scripts.TextPanel.Repositories;
 using JetBrains.Annotations;
 using Microsoft.Extensions.DependencyInjection;
 using UnityEngine;
@@ -76,11 +77,14 @@ namespace Assets.Scripts.Player
             var pickupEventRepository = ServiceProvider.GetService<PickupEventRepository>();
             var interactEventRepository = ServiceProvider.GetService<InteractWithNpcEventRepository>();
 
+            var newTextEventRepository = ServiceProvider.GetService<NewTextEventRepository>();
+
             var playerConfig = ServiceProvider.GetService<PlayerConfig>();
 
             var player = GameObject;
 
-            var service = new MouseControlService(player.transform, movementHelper, directionHelper, pickupEventRepository, interactEventRepository, playerConfig);
+            var service = new MouseControlService(player.transform, movementHelper, directionHelper, pickupEventRepository, 
+                interactEventRepository, newTextEventRepository, playerConfig);
             Services.Add(service);
         }
 

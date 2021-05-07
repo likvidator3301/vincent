@@ -2,7 +2,6 @@
 using Assets.Scripts.Common;
 using Assets.Scripts.Npc.Dialogues.Models;
 using Assets.Scripts.Npc.Dialogues.Repositories;
-using UnityEngine;
 
 namespace Assets.Scripts.Npc.Dialogues
 {
@@ -30,8 +29,6 @@ namespace Assets.Scripts.Npc.Dialogues
             
             if (startDialogueEvent.NpcId != npcId)
                 return;
-
-            Debug.Log("Типа начал разговаривать");
 
             dialogueRepository.SetValue(dialogue);
             startDialogueEventRepository.RemoveValue();
