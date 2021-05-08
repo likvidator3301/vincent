@@ -10,6 +10,7 @@ TagManager:
   - Npc
   - Button
   - DialogueButton
+  - FinishDialogueButton
   layers:
   - Default
   - TransparentFX

@@ -8,22 +8,24 @@ namespace Assets.Scripts.Markers
     {
         public string Id { get; } = Guid.NewGuid().ToString();
 
+        public Sprite IconForDialogue;
+
         public Dialogue GetDialogue()
         {
             var result = new Dialogue();
 
-            var root = new DialogueNode("Привет! Я красный непись.");
+            var root = new DialogueNode("Привет! Меня зовут Твинки и я милый кролик");
 
             var node1 = new DialogueNode("Я живу здесь уже 2 часа, а ты?");
             node1.Answers.Add("А мне 69 лет", root);
-            node1.Answers.Add("Какого хуя я тебя это должен рассказывать?", root);
+            node1.Answers.Add("Секрет вообще-то", root);
 
-            root.Answers.Add("Привет! Я кот. Сколько тебе лет?", node1);
+            root.Answers.Add("Привет! Я кот Винсент. Сколько тебе лет?", node1);
 
             var node2 = new DialogueNode("У меня все хорошо, как ты?");
             node2.Answers.Add("У меня все плохо, хочу звезду", root);
 
-            root.Answers.Add("Привет! Я кот. Как у тебя дела?", node2);
+            root.Answers.Add("Привет! Я кот Винсент. Как у тебя дела?", node2);
 
             result.SetValue(root);
 

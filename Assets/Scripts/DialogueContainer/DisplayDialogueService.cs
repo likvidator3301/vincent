@@ -1,23 +1,22 @@
 ﻿using System;
 using Assets.Scripts.Common;
-using Assets.Scripts.Npc.Dialogues.Models;
+using Assets.Scripts.DialogueContainer.Models;
+using Assets.Scripts.DialogueContainer.Repositories;
 using Assets.Scripts.Npc.Dialogues.Repositories;
-using Assets.Scripts.TextPanel.Repositories;
-using UnityEngine;
 
-namespace Assets.Scripts.Npc.Dialogues
+namespace Assets.Scripts.DialogueContainer
 {
     public class DisplayDialogueService: ServiceBase
     {
         private readonly DialogueRepository dialogueRepository;
         private readonly NewTextEventRepository newTextEventRepository;
-        private readonly Sprite npcSprite;
+        private readonly DialogueModel dialogueModel;
 
-        public DisplayDialogueService(DialogueRepository dialogueRepository, NewTextEventRepository newTextEventRepository, Sprite npcSprite)
+        public DisplayDialogueService(DialogueRepository dialogueRepository, NewTextEventRepository newTextEventRepository, DialogueModel dialogueModel)
         {
             this.dialogueRepository = dialogueRepository ?? throw new ArgumentNullException(nameof(dialogueRepository));
             this.newTextEventRepository = newTextEventRepository ?? throw new ArgumentNullException(nameof(newTextEventRepository));
-            this.npcSprite = npcSprite ?? throw new ArgumentNullException(nameof(npcSprite));
+            this.dialogueModel = dialogueModel ?? throw new ArgumentNullException(nameof(dialogueModel));
         }
 
         public override void Update()
@@ -27,7 +26,9 @@ namespace Assets.Scripts.Npc.Dialogues
 
             var dialogue = dialogueRepository.Value;
 
-            newTextEventRepository.SetValue(new NewTextEvent(dialogue.Value, npcSprite));
+            dialogueModel.GameObject.SetActive(true);
+
+            newTextEventRepository.SetValue(new NewTextEvent(dialogue.Value));
             dialogueRepository.RemoveValue();
         }
     }

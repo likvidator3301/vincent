@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Assets.Scripts.DialogueContainer;
+using Assets.Scripts.DialogueContainer.Repositories;
 using Assets.Scripts.Exceptions;
 using Assets.Scripts.Inventory;
 using Assets.Scripts.Markers;
@@ -16,8 +18,6 @@ using Assets.Scripts.Player.PickUp.Repositories;
 using JetBrains.Annotations;
 using UnityEngine;
 using Microsoft.Extensions.DependencyInjection;
-using Assets.Scripts.TextPanel;
-using Assets.Scripts.TextPanel.Repositories;
 using UnityEngine.UI;
 
 namespace Assets.Scripts.Common
@@ -63,6 +63,8 @@ namespace Assets.Scripts.Common
             services.AddSingleton<StartDialogueEventRepository>();
             services.AddSingleton<NewTextEventRepository>();
             services.AddSingleton<DialogueRepository>();
+            services.AddSingleton<IconForDialogueRepository>();
+            services.AddSingleton<FinishDialogueEventRepository>();
         }
 
         private void CreateControllers()
@@ -71,7 +73,7 @@ namespace Assets.Scripts.Common
             CreateInteractiveObjectControllers();
             CreateInventoryController();
             CreateNpcControllers();
-            CreateTextPanelController();
+            CreateDialogueContainerController();
         }
 
         private void CreateNpcControllers()
@@ -88,30 +90,11 @@ namespace Assets.Scripts.Common
             }
         }
 
-        private void CreateTextPanelController()
+        private void CreateDialogueContainerController()
         {
-            var textPanel = (FindObjectsOfType(typeof(TextBoxMarker)) as TextBoxMarker[]).FirstOrDefault();
-            var scrollRect = (FindObjectsOfType(typeof(ScrollRect)) as ScrollRect[]).FirstOrDefault();
-            var originButton = (FindObjectOfType(typeof(ButtonMarker)) as ButtonMarker);
-            var npcImage = scrollRect.content.GetComponentInChildren<Image>();
+            var dialogueContainerMarker = FindObjectOfType<DialogueContainerMarker>() as DialogueContainerMarker;
 
-            if (textPanel == null)
-                throw new GameInitializationException("Text Panel not found");
-
-            if (scrollRect == null)
-                throw new GameInitializationException("Scroll Rect not found");
-
-            if (originButton == null)
-                throw new GameInitializationException("Origin Button not found");
-
-            if (npcImage == null)
-                throw new GameInitializationException("Origin Button not found");
-
-            var controller = new TextPanelController(textPanel.gameObject, serviceProvider, scrollRect, originButton, npcImage);
-
-            scrollRect.gameObject.SetActive(false);
-            originButton.gameObject.SetActive(false);
-            originButton.DialogueNode = new Npc.Dialogues.Models.DialogueNode("end");
+            var controller = new DialogueContainerController(dialogueContainerMarker.gameObject, serviceProvider, dialogueContainerMarker);
 
             controllers.Add(controller);
         }
