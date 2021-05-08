@@ -313,7 +313,7 @@ GameObject:
   - component: {fileID: 89429008}
   - component: {fileID: 89429007}
   m_Layer: 0
-  m_Name: Image
+  m_Name: NpcImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
