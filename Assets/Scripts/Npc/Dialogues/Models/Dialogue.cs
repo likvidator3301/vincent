@@ -5,7 +5,9 @@ namespace Assets.Scripts.Npc.Dialogues.Models
 {
     public class DialogueNode
     {
-        public string Text { get; }
+        public string Text { get; set; }
+        public string title { get; set; }
+        public string body { get; set; }
 
         public Dictionary<string, DialogueNode> Answers { get; }
 
@@ -13,6 +15,18 @@ namespace Assets.Scripts.Npc.Dialogues.Models
         {
             Text = text;
             Answers = new Dictionary<string, DialogueNode>();
+        }
+
+        public void SetText()
+        {
+            Text = "";
+            foreach (var c in body)
+            {
+                if (c != '\n')
+                    Text += c;
+                else
+                    break;
+            }
         }
     }
 
