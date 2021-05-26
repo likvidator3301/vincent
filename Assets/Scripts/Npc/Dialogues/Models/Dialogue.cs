@@ -8,6 +8,7 @@ namespace Assets.Scripts.Npc.Dialogues.Models
         public string Text { get; set; }
         public string title { get; set; }
         public string body { get; set; }
+        public string tags { get; set; }
 
         public Dictionary<string, DialogueNode> Answers { get; }
 

@@ -1,6 +1,8 @@
 ﻿using System;
 using Assets.Scripts.Common;
 using Assets.Scripts.DialogueContainer.Repositories;
+using Assets.Scripts.Inventory;
+using Assets.Scripts.Markers;
 using Assets.Scripts.Npc.Dialogues.Models;
 using Assets.Scripts.Npc.Dialogues.Repositories;
 using UnityEngine;
@@ -9,27 +11,30 @@ namespace Assets.Scripts.Npc.Dialogues
 {
     public class StartDialogueService: ServiceBase
     {
-        private readonly Dialogue dialogue;
         private readonly StartDialogueEventRepository startDialogueEventRepository;
         private readonly DialogueRepository dialogueRepository;
         private readonly string npcId;
         private readonly Sprite iconForDialogue;
         private readonly IconForDialogueRepository iconForDialogueRepository;
+        private readonly NpcMarker marker;
+        private readonly PlayerInventory items;
 
         public StartDialogueService(
-            Dialogue dialogue,
+            NpcMarker marker,
             StartDialogueEventRepository startDialogueEventRepository,
             DialogueRepository dialogueRepository,
             string npcId,
             Sprite iconForDialogue,
-            IconForDialogueRepository iconForDialogueRepository)
+            IconForDialogueRepository iconForDialogueRepository,
+            PlayerInventory items)
         {
-            this.dialogue = dialogue ?? throw new ArgumentNullException(nameof(dialogue));
+            this.marker = marker ?? throw new ArgumentNullException(nameof(marker));
             this.startDialogueEventRepository = startDialogueEventRepository ?? throw new ArgumentNullException(nameof(startDialogueEventRepository));
             this.dialogueRepository = dialogueRepository ?? throw new ArgumentNullException(nameof(dialogueRepository));
             this.npcId = npcId ?? throw new ArgumentNullException(nameof(npcId));
             this.iconForDialogue = iconForDialogue;
             this.iconForDialogueRepository = iconForDialogueRepository ?? throw new ArgumentNullException(nameof(iconForDialogueRepository));
+            this.items = items ?? throw new ArgumentNullException(nameof(items));
         }
 
         public override void Update()
@@ -38,7 +43,7 @@ namespace Assets.Scripts.Npc.Dialogues
                 return;
 
             var startDialogueEvent = startDialogueEventRepository.Value;
-            
+            var dialogue = marker.GetDialogue(items);
             if (startDialogueEvent.NpcId != npcId)
                 return;
 

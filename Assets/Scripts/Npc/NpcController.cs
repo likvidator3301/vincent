@@ -2,6 +2,7 @@
 using Assets.Scripts.Common;
 using Assets.Scripts.DialogueContainer;
 using Assets.Scripts.DialogueContainer.Repositories;
+using Assets.Scripts.Inventory;
 using Assets.Scripts.Markers;
 using Assets.Scripts.Npc.Dialogues;
 using Assets.Scripts.Npc.Dialogues.Repositories;
@@ -27,14 +28,15 @@ namespace Assets.Scripts.Npc
         private void CreateStartDialogueService()
         {
             var marker = GameObject.GetComponent<NpcMarker>();
+            var items = ServiceProvider.GetService<PlayerInventory>();
             var id = marker.Id;
-            var dialogue = marker.GetDialogue();
 
             var startDialogueEventRepository = ServiceProvider.GetService<StartDialogueEventRepository>();
             var dialogueRepository = ServiceProvider.GetService<DialogueRepository>();
             var iconForDialogueRepository = ServiceProvider.GetService<IconForDialogueRepository>();
 
-            var startDialogueService = new StartDialogueService(dialogue, startDialogueEventRepository, dialogueRepository, id, marker.IconForDialogue, iconForDialogueRepository);
+            var startDialogueService = new StartDialogueService(marker, startDialogueEventRepository, 
+                dialogueRepository, id, marker.IconForDialogue, iconForDialogueRepository, items);
 
             Services.Add(startDialogueService);
         }

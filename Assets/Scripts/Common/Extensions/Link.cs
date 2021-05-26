@@ -8,8 +8,9 @@ namespace Assets.Scripts.Common.Extensions
 {
     public class Link
     {
-        public string AswerText { get; set; }
+        public string AnswerText { get; set; }
         public string NextNodeId { get; set; }
+        public string Condition { get; set; }
 
         public static IEnumerable<Link> ParseLine(string line)
         {
@@ -19,7 +20,7 @@ namespace Assets.Scripts.Common.Extensions
                 if (word[0] == '[' && word[1] == '[')
                 {
                     var link = word.Substring(2, word.Length - 4).Split('|');
-                    yield return new Link() { AswerText = link[0], NextNodeId = link[1] };
+                    yield return new Link() { AnswerText = link[0], NextNodeId = link[1] };
                 }
             }
         }

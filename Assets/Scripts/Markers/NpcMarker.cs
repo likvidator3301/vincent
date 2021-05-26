@@ -2,6 +2,7 @@
 using System.IO;
 using System.Linq;
 using Assets.Scripts.Common.Extensions;
+using Assets.Scripts.Inventory;
 using Assets.Scripts.Npc.Dialogues.Models;
 using Newtonsoft.Json;
 using UnityEngine;
@@ -14,7 +15,7 @@ namespace Assets.Scripts.Markers
         public string Name;
         public Sprite IconForDialogue;
 
-        public Dialogue GetDialogue()
+        public Dialogue GetDialogue(PlayerInventory items)
         {
             var result = new Dialogue();
 
@@ -29,7 +30,17 @@ namespace Assets.Scripts.Markers
                     {
                         var answerNode = nodes.Where(n => n.title == link.NextNodeId).FirstOrDefault();
                         if (answerNode != null)
-                            node.Answers.Add(link.AswerText, answerNode);
+                        {
+                            var answerCondition = answerNode.tags;
+
+                            if (answerCondition != "")
+                            {
+                                if (Condition.CheckCondition(answerCondition, items))
+                                    node.Answers.Add(link.AnswerText, answerNode);
+                            }
+                            else
+                                node.Answers.Add(link.AnswerText, answerNode);
+                        }
                     }
                 }
                 node.SetText();
