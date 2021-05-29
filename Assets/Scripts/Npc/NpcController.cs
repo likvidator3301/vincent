@@ -28,6 +28,10 @@ namespace Assets.Scripts.Npc
         private void CreateStartDialogueService()
         {
             var marker = GameObject.GetComponent<NpcMarker>();
+
+            if (marker.Name == "Duck")
+                return;
+
             var items = ServiceProvider.GetService<PlayerInventory>();
             var id = marker.Id;
 

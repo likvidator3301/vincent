@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Linq;
 using Assets.Scripts.Common;
 using Assets.Scripts.DialogueContainer.Repositories;
+using Assets.Scripts.Markers;
 using Assets.Scripts.Npc.Dialogues.Repositories;
 using Assets.Scripts.PickupableItem;
 using Assets.Scripts.Player.Configs;
@@ -103,9 +105,10 @@ namespace Assets.Scripts.Player
         private void AddDirectionService()
         {
             var directionHelper = ServiceProvider.GetService<DirectionHelper>();
+            var duck = (UnityEngine.Object.FindObjectsOfType(typeof(NpcMarker)) as NpcMarker[]).Where(x => x.Name == "Duck").FirstOrDefault();
             var player = GameObject;
 
-            var service = new DirectionService(player.transform, directionHelper);
+            var service = new DirectionService(player.transform, directionHelper, duck.transform);
             Services.Add(service);
         }
 

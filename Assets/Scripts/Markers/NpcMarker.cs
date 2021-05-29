@@ -18,8 +18,14 @@ namespace Assets.Scripts.Markers
         public Dialogue GetDialogue(PlayerInventory items)
         {
             var result = new Dialogue();
+            var dialogFilePath = @".\Assets\resources\Dialogues\" + Name + ".json";
+            string json;
 
-            var json = File.ReadAllText(@".\Assets\resources\Dialogues\" + Name + ".json");
+            if(File.Exists(dialogFilePath))
+                json = File.ReadAllText(dialogFilePath);
+            else
+                throw new ArgumentException("Dialog with " + Name + " do not exist");
+
             DialogueNode[] nodes = JsonConvert.DeserializeObject<DialogueNode[]>(json);
             foreach (var node in nodes)
             {
