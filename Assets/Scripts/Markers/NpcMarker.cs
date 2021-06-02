@@ -2,6 +2,7 @@
 using System.IO;
 using System.Linq;
 using Assets.Scripts.Common.Extensions;
+using Assets.Scripts.Exceptions;
 using Assets.Scripts.Inventory;
 using Assets.Scripts.Npc.Dialogues.Models;
 using Newtonsoft.Json;
@@ -14,34 +15,36 @@ namespace Assets.Scripts.Markers
         public string Id { get; } = Guid.NewGuid().ToString();
         public string Name;
         public Sprite IconForDialogue;
+        public string DialogueFilePath;
 
-        public Dialogue GetDialogue(PlayerInventory items)
+        public Dialogue GetDialogue(PlayerInventory playerInventory)
         {
-            var result = new Dialogue();
-            var dialogFilePath = @".\Assets\resources\Dialogues\" + Name + ".json";
-            string json;
+            string jsonContent;
 
-            if(File.Exists(dialogFilePath))
-                json = File.ReadAllText(dialogFilePath);
+            if(File.Exists(DialogueFilePath))
+                jsonContent = File.ReadAllText(DialogueFilePath);
             else
-                throw new ArgumentException("Dialog with " + Name + " do not exist");
+                throw new ArgumentException($"Cannot find path file by path '{DialogueFilePath}'");
 
-            DialogueNode[] nodes = JsonConvert.DeserializeObject<DialogueNode[]>(json);
+            var nodes = JsonConvert.DeserializeObject<DialogueNode[]>(jsonContent);
+            if (nodes == null)
+                throw new ArgumentException($"Cannot parse dialogue file: {DialogueFilePath}");
+
             foreach (var node in nodes)
             {
-                var links = Link.ParseLine(node.body);
+                var links = Link.ParseLine(node.Body);
                 if (links != null)
                 {
                     foreach (var link in links)
                     {
-                        var answerNode = nodes.Where(n => n.title == link.NextNodeId).FirstOrDefault();
+                        var answerNode = nodes.FirstOrDefault(n => n.Title == link.NextNodeId);
                         if (answerNode != null)
                         {
-                            var answerCondition = answerNode.tags;
+                            var answerCondition = answerNode.Tags;
 
                             if (answerCondition != "")
                             {
-                                if (Condition.CheckCondition(answerCondition, items))
+                                if (Condition.CheckCondition(answerCondition, playerInventory))
                                     node.Answers.Add(link.AnswerText, answerNode);
                             }
                             else
@@ -53,8 +56,10 @@ namespace Assets.Scripts.Markers
             }
 
             var root = nodes[0];
-            result.SetValue(root);
-            return result;
+
+            var dialogue = new Dialogue();
+            dialogue.SetValue(root);
+            return dialogue;
         }
     }
 }

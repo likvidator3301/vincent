@@ -1,7 +1,7 @@
 ﻿using System;
 using Assets.Scripts.Common;
-using Assets.Scripts.DialogueContainer;
 using Assets.Scripts.DialogueContainer.Repositories;
+using Assets.Scripts.Exceptions;
 using Assets.Scripts.Inventory;
 using Assets.Scripts.Markers;
 using Assets.Scripts.Npc.Dialogues;
@@ -28,11 +28,20 @@ namespace Assets.Scripts.Npc
         private void CreateStartDialogueService()
         {
             var marker = GameObject.GetComponent<NpcMarker>();
+            var playerInventory = ServiceProvider.GetService<PlayerInventory>();
+
+            try
+            {
+                marker.GetDialogue(playerInventory);
+            }
+            catch (Exception e)
+            {
+                throw new GameInitializationException($"An error occurred while trying to load dialogue. {e.Message}");
+            }
 
             if (marker.Name == "Duck")
                 return;
 
-            var items = ServiceProvider.GetService<PlayerInventory>();
             var id = marker.Id;
 
             var startDialogueEventRepository = ServiceProvider.GetService<StartDialogueEventRepository>();
@@ -40,7 +49,7 @@ namespace Assets.Scripts.Npc
             var iconForDialogueRepository = ServiceProvider.GetService<IconForDialogueRepository>();
 
             var startDialogueService = new StartDialogueService(marker, startDialogueEventRepository, 
-                dialogueRepository, id, marker.IconForDialogue, iconForDialogueRepository, items);
+                dialogueRepository, id, marker.IconForDialogue, iconForDialogueRepository, playerInventory);
 
             Services.Add(startDialogueService);
         }

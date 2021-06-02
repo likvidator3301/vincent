@@ -105,10 +105,9 @@ namespace Assets.Scripts.Player
         private void AddDirectionService()
         {
             var directionHelper = ServiceProvider.GetService<DirectionHelper>();
-            var duck = (UnityEngine.Object.FindObjectsOfType(typeof(NpcMarker)) as NpcMarker[]).Where(x => x.Name == "Duck").FirstOrDefault();
             var player = GameObject;
 
-            var service = new DirectionService(player.transform, directionHelper, duck.transform);
+            var service = new DirectionService(player.transform, directionHelper);
             Services.Add(service);
         }
 
