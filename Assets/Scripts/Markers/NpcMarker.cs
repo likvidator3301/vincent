@@ -1,5 +1,11 @@
 ﻿using System;
+using System.IO;
+using System.Linq;
+using Assets.Scripts.Common.Extensions;
+using Assets.Scripts.Exceptions;
+using Assets.Scripts.Inventory;
 using Assets.Scripts.Npc.Dialogues.Models;
+using Newtonsoft.Json;
 using UnityEngine;
 
 namespace Assets.Scripts.Markers
@@ -7,27 +13,53 @@ namespace Assets.Scripts.Markers
     public class NpcMarker: MonoBehaviour
     {
         public string Id { get; } = Guid.NewGuid().ToString();
+        public string Name;
+        public Sprite IconForDialogue;
+        public string DialogueFilePath;
 
-        public Dialogue GetDialogue()
+        public Dialogue GetDialogue(PlayerInventory playerInventory)
         {
-            var result = new Dialogue();
+            string jsonContent;
 
-            var root = new DialogueNode("Привет! Я красный непись.");
+            if(File.Exists(DialogueFilePath))
+                jsonContent = File.ReadAllText(DialogueFilePath);
+            else
+                throw new ArgumentException($"Cannot find path file by path '{DialogueFilePath}'");
 
-            var node1 = new DialogueNode("Я живу здесь уже 2 часа, а ты?");
-            node1.Answers.Add("А мне 69 лет", root);
-            node1.Answers.Add("Какого хуя я тебя это должен рассказывать?", root);
+            var nodes = JsonConvert.DeserializeObject<DialogueNode[]>(jsonContent);
+            if (nodes == null)
+                throw new ArgumentException($"Cannot parse dialogue file: {DialogueFilePath}");
 
-            root.Answers.Add("Привет! Я кот. Сколько тебе лет?", node1);
+            foreach (var node in nodes)
+            {
+                var links = Link.ParseLine(node.Body);
+                if (links != null)
+                {
+                    foreach (var link in links)
+                    {
+                        var answerNode = nodes.FirstOrDefault(n => n.Title == link.NextNodeId);
+                        if (answerNode != null)
+                        {
+                            var answerCondition = answerNode.Tags;
 
-            var node2 = new DialogueNode("У меня все хорошо, как ты?");
-            node2.Answers.Add("У меня все плохо, хочу звезду", root);
+                            if (answerCondition != "")
+                            {
+                                if (Condition.CheckCondition(answerCondition, playerInventory))
+                                    node.Answers.Add(link.AnswerText, answerNode);
+                            }
+                            else
+                                node.Answers.Add(link.AnswerText, answerNode);
+                        }
+                    }
+                }
+                node.SetText();
+            }
 
-            root.Answers.Add("Привет! Я кот. Как у тебя дела?", node2);
+            var root = nodes[0];
 
-            result.SetValue(root);
-
-            return result;
+            var dialogue = new Dialogue();
+            dialogue.SetValue(root);
+            return dialogue;
         }
     }
 }

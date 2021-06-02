@@ -1,13 +1,15 @@
 ﻿using System;
 using Assets.Scripts.Common;
 using Assets.Scripts.Common.Helpers;
+using Assets.Scripts.DialogueContainer.Repositories;
 using Assets.Scripts.Markers;
 using Assets.Scripts.Player.Configs;
 using Assets.Scripts.Player.Movement.Helpers;
 using Assets.Scripts.Player.NpcInteraction.Repositories;
 using Assets.Scripts.Player.PickUp.Repositories;
-using Assets.Scripts.TextPanel.Repositories;
 using UnityEngine;
+using UnityEngine.UI;
+using MouseHelper = Assets.Scripts.Common.Helpers.MouseHelper;
 
 namespace Assets.Scripts.Player.Movement.Services
 {
@@ -19,6 +21,7 @@ namespace Assets.Scripts.Player.Movement.Services
         private readonly PickupEventRepository pickupEventRepository;
         private readonly InteractWithNpcEventRepository interactWithNpcEventRepository;
         private readonly NewTextEventRepository newTextEventRepository;
+        private readonly FinishDialogueEventRepository finishDialogueEventRepository;
         private readonly PlayerConfig config;
         private Vector3 previousPointClicked;
 
@@ -29,6 +32,7 @@ namespace Assets.Scripts.Player.Movement.Services
             PickupEventRepository pickupEventRepository,
             InteractWithNpcEventRepository interactWithNpcEventRepository,
             NewTextEventRepository newTextEventRepository,
+            FinishDialogueEventRepository finishDialogueEventRepository,
             PlayerConfig config)
         {
             this.movementEventRepository = movementEventRepository ?? throw new ArgumentNullException(nameof(movementEventRepository));
@@ -36,9 +40,11 @@ namespace Assets.Scripts.Player.Movement.Services
             this.pickupEventRepository = pickupEventRepository ?? throw new ArgumentNullException(nameof(pickupEventRepository));
             this.player = player;
             this.newTextEventRepository = newTextEventRepository ?? throw new ArgumentNullException(nameof(newTextEventRepository));
+            this.finishDialogueEventRepository = finishDialogueEventRepository ?? throw new ArgumentNullException(nameof(finishDialogueEventRepository));
             this.interactWithNpcEventRepository = interactWithNpcEventRepository ?? throw new ArgumentNullException(nameof(interactWithNpcEventRepository));
             this.config = config ?? throw new ArgumentNullException(nameof(config));
-            this.previousPointClicked = new Vector3(0, 0, 0);
+            
+            previousPointClicked = new Vector3(0, 0, 0);
         }
 
         public override void Update()
@@ -64,14 +70,22 @@ namespace Assets.Scripts.Player.Movement.Services
 
                     if (MouseHelper.IsMouseAboveObjectWithTag(Constants.Tags.DialogueButton))
                         ProcessButton();
+
+                    if (MouseHelper.IsMouseAboveObjectWithTag(Constants.Tags.FinishDialogueButton))
+                        ProcessFinishDialogue();
                 }
             }
         }
 
+        private void ProcessFinishDialogue()
+        {
+            finishDialogueEventRepository.SetValue(new FinishDialogueEvent());
+        }
+
         private void ProcessButton()
         {
-            var button = MouseHelper.GetComponentOnGameObjectUnderMouse<ButtonMarker>();
-            newTextEventRepository.SetValue(new NewTextEvent(button.DialogueNode));
+            var button = MouseHelper.GetComponentOnGameObjectUnderMouse<NextReplicaDialogueButtonMarker>();
+            newTextEventRepository.SetValue(new NewTextEvent(button.Node));
         }
 
         private void ProcessNpc()

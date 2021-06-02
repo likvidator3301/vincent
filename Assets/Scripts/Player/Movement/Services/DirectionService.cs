@@ -26,8 +26,9 @@ namespace Assets.Scripts.Player.Movement.Services
         public override void Update()
         {
             if (lastDirection != directionHelper.Direction)
+            {
                 player.localScale = new Vector3(-player.localScale.x, player.localScale.y, player.localScale.z);
-
+            }
             lastDirection = directionHelper.Direction;
         }
     }

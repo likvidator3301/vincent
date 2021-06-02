@@ -1,5 +1,8 @@
 ﻿using System;
+using System.Linq;
 using Assets.Scripts.Common;
+using Assets.Scripts.DialogueContainer.Repositories;
+using Assets.Scripts.Markers;
 using Assets.Scripts.Npc.Dialogues.Repositories;
 using Assets.Scripts.PickupableItem;
 using Assets.Scripts.Player.Configs;
@@ -9,7 +12,6 @@ using Assets.Scripts.Player.NpcInteraction;
 using Assets.Scripts.Player.NpcInteraction.Repositories;
 using Assets.Scripts.Player.PickUp.Repositories;
 using Assets.Scripts.Player.PickUp.Services;
-using Assets.Scripts.TextPanel.Repositories;
 using JetBrains.Annotations;
 using Microsoft.Extensions.DependencyInjection;
 using UnityEngine;
@@ -76,6 +78,7 @@ namespace Assets.Scripts.Player
 
             var pickupEventRepository = ServiceProvider.GetService<PickupEventRepository>();
             var interactEventRepository = ServiceProvider.GetService<InteractWithNpcEventRepository>();
+            var finishDialogueRepository = ServiceProvider.GetService<FinishDialogueEventRepository>();
 
             var newTextEventRepository = ServiceProvider.GetService<NewTextEventRepository>();
 
@@ -84,7 +87,7 @@ namespace Assets.Scripts.Player
             var player = GameObject;
 
             var service = new MouseControlService(player.transform, movementHelper, directionHelper, pickupEventRepository, 
-                interactEventRepository, newTextEventRepository, playerConfig);
+                interactEventRepository, newTextEventRepository, finishDialogueRepository, playerConfig);
             Services.Add(service);
         }
 
