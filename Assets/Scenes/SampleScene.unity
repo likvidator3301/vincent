@@ -692,7 +692,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &123010023
 GameObject:
@@ -1187,6 +1187,7 @@ MonoBehaviour:
   Name: Birdperson
   IconForDialogue: {fileID: 21300000, guid: f30d638a623014849bd99485ac1347a2, type: 3}
   DialogueFilePath: Assets/resources/Dialogues/Twinkie.json
+  DialogueFile: {fileID: 4900000, guid: ea8d8d18da509f24e847f36b90b5b797, type: 3}
 --- !u!212 &183813545
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2485,7 +2486,7 @@ FixedJoint2D:
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 0
-  m_Anchor: {x: 0, y: 0}
+  m_Anchor: {x: 0.16, y: 0}
   m_ConnectedAnchor: {x: 0, y: 3.1350002}
   m_DampingRatio: 0
   m_Frequency: 0
@@ -5104,6 +5105,7 @@ MonoBehaviour:
   Name: Rupert
   IconForDialogue: {fileID: 21300000, guid: bf784d5b245856f4ebda0097d973b5d5, type: 3}
   DialogueFilePath: Assets/resources/Dialogues/Rupert.json
+  DialogueFile: {fileID: 4900000, guid: 265374c271e5b0a4ea42c5b923cf2e39, type: 3}
 --- !u!61 &1127611046
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5569,6 +5571,7 @@ MonoBehaviour:
   Name: Twinkie
   IconForDialogue: {fileID: 21300000, guid: cf67a1a635f1c9a45bb5e41d86889c31, type: 3}
   DialogueFilePath: Assets/resources/Dialogues/Twinkie.json
+  DialogueFile: {fileID: 4900000, guid: ea8d8d18da509f24e847f36b90b5b797, type: 3}
 --- !u!212 &1256317503
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5626,7 +5629,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1256317501}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -157.77, y: -4.01, z: -1.28}
+  m_LocalPosition: {x: -157.77, y: -4.01, z: -1.074}
   m_LocalScale: {x: 0.28834713, y: 0.28834713, z: 0.28834713}
   m_Children: []
   m_Father: {fileID: 0}
@@ -6030,6 +6033,7 @@ MonoBehaviour:
   Name: Frogs
   IconForDialogue: {fileID: 21300000, guid: 4a727eadf0a73ae48b4c1d43d765193f, type: 3}
   DialogueFilePath: Assets/resources/Dialogues/Twinkie.json
+  DialogueFile: {fileID: 4900000, guid: ea8d8d18da509f24e847f36b90b5b797, type: 3}
 --- !u!212 &1319784950
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -6543,38 +6547,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &1444565292 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3624518171612728759, guid: ff4ca0d0f8ea3094b8d07a64bd191b20,
-    type: 3}
-  m_PrefabInstance: {fileID: 1496766267}
-  m_PrefabAsset: {fileID: 0}
---- !u!61 &1444565293
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1444565292}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.11, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 2.02, y: 1.58}
-  m_EdgeRadius: 0
 --- !u!1 &1446531027
 GameObject:
   m_ObjectHideFlags: 0
@@ -6729,6 +6701,7 @@ MonoBehaviour:
   Name: Fim
   IconForDialogue: {fileID: 21300000, guid: 72465124c5273304babef18b8e676a9c, type: 3}
   DialogueFilePath: Assets/resources/Dialogues/Twinkie.json
+  DialogueFile: {fileID: 4900000, guid: ea8d8d18da509f24e847f36b90b5b797, type: 3}
 --- !u!212 &1460630496
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -6952,7 +6925,7 @@ PrefabInstance:
     - target: {fileID: 3342475098625660938, guid: ff4ca0d0f8ea3094b8d07a64bd191b20,
         type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3342475098625660938, guid: ff4ca0d0f8ea3094b8d07a64bd191b20,
         type: 3}
@@ -6998,12 +6971,12 @@ PrefabInstance:
     - target: {fileID: 4863984313809058820, guid: ff4ca0d0f8ea3094b8d07a64bd191b20,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -23.82
+      value: -27.8
       objectReference: {fileID: 0}
     - target: {fileID: 4863984313809058820, guid: ff4ca0d0f8ea3094b8d07a64bd191b20,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.79
+      value: -1.87
       objectReference: {fileID: 0}
     - target: {fileID: 6880020578625431159, guid: ff4ca0d0f8ea3094b8d07a64bd191b20,
         type: 3}
@@ -7150,7 +7123,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1525273726}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -7.8900003, y: -4.23, z: -1.28}
+  m_LocalPosition: {x: -7.8900003, y: -4.23, z: -1.4}
   m_LocalScale: {x: 0.8950743, y: 0.8950743, z: 0.8950743}
   m_Children: []
   m_Father: {fileID: 747610821}
@@ -13535,8 +13508,8 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1835543797}
-  m_BodyType: 0
-  m_Simulated: 0
+  m_BodyType: 1
+  m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
@@ -13721,7 +13694,7 @@ RectTransform:
   - {fileID: 69850757}
   - {fileID: 659430463}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
