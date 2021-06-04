@@ -54,7 +54,9 @@ namespace Assets.Scripts.Player.Movement.Services
 
         public override void Update()
         {
-            if (MouseHelper.IsMouseAboveObjectWithTag(Constants.Tags.PickupableItem) || MouseHelper.IsMouseAboveObjectWithTag(Constants.Tags.Npc))
+            if (MouseHelper.IsMouseAboveObjectWithTag(Constants.Tags.PickupableItem) 
+                || MouseHelper.IsMouseAboveObjectWithTag(Constants.Tags.Npc) 
+                || MouseHelper.IsMouseAboveObjectWithTag(Constants.Tags.SceneTransfer))
                 cursor = Resources.Load<Sprite>("pointer");
             else
                 cursor = Resources.Load<Sprite>("normal");
@@ -74,19 +76,11 @@ namespace Assets.Scripts.Player.Movement.Services
                     if (MouseHelper.IsMouseAboveObjectWithTag(Constants.Tags.Ground))
                         ProcessMovement();
 
-                    if (MouseHelper.IsMouseAboveObjectWithTag(Constants.Tags.PickupableItem))
-                    {
-                        cursor = Resources.Load<Sprite>("pointer");
-                        Cursor.SetCursor(cursor.texture, new Vector2(0, 0), CursorMode.Auto);
+                    if (MouseHelper.IsMouseAboveObjectWithTag(Constants.Tags.PickupableItem)) 
                         ProcessPickup();
-                    }
 
-                    if (MouseHelper.IsMouseAboveObjectWithTag(Constants.Tags.Npc))
-                    {
-                        cursor = Resources.Load<Sprite>("pointer");
-                        Cursor.SetCursor(cursor.texture, new Vector2(0, 0), CursorMode.Auto);
+                    if (MouseHelper.IsMouseAboveObjectWithTag(Constants.Tags.Npc)) 
                         ProcessNpc();
-                    }
 
                     if (MouseHelper.IsMouseAboveObjectWithTag(Constants.Tags.DialogueButton))
                         ProcessButton();

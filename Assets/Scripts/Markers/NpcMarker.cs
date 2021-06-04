@@ -15,15 +15,11 @@ namespace Assets.Scripts.Markers
         public string Name;
         public Sprite IconForDialogue;
         public string DialogueFilePath;
+        public TextAsset DialogueFile;
 
         public Dialogue GetDialogue(PlayerInventory playerInventory)
         {
-            string jsonContent;
-
-            if (File.Exists(DialogueFilePath))
-                jsonContent = File.ReadAllText(DialogueFilePath);
-            else
-                throw new ArgumentException($"Cannot find path file by path '{DialogueFilePath}'");
+            var jsonContent = DialogueFile.text;
 
             var nodes = JsonConvert.DeserializeObject<DialogueNode[]>(jsonContent);
             if (nodes == null)
