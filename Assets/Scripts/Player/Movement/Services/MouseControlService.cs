@@ -26,6 +26,7 @@ namespace Assets.Scripts.Player.Movement.Services
         private readonly InteractWithSceneTransferEventRepository interactWithSceneTransferEventRepository;
         private readonly PlayerConfig config;
         private Vector3 previousPointClicked;
+        private Sprite cursor;
 
         public MouseControlService(
             Transform player,
@@ -53,6 +54,13 @@ namespace Assets.Scripts.Player.Movement.Services
 
         public override void Update()
         {
+            if (MouseHelper.IsMouseAboveObjectWithTag(Constants.Tags.PickupableItem) || MouseHelper.IsMouseAboveObjectWithTag(Constants.Tags.Npc))
+                cursor = Resources.Load<Sprite>("pointer");
+            else
+                cursor = Resources.Load<Sprite>("normal");
+
+            Cursor.SetCursor(cursor.texture, new Vector2(0, 0), CursorMode.Auto);
+
             if (Input.GetMouseButtonDown(0))
             {
                 if (Input.mousePosition != previousPointClicked) // у нас происходит двойной клик. Для кнопок это критично
@@ -67,10 +75,18 @@ namespace Assets.Scripts.Player.Movement.Services
                         ProcessMovement();
 
                     if (MouseHelper.IsMouseAboveObjectWithTag(Constants.Tags.PickupableItem))
+                    {
+                        cursor = Resources.Load<Sprite>("pointer");
+                        Cursor.SetCursor(cursor.texture, new Vector2(0, 0), CursorMode.Auto);
                         ProcessPickup();
+                    }
 
                     if (MouseHelper.IsMouseAboveObjectWithTag(Constants.Tags.Npc))
+                    {
+                        cursor = Resources.Load<Sprite>("pointer");
+                        Cursor.SetCursor(cursor.texture, new Vector2(0, 0), CursorMode.Auto);
                         ProcessNpc();
+                    }
 
                     if (MouseHelper.IsMouseAboveObjectWithTag(Constants.Tags.DialogueButton))
                         ProcessButton();
