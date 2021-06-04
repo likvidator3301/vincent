@@ -9,6 +9,7 @@
             public const string Npc = "Npc";
             public const string DialogueButton = "DialogueButton";
             public const string FinishDialogueButton = "FinishDialogueButton";
+            public const string SceneTransfer = "SceneTransfer";
         }
     }
 }

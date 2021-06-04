@@ -26,19 +26,19 @@ namespace Assets.Scripts.DialogueContainer
         private void ShowDialogueState(DialogueNode node)
         {
             dialogueModel.CurrentReplica.Text.text = node.Text;
-            var posX = 0;
-            var dx = ScrollRectWidth / (node.Answers.Count + 1);
+            var posY = 75;
+            var dy = -75;
             foreach (var answer in node.Answers)
             {
-                MakeButton(answer.Key, answer.Value, posX);
-                posX += dx;
+                MakeButton(answer.Key, answer.Value, posY);
+                posY += dy;
             }
         }
 
-        private void MakeButton(string answer, DialogueNode nextNode, int x)
+        private void MakeButton(string answer, DialogueNode nextNode, int y)
         {
             var buttonGameObject = Object.Instantiate(dialogueContainerMarker.NextReplicaButtonPrefab, dialogueModel.NextReplicaNextReplicaButtonsContainerContainer.GameObject.transform);
-            buttonGameObject.gameObject.transform.localPosition = new Vector3(x, 0);
+            buttonGameObject.gameObject.transform.localPosition = new Vector3(0, y);
             var buttonModel = new NextReplicaButton(buttonGameObject);
             buttonModel.Text.text = answer;
             buttonGameObject.GetComponent<NextReplicaDialogueButtonMarker>().Node = nextNode;

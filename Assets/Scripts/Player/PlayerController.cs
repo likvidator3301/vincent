@@ -12,6 +12,9 @@ using Assets.Scripts.Player.NpcInteraction;
 using Assets.Scripts.Player.NpcInteraction.Repositories;
 using Assets.Scripts.Player.PickUp.Repositories;
 using Assets.Scripts.Player.PickUp.Services;
+using Assets.Scripts.Player.SceneTransfer.Repositories;
+using Assets.Scripts.Player.SceneTransfer.Service;
+using Assets.Scripts.Scenes.Repositories;
 using JetBrains.Annotations;
 using Microsoft.Extensions.DependencyInjection;
 using UnityEngine;
@@ -34,6 +37,8 @@ namespace Assets.Scripts.Player
             AddMouseControlService();
             AddPickUpService();
             AddNpcInteractionService();
+            AddTeleportPlayerService();
+            AddInteractWithSceneTransferService();
 
             foreach (var service in Services) 
                 service.Start();
@@ -79,6 +84,7 @@ namespace Assets.Scripts.Player
             var pickupEventRepository = ServiceProvider.GetService<PickupEventRepository>();
             var interactEventRepository = ServiceProvider.GetService<InteractWithNpcEventRepository>();
             var finishDialogueRepository = ServiceProvider.GetService<FinishDialogueEventRepository>();
+            var interactWithSceneTransferRepository = ServiceProvider.GetService<InteractWithSceneTransferEventRepository>();
 
             var newTextEventRepository = ServiceProvider.GetService<NewTextEventRepository>();
 
@@ -87,7 +93,33 @@ namespace Assets.Scripts.Player
             var player = GameObject;
 
             var service = new MouseControlService(player.transform, movementHelper, directionHelper, pickupEventRepository, 
-                interactEventRepository, newTextEventRepository, finishDialogueRepository, playerConfig);
+                interactEventRepository, newTextEventRepository, finishDialogueRepository, interactWithSceneTransferRepository, playerConfig);
+            Services.Add(service);
+        }
+
+        private void AddInteractWithSceneTransferService()
+        {
+            var movementHelper = ServiceProvider.GetService<MovementEventRepository>();
+
+            var interactWithSceneTransferRepository = ServiceProvider.GetService<InteractWithSceneTransferEventRepository>();
+            var playerConfig = ServiceProvider.GetService<PlayerConfig>();
+            var transferToSceneEventRepository = ServiceProvider.GetService<TransferToSceneEventRepository>();
+
+            var player = GameObject;
+
+            var service = new InteractWithSceneTransferService(movementHelper, playerConfig,
+                interactWithSceneTransferRepository, transferToSceneEventRepository, player.transform);
+
+            Services.Add(service);                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
+        }
+
+        private void AddTeleportPlayerService()
+        {
+            var player = GameObject;
+            var teleportPlayerEventRepository = ServiceProvider.GetService<TeleportPlayerEventRepository>();
+
+            var service = new TeleportPlayerService(player.transform, teleportPlayerEventRepository);
+
             Services.Add(service);
         }
 

@@ -1,0 +1,42 @@
+[
+	{
+		"title": "Start",
+		"tags": "",
+		"body": "hewwo\n[[hewwo1!|#1]]\n[[hewwo 2!|#2]]",
+		"position": {
+			"x": 252,
+			"y": 113
+		},
+		"colorID": 0
+	},
+	{
+		"title": "#1",
+		"tags": "",
+		"body": "u said 1\n[[next|#3]]",
+		"position": {
+			"x": 367,
+			"y": -110
+		},
+		"colorID": 0
+	},
+	{
+		"title": "#2",
+		"tags": "",
+		"body": "u said 2 owo",
+		"position": {
+			"x": 592,
+			"y": -108
+		},
+		"colorID": 0
+	},
+	{
+		"title": "#3",
+		"tags": "",
+		"body": "the end",
+		"position": {
+			"x": 487,
+			"y": -331
+		},
+		"colorID": 0
+	}
+]

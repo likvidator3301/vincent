@@ -2,7 +2,6 @@
 using System.IO;
 using System.Linq;
 using Assets.Scripts.Common.Extensions;
-using Assets.Scripts.Exceptions;
 using Assets.Scripts.Inventory;
 using Assets.Scripts.Npc.Dialogues.Models;
 using Newtonsoft.Json;
@@ -21,7 +20,7 @@ namespace Assets.Scripts.Markers
         {
             string jsonContent;
 
-            if(File.Exists(DialogueFilePath))
+            if (File.Exists(DialogueFilePath))
                 jsonContent = File.ReadAllText(DialogueFilePath);
             else
                 throw new ArgumentException($"Cannot find path file by path '{DialogueFilePath}'");

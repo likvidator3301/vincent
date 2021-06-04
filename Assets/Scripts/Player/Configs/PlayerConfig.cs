@@ -4,7 +4,7 @@ namespace Assets.Scripts.Player.Configs
 {
     public class PlayerConfig
     {
-        public PlayerConfig(int speed, float movementCriticalDistance, float interactCriticalDistance)
+        public PlayerConfig(float speed, float movementCriticalDistance, float interactCriticalDistance)
         {
             if (speed <= 0)
                 throw new ArgumentException("Speed cannot be less or equal than zero");
@@ -17,7 +17,7 @@ namespace Assets.Scripts.Player.Configs
             InteractCriticalDistance = interactCriticalDistance;
         }
 
-        public int Speed { get; }
+        public float Speed { get; }
 
         public float MovementCriticalDistance { get; }
 

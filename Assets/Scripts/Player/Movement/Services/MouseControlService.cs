@@ -7,6 +7,7 @@ using Assets.Scripts.Player.Configs;
 using Assets.Scripts.Player.Movement.Helpers;
 using Assets.Scripts.Player.NpcInteraction.Repositories;
 using Assets.Scripts.Player.PickUp.Repositories;
+using Assets.Scripts.Player.SceneTransfer.Repositories;
 using UnityEngine;
 using UnityEngine.UI;
 using MouseHelper = Assets.Scripts.Common.Helpers.MouseHelper;
@@ -22,6 +23,7 @@ namespace Assets.Scripts.Player.Movement.Services
         private readonly InteractWithNpcEventRepository interactWithNpcEventRepository;
         private readonly NewTextEventRepository newTextEventRepository;
         private readonly FinishDialogueEventRepository finishDialogueEventRepository;
+        private readonly InteractWithSceneTransferEventRepository interactWithSceneTransferEventRepository;
         private readonly PlayerConfig config;
         private Vector3 previousPointClicked;
 
@@ -33,6 +35,7 @@ namespace Assets.Scripts.Player.Movement.Services
             InteractWithNpcEventRepository interactWithNpcEventRepository,
             NewTextEventRepository newTextEventRepository,
             FinishDialogueEventRepository finishDialogueEventRepository,
+            InteractWithSceneTransferEventRepository interactWithSceneTransferEventRepository,
             PlayerConfig config)
         {
             this.movementEventRepository = movementEventRepository ?? throw new ArgumentNullException(nameof(movementEventRepository));
@@ -41,6 +44,7 @@ namespace Assets.Scripts.Player.Movement.Services
             this.player = player;
             this.newTextEventRepository = newTextEventRepository ?? throw new ArgumentNullException(nameof(newTextEventRepository));
             this.finishDialogueEventRepository = finishDialogueEventRepository ?? throw new ArgumentNullException(nameof(finishDialogueEventRepository));
+            this.interactWithSceneTransferEventRepository = interactWithSceneTransferEventRepository ?? throw new ArgumentNullException(nameof(interactWithSceneTransferEventRepository));
             this.interactWithNpcEventRepository = interactWithNpcEventRepository ?? throw new ArgumentNullException(nameof(interactWithNpcEventRepository));
             this.config = config ?? throw new ArgumentNullException(nameof(config));
             
@@ -73,6 +77,9 @@ namespace Assets.Scripts.Player.Movement.Services
 
                     if (MouseHelper.IsMouseAboveObjectWithTag(Constants.Tags.FinishDialogueButton))
                         ProcessFinishDialogue();
+                    
+                    if (MouseHelper.IsMouseAboveObjectWithTag(Constants.Tags.SceneTransfer))
+                        ProcessSceneTransition();
                 }
             }
         }
@@ -107,6 +114,17 @@ namespace Assets.Scripts.Player.Movement.Services
             pickupEventRepository.SetValue(new PickupEvent(marker));
 
             if (PositionHelper.GetDistance(player.position, destination) > config.InteractCriticalDistance) 
+                ProcessMovement();
+        }
+
+        private void ProcessSceneTransition()
+        {
+            var marker = MouseHelper.GetComponentOnGameObjectUnderMouse<SceneTransferMarker>();
+            var destination = MouseHelper.GetPositionUnderMouse();
+
+            interactWithSceneTransferEventRepository.SetValue(new InteractWithSceneTransferEvent(marker));
+
+            if (PositionHelper.GetDistance(player.position, destination) > config.InteractCriticalDistance)
                 ProcessMovement();
         }
 

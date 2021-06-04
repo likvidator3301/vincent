@@ -15,6 +15,9 @@ using Assets.Scripts.Player.Configs;
 using Assets.Scripts.Player.Movement.Helpers;
 using Assets.Scripts.Player.NpcInteraction.Repositories;
 using Assets.Scripts.Player.PickUp.Repositories;
+using Assets.Scripts.Player.SceneTransfer.Repositories;
+using Assets.Scripts.Scenes;
+using Assets.Scripts.Scenes.Repositories;
 using JetBrains.Annotations;
 using UnityEngine;
 using Microsoft.Extensions.DependencyInjection;
@@ -24,6 +27,8 @@ namespace Assets.Scripts.Common
 {
     public class GameController: MonoBehaviour
     {
+
+
         private IServiceProvider serviceProvider;
         private List<ControllerBase> controllers;
 
@@ -50,7 +55,7 @@ namespace Assets.Scripts.Common
         private void ConfigureServices(IServiceCollection services)
         {
             //todo(likvidator): читать из конфигурации
-            services.AddSingleton(_ => new PlayerConfig(1, .7f, 1));
+            services.AddSingleton(_ => new PlayerConfig(.69f, .1f, 1));
 
             services.AddSingleton<DirectionHelper>();
             services.AddSingleton<MovementEventRepository>();
@@ -65,6 +70,10 @@ namespace Assets.Scripts.Common
             services.AddSingleton<DialogueRepository>();
             services.AddSingleton<IconForDialogueRepository>();
             services.AddSingleton<FinishDialogueEventRepository>();
+
+            services.AddSingleton<InteractWithSceneTransferEventRepository>();
+            services.AddSingleton<TeleportPlayerEventRepository>();
+            services.AddSingleton<TransferToSceneEventRepository>();
         }
 
         private void CreateControllers()
@@ -74,6 +83,7 @@ namespace Assets.Scripts.Common
             CreateInventoryController();
             CreateNpcControllers();
             CreateDialogueContainerController();
+            CreateSceneTransferControllers();
         }
 
         private void CreateNpcControllers()
@@ -143,6 +153,18 @@ namespace Assets.Scripts.Common
             var player = players.First().gameObject;
             var playerController = new PlayerController(player, serviceProvider);
             controllers.Add(playerController);
+        }
+
+        private void CreateSceneTransferControllers()
+        {
+            var sceneTransfers = FindObjectsOfType<SceneTransferMarker>();
+
+            foreach (var sceneTransferMarker in sceneTransfers)
+            {
+                var sceneTransferController = new SceneTransferController(sceneTransferMarker,
+                    sceneTransferMarker.gameObject, serviceProvider);
+                controllers.Add(sceneTransferController);
+            }
         }
 
         [UsedImplicitly]
