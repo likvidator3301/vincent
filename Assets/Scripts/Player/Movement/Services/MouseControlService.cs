@@ -26,7 +26,7 @@ namespace Assets.Scripts.Player.Movement.Services
         private readonly InteractWithSceneTransferEventRepository interactWithSceneTransferEventRepository;
         private readonly PlayerConfig config;
         private Vector3 previousPointClicked;
-        private Sprite cursor;
+        private Texture2D cursor;
 
         public MouseControlService(
             Transform player,
@@ -59,11 +59,11 @@ namespace Assets.Scripts.Player.Movement.Services
                 || MouseHelper.IsMouseAboveObjectWithTag(Constants.Tags.SceneTransfer)
                 || MouseHelper.IsMouseAboveObjectWithTag(Constants.Tags.DialogueButton)
                 || MouseHelper.IsMouseAboveObjectWithTag(Constants.Tags.FinishDialogueButton))
-                cursor = Resources.Load<Sprite>("pointer");
+                cursor = Resources.Load<Texture2D>("pointer");
             else
-                cursor = Resources.Load<Sprite>("normal");
+                cursor = Resources.Load<Texture2D>("normal");
 
-            Cursor.SetCursor(cursor.texture, new Vector2(0, 0), CursorMode.Auto);
+            Cursor.SetCursor(cursor, new Vector2(0, 0), CursorMode.Auto);
 
             if (Input.GetMouseButtonDown(0))
             {
