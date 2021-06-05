@@ -56,7 +56,9 @@ namespace Assets.Scripts.Player.Movement.Services
         {
             if (MouseHelper.IsMouseAboveObjectWithTag(Constants.Tags.PickupableItem) 
                 || MouseHelper.IsMouseAboveObjectWithTag(Constants.Tags.Npc) 
-                || MouseHelper.IsMouseAboveObjectWithTag(Constants.Tags.SceneTransfer))
+                || MouseHelper.IsMouseAboveObjectWithTag(Constants.Tags.SceneTransfer)
+                || MouseHelper.IsMouseAboveObjectWithTag(Constants.Tags.DialogueButton)
+                || MouseHelper.IsMouseAboveObjectWithTag(Constants.Tags.FinishDialogueButton))
                 cursor = Resources.Load<Sprite>("pointer");
             else
                 cursor = Resources.Load<Sprite>("normal");

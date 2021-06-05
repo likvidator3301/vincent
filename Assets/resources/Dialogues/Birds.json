@@ -1,0 +1,132 @@
+[
+	{
+		"title": "Start",
+		"tags": "",
+		"body": "Hello, Vincent\n[[Hello|#1]]\n<<Inventory has ribbon>>\n[[I think i found a ribbon that you can use to make the nest more solid|#9]]",
+		"position": {
+			"x": 136,
+			"y": -507
+		},
+		"colorID": 0
+	},
+	{
+		"title": "#1",
+		"tags": "",
+		"body": "You came to look for the star, am I right?\n[[Yes. Are you looking for it too?|#2]]\n[[Yes. Do you think you can help Rupert to take his hat off the tree? He really needs it|#8]]",
+		"position": {
+			"x": 256,
+			"y": -728
+		},
+		"colorID": 0
+	},
+	{
+		"title": "#2",
+		"tags": "",
+		"body": "I wish I was! But I've had a bit of an argue with Vivi - she doesn't like a nest I built for her, not one bit!\n[[Oh|#3]]",
+		"position": {
+			"x": 378,
+			"y": -947
+		},
+		"colorID": 0
+	},
+	{
+		"title": "#3",
+		"tags": "",
+		"body": "And now she won't let we leave until I fix it! Tell me, what do you think of the nest?\n[[Well... It's not that bad, it just needs something to make it solid and safe|#4]]",
+		"position": {
+			"x": 497,
+			"y": -1166
+		},
+		"colorID": 0
+	},
+	{
+		"title": "#4",
+		"tags": "",
+		"body": "I hope I will come with something soon, so I can fix it and go searching for the star just like others\n[[Why do you need a star for?|#5]]",
+		"position": {
+			"x": 616,
+			"y": -1389
+		},
+		"colorID": 0
+	},
+	{
+		"title": "#5",
+		"tags": "",
+		"body": "To make Vivi less grumpy - she's always so picky about everything I do\n[[Maybe you should just try a little harder? I bet Vivi would appreciate it|#6]]",
+		"position": {
+			"x": 732,
+			"y": -1612
+		},
+		"colorID": 0
+	},
+	{
+		"title": "#6",
+		"tags": "",
+		"body": "Um, maybe, I'm not sure. Anyway, now I really need to fix that poor nest somehow. \n[[I'll let you know if I find something useful|#7]]",
+		"position": {
+			"x": 852,
+			"y": -1834
+		},
+		"colorID": 0
+	},
+	{
+		"title": "#7",
+		"tags": "",
+		"body": "Thanks, Vincent!",
+		"position": {
+			"x": 971,
+			"y": -2055
+		},
+		"colorID": 0
+	},
+	{
+		"title": "#8",
+		"tags": "",
+		"body": "Sorry, I'm very busy right now - I have to fix the nest i build, because Vivi hates it\n[[Oh, I see|#3]]",
+		"position": {
+			"x": 700,
+			"y": -878
+		},
+		"colorID": 0
+	},
+	{
+		"title": "#9",
+		"tags": "inventory_has_ribbon",
+		"body": "You really did? That's great! And it's pretty too, Vivi'll like it. Thank you, Vincent!\n[[What are you going to do now?|#10]]",
+		"position": {
+			"x": 510,
+			"y": -503
+		},
+		"colorID": 0
+	},
+	{
+		"title": "#10",
+		"tags": "",
+		"body": "I was going to look for the star, but I guess, you were right and I just need to put more effort into things\n[[Good for you|#11]]",
+		"position": {
+			"x": 823,
+			"y": -514
+		},
+		"colorID": 0
+	},
+	{
+		"title": "#11",
+		"tags": "",
+		"body": "After all, it doesn't take a lot to make Vivi happy, and it certainly doesn't take any magic!\n[[Any chance we can get Rupert's hat now?|#12]]",
+		"position": {
+			"x": 1103,
+			"y": -538
+		},
+		"colorID": 0
+	},
+	{
+		"title": "#12",
+		"tags": "",
+		"body": "Sure! There it is,take it!",
+		"position": {
+			"x": 1367,
+			"y": -566
+		},
+		"colorID": 0
+	}
+]

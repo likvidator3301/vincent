@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.4465782, g: 0.49641252, b: 0.5748167, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -883,12 +883,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 143469440}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -145.652, y: -0.647, z: 2.41}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 4.348007, y: -0.647, z: 2.41}
   m_LocalScale: {x: 0.680202, y: 0.680202, z: 0.680202}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_Father: {fileID: 747610821}
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &165203052
 GameObject:
@@ -1193,7 +1193,7 @@ MonoBehaviour:
   Name: Birdperson
   IconForDialogue: {fileID: 21300000, guid: f30d638a623014849bd99485ac1347a2, type: 3}
   DialogueFilePath: Assets/resources/Dialogues/Twinkie.json
-  DialogueFile: {fileID: 4900000, guid: ea8d8d18da509f24e847f36b90b5b797, type: 3}
+  DialogueFile: {fileID: 4900000, guid: 817119b3474601f4781b0f09dc5df9bf, type: 3}
 --- !u!212 &183813545
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1940,7 +1940,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 2079c32e735d44047bc3d41a603d7c4f, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.24
+  m_Volume: 0.1
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -3284,7 +3284,7 @@ GameObject:
   - component: {fileID: 659430464}
   m_Layer: 0
   m_Name: DialogueContainer
-  m_TagString: Untagged
+  m_TagString: Container
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3716,7 +3716,7 @@ GameObject:
   m_Component:
   - component: {fileID: 734866365}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: House
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3741,7 +3741,7 @@ Transform:
   - {fileID: 1959305042}
   - {fileID: 1255187491}
   m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &738986759
 GameObject:
@@ -3896,6 +3896,11 @@ Transform:
   - {fileID: 1016800482}
   - {fileID: 275690676}
   - {fileID: 1044533987}
+  - {fileID: 143469442}
+  - {fileID: 1646333046}
+  - {fileID: 1737907142}
+  - {fileID: 1658541595}
+  - {fileID: 1256317504}
   - {fileID: 1612010851}
   - {fileID: 1689465589}
   - {fileID: 849125534}
@@ -4636,7 +4641,7 @@ Transform:
   m_LocalScale: {x: 0.6850001, y: 0.6850001, z: 0.685}
   m_Children: []
   m_Father: {fileID: 747610821}
-  m_RootOrder: 13
+  m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -270.352}
 --- !u!114 &849125535
 MonoBehaviour:
@@ -5232,7 +5237,7 @@ MonoBehaviour:
   Name: Rupert
   IconForDialogue: {fileID: 21300000, guid: bf784d5b245856f4ebda0097d973b5d5, type: 3}
   DialogueFilePath: Assets/resources/Dialogues/Rupert.json
-  DialogueFile: {fileID: 4900000, guid: 265374c271e5b0a4ea42c5b923cf2e39, type: 3}
+  DialogueFile: {fileID: 4900000, guid: 60dd98e743db0ac4ab7ff5cc52d08ef8, type: 3}
 --- !u!61 &1127611046
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5698,7 +5703,7 @@ MonoBehaviour:
   Name: Twinkie
   IconForDialogue: {fileID: 21300000, guid: cf67a1a635f1c9a45bb5e41d86889c31, type: 3}
   DialogueFilePath: Assets/resources/Dialogues/Twinkie.json
-  DialogueFile: {fileID: 4900000, guid: ea8d8d18da509f24e847f36b90b5b797, type: 3}
+  DialogueFile: {fileID: 4900000, guid: 4bbebdc6f9aae3b458005f6bd54d6968, type: 3}
 --- !u!212 &1256317503
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5755,12 +5760,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1256317501}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -157.77, y: -4.01, z: -1.074}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -7.7700043, y: -4.01, z: -1.074}
   m_LocalScale: {x: 0.28834713, y: 0.28834713, z: 0.28834713}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_Father: {fileID: 747610821}
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &1256317505
 BoxCollider2D:
@@ -6160,7 +6165,7 @@ MonoBehaviour:
   Name: Frogs
   IconForDialogue: {fileID: 21300000, guid: 4a727eadf0a73ae48b4c1d43d765193f, type: 3}
   DialogueFilePath: Assets/resources/Dialogues/Twinkie.json
-  DialogueFile: {fileID: 4900000, guid: ea8d8d18da509f24e847f36b90b5b797, type: 3}
+  DialogueFile: {fileID: 4900000, guid: 4bbebdc6f9aae3b458005f6bd54d6968, type: 3}
 --- !u!212 &1319784950
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -6828,7 +6833,7 @@ MonoBehaviour:
   Name: Fim
   IconForDialogue: {fileID: 21300000, guid: 72465124c5273304babef18b8e676a9c, type: 3}
   DialogueFilePath: Assets/resources/Dialogues/Twinkie.json
-  DialogueFile: {fileID: 4900000, guid: ea8d8d18da509f24e847f36b90b5b797, type: 3}
+  DialogueFile: {fileID: 4900000, guid: 4bbebdc6f9aae3b458005f6bd54d6968, type: 3}
 --- !u!212 &1460630496
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -7798,7 +7803,7 @@ Transform:
   m_LocalScale: {x: 0.6850001, y: 0.6850001, z: 0.685}
   m_Children: []
   m_Father: {fileID: 747610821}
-  m_RootOrder: 11
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -269.729}
 --- !u!114 &1612010852
 MonoBehaviour:
@@ -12748,12 +12753,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1646333043}
-  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -144.01, y: 1.85, z: 3.15}
+  m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 5.9900055, y: 1.85, z: 3.15}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_Father: {fileID: 747610821}
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!1 &1658541591
 GameObject:
@@ -12869,12 +12874,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1658541591}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -156.79, y: -2.29, z: 2.62}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -6.7899933, y: -2.29, z: 2.62}
   m_LocalScale: {x: 0.412, y: 0.412, z: 0.412}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_Father: {fileID: 747610821}
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1668924886
 GameObject:
@@ -12987,7 +12992,7 @@ Transform:
   m_LocalScale: {x: 0.6850001, y: 0.6850001, z: 0.685}
   m_Children: []
   m_Father: {fileID: 747610821}
-  m_RootOrder: 12
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -179.73001}
 --- !u!114 &1689465590
 MonoBehaviour:
@@ -13151,12 +13156,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1737907140}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -157.6, y: 1.23, z: 2.75}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -7.600006, y: 1.23, z: 2.75}
   m_LocalScale: {x: -1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_Father: {fileID: 747610821}
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1772029274
 GameObject:

@@ -2,40 +2,120 @@
 	{
 		"title": "Start",
 		"tags": "",
-		"body": "hewwo\n[[hewwo1!|#1]]\n[[hewwo 2!|#2]]",
+		"body": "Ah, long time no see. Good evening, Vincent!\n[[Hello! What are you up to?|#1]]\n<<Inventory_Has_Hat>>\n[[Look, the birds took your hat off the tree|#6]]",
 		"position": {
-			"x": 252,
-			"y": 113
+			"x": -135,
+			"y": -378
 		},
 		"colorID": 0
 	},
 	{
 		"title": "#1",
 		"tags": "",
-		"body": "u said 1\n[[next|#3]]",
+		"body": "My hat got blown away by the wind, and I can't reach it now. \n[[Oh, that's unfortunate|#2]]",
 		"position": {
-			"x": 367,
-			"y": -110
+			"x": -275,
+			"y": -620
 		},
 		"colorID": 0
 	},
 	{
 		"title": "#2",
 		"tags": "",
-		"body": "u said 2 owo",
+		"body": "It really is. This hat is a gift from an old friend of mine, and even if it scraffy - i like it a lot\n[[Maybe we can use something long to take it off?|#3]]\n[[What if we ask someone to help us?|#4]]",
 		"position": {
-			"x": 592,
-			"y": -108
+			"x": -440,
+			"y": -891
 		},
 		"colorID": 0
 	},
 	{
 		"title": "#3",
 		"tags": "",
-		"body": "the end",
+		"body": "I tried, but I still couldn't come up with anything that long\n[[I'll see if I can find something suitable|#5]]",
 		"position": {
-			"x": 487,
-			"y": -331
+			"x": -661,
+			"y": -1149
+		},
+		"colorID": 0
+	},
+	{
+		"title": "#4",
+		"tags": "",
+		"body": "Someone that tall you mean? I do have an giraffe friend, but she leaves far, far away from here - I doubt she can be much of a help to us\n[[I'll see what I can do|#5]]",
+		"position": {
+			"x": -226,
+			"y": -1109
+		},
+		"colorID": 0
+	},
+	{
+		"title": "#5",
+		"tags": "",
+		"body": "Thank you so much, I appreciate it!",
+		"position": {
+			"x": -503,
+			"y": -1436
+		},
+		"colorID": 0
+	},
+	{
+		"title": "#",
+		"tags": "",
+		"body": "Empty Text",
+		"position": {
+			"x": 204,
+			"y": -598
+		},
+		"colorID": 0
+	},
+	{
+		"title": "#6",
+		"tags": "inventory_has_Hat",
+		"body": "Thank you so much for asking them, you did me a great favor! \n[[No problem|#7]]",
+		"position": {
+			"x": 204,
+			"y": -599
+		},
+		"colorID": 0
+	},
+	{
+		"title": "#7",
+		"tags": "",
+		"body": "I think I'm going home now. The sky looks cloudy, and I suppose you are going to keep looking for that star, right?\n[[I am|#8]]",
+		"position": {
+			"x": 252,
+			"y": -870
+		},
+		"colorID": 0
+	},
+	{
+		"title": "#8",
+		"tags": "",
+		"body": "Maybe you should take my umbrella then, just in case\n[[Thanks! But aren't you going to search for the star?|#9]]",
+		"position": {
+			"x": 372,
+			"y": -1091
+		},
+		"colorID": 0
+	},
+	{
+		"title": "#9",
+		"tags": "",
+		"body": "What? Me? No, not at all - I'm just an old fox, and I've already had a great amount of time to try something new. I'll leave it to you, my friend\n[[Oh. I think I understand|#10]]",
+		"position": {
+			"x": 492,
+			"y": -1312
+		},
+		"colorID": 0
+	},
+	{
+		"title": "#10",
+		"tags": "",
+		"body": "Thank you again, Vincent, and goodbye!",
+		"position": {
+			"x": 609,
+			"y": -1533
 		},
 		"colorID": 0
 	}

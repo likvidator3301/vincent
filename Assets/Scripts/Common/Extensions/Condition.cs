@@ -18,7 +18,7 @@ namespace Assets.Scripts.Common.Extensions
             if (conditionText.Length != 3)
                 throw new ArgumentException("number of condition arguments must be 3");
 
-            if(conditionText[0] == "inventory" && conditionText[1] == "has")
+            if(conditionText[0].Equals("inventory", StringComparison.InvariantCultureIgnoreCase) && conditionText[1].Equals("has", StringComparison.InvariantCultureIgnoreCase))
             {
                 var item = conditionText[2];
                 return items.GetAll().Any(x => x.Name == item);

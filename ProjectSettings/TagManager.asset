@@ -12,6 +12,7 @@ TagManager:
   - DialogueButton
   - FinishDialogueButton
   - SceneTransfer
+  - Container
   layers:
   - Default
   - TransparentFX

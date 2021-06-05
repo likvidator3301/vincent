@@ -36,7 +36,7 @@ namespace Assets.Scripts.Npc
             }
             catch (Exception e)
             {
-                throw new GameInitializationException($"An error occurred while trying to load dialogue. {e.Message}");
+                throw new GameInitializationException($"An error occurred while trying to load dialogue for npc: {marker.Name}. {e.Message}");
             }
 
             if (marker.Name == "Duck")
