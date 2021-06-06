@@ -14,47 +14,11 @@ namespace Assets.Scripts.Markers
         public string Id { get; } = Guid.NewGuid().ToString();
         public string Name;
         public Sprite IconForDialogue;
-        public string DialogueFilePath;
         public TextAsset DialogueFile;
 
         public Dialogue GetDialogue(PlayerInventory playerInventory)
         {
-            var jsonContent = DialogueFile.text;
-
-            var nodes = JsonConvert.DeserializeObject<DialogueNode[]>(jsonContent);
-            if (nodes == null)
-                throw new ArgumentException($"Cannot parse dialogue file: {DialogueFilePath}");
-
-            foreach (var node in nodes)
-            {
-                var links = Link.ParseLine(node.Body);
-                if (links != null)
-                {
-                    foreach (var link in links)
-                    {
-                        var answerNode = nodes.FirstOrDefault(n => n.Title == link.NextNodeId);
-                        if (answerNode != null)
-                        {
-                            var answerCondition = answerNode.Tags;
-
-                            if (answerCondition != "")
-                            {
-                                if (Condition.CheckCondition(answerCondition, playerInventory))
-                                    node.Answers.Add(link.AnswerText, answerNode);
-                            }
-                            else
-                                node.Answers.Add(link.AnswerText, answerNode);
-                        }
-                    }
-                }
-                node.SetText();
-            }
-
-            var root = nodes[0];
-
-            var dialogue = new Dialogue();
-            dialogue.SetValue(root);
-            return dialogue;
+            return Dialogue.GetDialogue(playerInventory, DialogueFile);
         }
     }
 }

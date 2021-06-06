@@ -539,6 +539,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: Chamomile
+  DialogueFile: {fileID: 4900000, guid: 817119b3474601f4781b0f09dc5df9bf, type: 3}
 --- !u!212 &77593472
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -922,6 +923,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: Blueberries
+  DialogueFile: {fileID: 4900000, guid: 02e30bbf520cfde488b785110dc9561f, type: 3}
 --- !u!212 &165203054
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1192,7 +1194,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Birdperson
   IconForDialogue: {fileID: 21300000, guid: f30d638a623014849bd99485ac1347a2, type: 3}
-  DialogueFilePath: Assets/resources/Dialogues/Twinkie.json
   DialogueFile: {fileID: 4900000, guid: 817119b3474601f4781b0f09dc5df9bf, type: 3}
 --- !u!212 &183813545
 SpriteRenderer:
@@ -1344,7 +1345,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_BoundingSphereOverride: {x: -Infinity, y: 1.615587e-27, z: 0, w: 1.8e-43}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -3588,7 +3589,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 669691867}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4.64, y: -1.52, z: 1}
+  m_LocalPosition: {x: -4.658, y: -1.52, z: 1}
   m_LocalScale: {x: 0.64, y: 0.64, z: 0.64}
   m_Children: []
   m_Father: {fileID: 540802562}
@@ -3953,6 +3954,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: Jam
+  DialogueFile: {fileID: 4900000, guid: 817119b3474601f4781b0f09dc5df9bf, type: 3}
 --- !u!61 &777024396
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5048,6 +5050,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: Rope
+  DialogueFile: {fileID: 4900000, guid: 817119b3474601f4781b0f09dc5df9bf, type: 3}
 --- !u!61 &1074154063
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5236,7 +5239,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Rupert
   IconForDialogue: {fileID: 21300000, guid: bf784d5b245856f4ebda0097d973b5d5, type: 3}
-  DialogueFilePath: Assets/resources/Dialogues/Rupert.json
   DialogueFile: {fileID: 4900000, guid: 60dd98e743db0ac4ab7ff5cc52d08ef8, type: 3}
 --- !u!61 &1127611046
 BoxCollider2D:
@@ -5359,6 +5361,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: Teapot
+  DialogueFile: {fileID: 0}
 --- !u!61 &1137978113
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5702,7 +5705,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Twinkie
   IconForDialogue: {fileID: 21300000, guid: cf67a1a635f1c9a45bb5e41d86889c31, type: 3}
-  DialogueFilePath: Assets/resources/Dialogues/Twinkie.json
   DialogueFile: {fileID: 4900000, guid: 4bbebdc6f9aae3b458005f6bd54d6968, type: 3}
 --- !u!212 &1256317503
 SpriteRenderer:
@@ -6164,7 +6166,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Frogs
   IconForDialogue: {fileID: 21300000, guid: 4a727eadf0a73ae48b4c1d43d765193f, type: 3}
-  DialogueFilePath: Assets/resources/Dialogues/Twinkie.json
   DialogueFile: {fileID: 4900000, guid: 4bbebdc6f9aae3b458005f6bd54d6968, type: 3}
 --- !u!212 &1319784950
 SpriteRenderer:
@@ -6832,7 +6833,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Fim
   IconForDialogue: {fileID: 21300000, guid: 72465124c5273304babef18b8e676a9c, type: 3}
-  DialogueFilePath: Assets/resources/Dialogues/Twinkie.json
   DialogueFile: {fileID: 4900000, guid: 4bbebdc6f9aae3b458005f6bd54d6968, type: 3}
 --- !u!212 &1460630496
 SpriteRenderer:
@@ -12792,6 +12792,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: Strawberry
+  DialogueFile: {fileID: 4900000, guid: 817119b3474601f4781b0f09dc5df9bf, type: 3}
 --- !u!61 &1658541593
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -13209,6 +13210,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: Ribbon
+  DialogueFile: {fileID: 4900000, guid: 817119b3474601f4781b0f09dc5df9bf, type: 3}
 --- !u!61 &1772029277
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -13870,6 +13872,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: Mint
+  DialogueFile: {fileID: 4900000, guid: 4bbebdc6f9aae3b458005f6bd54d6968, type: 3}
 --- !u!212 &1861228598
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -14775,6 +14778,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: Forget-me-not
+  DialogueFile: {fileID: 4900000, guid: 817119b3474601f4781b0f09dc5df9bf, type: 3}
 --- !u!212 &2112660908
 SpriteRenderer:
   m_ObjectHideFlags: 0

@@ -43,9 +43,13 @@ namespace Assets.Scripts.Npc.Dialogues
                 return;
 
             var startDialogueEvent = startDialogueEventRepository.Value;
-            var dialogue = marker.GetDialogue(playerInventory);
+
             if (startDialogueEvent.NpcId != npcId)
                 return;
+
+            var dialogue = marker.GetDialogue(playerInventory);
+
+            
 
             iconForDialogueRepository.SetValue(iconForDialogue);
             dialogueRepository.SetValue(dialogue);
