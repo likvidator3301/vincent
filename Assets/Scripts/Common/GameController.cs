@@ -22,13 +22,12 @@ using JetBrains.Annotations;
 using UnityEngine;
 using Microsoft.Extensions.DependencyInjection;
 using UnityEngine.UI;
+using Assets.Scripts.Player.PickupableItemInteraction.Repositories;
 
 namespace Assets.Scripts.Common
 {
     public class GameController: MonoBehaviour
     {
-
-
         private IServiceProvider serviceProvider;
         private List<ControllerBase> controllers;
 
@@ -74,6 +73,8 @@ namespace Assets.Scripts.Common
             services.AddSingleton<InteractWithSceneTransferEventRepository>();
             services.AddSingleton<TeleportPlayerEventRepository>();
             services.AddSingleton<TransferToSceneEventRepository>();
+
+            services.AddSingleton<InteractWithPickupableItemEventRepository>();
         }
 
         private void CreateControllers()
