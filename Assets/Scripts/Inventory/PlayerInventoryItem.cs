@@ -1,17 +1,20 @@
 ﻿using System;
+using UnityEngine;
+using UnityEngine.UI;
 
 namespace Assets.Scripts.Inventory
 {
     public class PlayerInventoryItem
     {
         public string Id { get; }
-
+        public Sprite InventoryImage { get;  }
         public string Name { get; }
 
-        public PlayerInventoryItem(string id, string name)
+        public PlayerInventoryItem(string id, string name, Sprite image)
         {
             Id = id ?? throw new ArgumentNullException(nameof(id));
             Name = name ?? throw new ArgumentNullException(nameof(name));
+            InventoryImage = image ?? throw new ArgumentNullException(nameof(image));
         }
 
         public override bool Equals(object obj)
