@@ -27,7 +27,7 @@ namespace Assets.Scripts.PickupableItem.Services
             if (!addToInventoryEventRepository.HasValue || addToInventoryEventRepository.Value.ItemId != config.Id)
                 return;
 
-            inventory.Add(new PlayerInventoryItem(config.Id, config.Name));
+            inventory.Add(new PlayerInventoryItem(config.Id, config.Name, config.itemImage));
 
             Object.Destroy(gameObject);
 

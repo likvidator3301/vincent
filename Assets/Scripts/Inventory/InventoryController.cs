@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Assets.Scripts.Common;
+using Assets.Scripts.Markers;
 using Microsoft.Extensions.DependencyInjection;
 using UnityEngine;
 using UnityEngine.UI;
@@ -28,9 +29,9 @@ namespace Assets.Scripts.Inventory
         private void AddDisplayInventoryService()
         {
             var inventory = ServiceProvider.GetService<PlayerInventory>();
-            var textComponent = GameObject.GetComponent<Text>();
+            var panel = GameObject.GetComponent<InventoryMarker>();
 
-            var service = new DisplayInventoryService(inventory, textComponent);
+            var service = new DisplayInventoryService(inventory, panel);
 
             Services.Add(service);
         }
