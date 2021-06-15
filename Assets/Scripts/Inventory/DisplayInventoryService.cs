@@ -20,10 +20,10 @@ namespace Assets.Scripts.Inventory
 
         public override void Update()
         {
-            var items = inventory.GetAll().Select(x => x.InventoryImage);
-            foreach(var item in items)
+            var items = inventory.GetAll().Select(x => x.InventoryImage).ToArray();
+            for(int i = 0; i < Math.Min(panel.transform.childCount, items.Length); i++)
             {
-                panel.transform.Find("Item").GetComponent<Image>().sprite = item;
+                panel.transform.GetChild(i).GetComponent<Image>().sprite = items[i];
             }
         }
     }
