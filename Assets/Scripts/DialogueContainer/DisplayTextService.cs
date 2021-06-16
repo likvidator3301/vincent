@@ -23,19 +23,21 @@ namespace Assets.Scripts.DialogueContainer
             this.dialogueModel = dialogueModel ?? throw new ArgumentNullException(nameof(dialogueModel));
         }
 
-        private void ShowDialogueState(DialogueNode node)
+        private void ShowDialogueState(Node node)
         {
             dialogueModel.CurrentReplica.Text.text = node.Text;
             var posY = 75;
             var dy = -75;
             foreach (var answer in node.Answers)
             {
-                MakeButton(answer.Key, answer.Value, posY);
+                if (!answer.ShowingCondition())
+                    continue;
+                MakeButton(answer.Text, answer.Node, posY);
                 posY += dy;
             }
         }
 
-        private void MakeButton(string answer, DialogueNode nextNode, int y)
+        private void MakeButton(string answer, Node nextNode, int y)
         {
             var buttonGameObject = Object.Instantiate(dialogueContainerMarker.NextReplicaButtonPrefab, dialogueModel.NextReplicaNextReplicaButtonsContainerContainer.GameObject.transform);
             buttonGameObject.gameObject.transform.localPosition = new Vector3(0, y);
@@ -57,7 +59,7 @@ namespace Assets.Scripts.DialogueContainer
                 return;
 
             var currentNode = newTextEventRepository.Value.Node;
-
+            currentNode.Command();
             DestroyButtons();
             ShowDialogueState(currentNode);
             newTextEventRepository.RemoveValue();

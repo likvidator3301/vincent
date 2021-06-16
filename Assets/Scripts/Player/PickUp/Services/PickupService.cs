@@ -5,7 +5,6 @@ using Assets.Scripts.PickupableItem;
 using Assets.Scripts.Player.Configs;
 using Assets.Scripts.Player.Movement.Helpers;
 using Assets.Scripts.Player.PickUp.Repositories;
-using Assets.Scripts.Player.PickupableItemInteraction.Repositories;
 using UnityEngine;
 
 namespace Assets.Scripts.Player.PickUp.Services
@@ -13,7 +12,6 @@ namespace Assets.Scripts.Player.PickUp.Services
     public class PickupService: ServiceBase
     {
         private readonly PickupEventRepository pickupEventRepository;
-        private readonly InteractWithPickupableItemEventRepository pickupableItemEventRepository;
         private readonly MovementEventRepository movementEventRepository;
         private readonly AddToInventoryEventRepository addToInventoryEventRepository;
         private readonly Transform player;
@@ -23,14 +21,12 @@ namespace Assets.Scripts.Player.PickUp.Services
             PickupEventRepository pickupEventRepository, 
             MovementEventRepository movementEventRepository, 
             AddToInventoryEventRepository addToInventoryEventRepository,
-            InteractWithPickupableItemEventRepository pickupableItemEventRepository,
             Transform player, 
             PlayerConfig config)
         {
             this.pickupEventRepository = pickupEventRepository ?? throw new ArgumentNullException(nameof(pickupEventRepository));
             this.movementEventRepository = movementEventRepository ?? throw new ArgumentNullException(nameof(movementEventRepository));
             this.addToInventoryEventRepository = addToInventoryEventRepository ?? throw new ArgumentNullException(nameof(addToInventoryEventRepository));
-            this.pickupableItemEventRepository = pickupableItemEventRepository;
             this.config = config ?? throw new ArgumentNullException(nameof(config));
             this.player = player;
         }
@@ -50,7 +46,6 @@ namespace Assets.Scripts.Player.PickUp.Services
                 movementEventRepository.RemoveValue();
 
                 addToInventoryEventRepository.SetValue(new AddToInventoryEvent(pickupEvent.Marker.Id));
-                pickupableItemEventRepository.SetValue(new InteractWithPickupableItemEvent(pickupEvent.Marker));
             }
         }
     }

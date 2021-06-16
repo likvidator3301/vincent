@@ -2,7 +2,7 @@
 	{
 		"title": "Start",
 		"tags": "",
-		"body": "Ah, long time no see. Good evening, Vincent!\n[[Hello! What are you up to?|#1]]\n<<Inventory_Has_Hat>>\n[[Look, the birds took your hat off the tree|#6]]",
+		"body": "Ah, long time no see. Good evening, Vincent!\n[[Hello! What are you up to?|#1]]\n[[<<Inventory_Has_Hat>>Look, the birds took your hat off the tree|#6]]",
 		"position": {
 			"x": -135,
 			"y": -378
@@ -71,7 +71,7 @@
 	},
 	{
 		"title": "#6",
-		"tags": "inventory_has_Hat",
+		"tags": "",
 		"body": "Thank you so much for asking them, you did me a great favor! \n[[No problem|#7]]",
 		"position": {
 			"x": 204,

@@ -3,6 +3,8 @@ using Assets.Scripts.Common;
 using Assets.Scripts.Common.Helpers;
 using Assets.Scripts.DialogueContainer.Repositories;
 using Assets.Scripts.Markers;
+using Assets.Scripts.Npc.Dialogues;
+using Assets.Scripts.Npc.Dialogues.Repositories;
 using Assets.Scripts.Player.Configs;
 using Assets.Scripts.Player.Movement.Helpers;
 using Assets.Scripts.Player.NpcInteraction.Repositories;
@@ -24,9 +26,12 @@ namespace Assets.Scripts.Player.Movement.Services
         private readonly NewTextEventRepository newTextEventRepository;
         private readonly FinishDialogueEventRepository finishDialogueEventRepository;
         private readonly InteractWithSceneTransferEventRepository interactWithSceneTransferEventRepository;
+        private readonly StartDialogueEventRepository startDialogueEventRepository;
         private readonly PlayerConfig config;
         private Vector3 previousPointClicked;
         private Texture2D cursor;
+
+        private DateTime previousClickDateTime;
 
         public MouseControlService(
             Transform player,
@@ -37,6 +42,7 @@ namespace Assets.Scripts.Player.Movement.Services
             NewTextEventRepository newTextEventRepository,
             FinishDialogueEventRepository finishDialogueEventRepository,
             InteractWithSceneTransferEventRepository interactWithSceneTransferEventRepository,
+            StartDialogueEventRepository startDialogueEventRepository,
             PlayerConfig config)
         {
             this.movementEventRepository = movementEventRepository ?? throw new ArgumentNullException(nameof(movementEventRepository));
@@ -46,10 +52,12 @@ namespace Assets.Scripts.Player.Movement.Services
             this.newTextEventRepository = newTextEventRepository ?? throw new ArgumentNullException(nameof(newTextEventRepository));
             this.finishDialogueEventRepository = finishDialogueEventRepository ?? throw new ArgumentNullException(nameof(finishDialogueEventRepository));
             this.interactWithSceneTransferEventRepository = interactWithSceneTransferEventRepository ?? throw new ArgumentNullException(nameof(interactWithSceneTransferEventRepository));
+            this.startDialogueEventRepository = startDialogueEventRepository;
             this.interactWithNpcEventRepository = interactWithNpcEventRepository ?? throw new ArgumentNullException(nameof(interactWithNpcEventRepository));
             this.config = config ?? throw new ArgumentNullException(nameof(config));
             
             previousPointClicked = new Vector3(0, 0, 0);
+            previousClickDateTime = DateTime.UtcNow;
         }
 
         public override void Update()
@@ -67,8 +75,9 @@ namespace Assets.Scripts.Player.Movement.Services
 
             if (Input.GetMouseButtonDown(0))
             {
-                if (Input.mousePosition != previousPointClicked) // у нас происходит двойной клик. Для кнопок это критично
+                if (Input.mousePosition != previousPointClicked && previousClickDateTime - DateTime.UtcNow < TimeSpan.FromMilliseconds(200)) // у нас происходит двойной клик. Для кнопок это критично
                 {                                                // Поэтому я сохраняю предыдущую точку нажатия и сравниваю её с текущей
+                    previousClickDateTime = DateTime.UtcNow;
                     previousPointClicked = Input.mousePosition;
                     movementEventRepository.RemoveValue();
                     pickupEventRepository.RemoveValue();
@@ -92,6 +101,15 @@ namespace Assets.Scripts.Player.Movement.Services
                     
                     if (MouseHelper.IsMouseAboveObjectWithTag(Constants.Tags.SceneTransfer))
                         ProcessSceneTransition();
+                }
+            }
+
+            if (Input.GetMouseButtonDown(1))
+            {
+                if (MouseHelper.IsMouseAboveObjectWithTag(Constants.Tags.PickupableItem))
+                {
+                    var marker = MouseHelper.GetComponentOnGameObjectUnderMouse<PickupableItemMarker>();
+                    startDialogueEventRepository.SetValue(new StartDialogueEvent(marker.Id));
                 }
             }
         }

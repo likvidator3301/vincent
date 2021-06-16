@@ -5,11 +5,11 @@ namespace Assets.Scripts.DialogueContainer.Repositories
 {
     public class NewTextEvent
     {
-        public NewTextEvent(DialogueNode node)
+        public NewTextEvent(Node node)
         {
             Node = node ?? throw new ArgumentNullException(nameof(node));
         }
 
-        public DialogueNode Node { get; }
+        public Node Node { get; }
     }
 }

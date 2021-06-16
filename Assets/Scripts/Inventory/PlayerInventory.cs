@@ -49,5 +49,11 @@ namespace Assets.Scripts.Inventory
         {
             items.Remove(item.Id);
         }
+
+        public void RemoveByName(string name)
+        {
+            var targetItem = items.First(x => x.Value.Name == name).Value;
+            Remove(targetItem);
+        }
     }
 }

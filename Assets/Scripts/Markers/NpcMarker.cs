@@ -15,10 +15,5 @@ namespace Assets.Scripts.Markers
         public string Name;
         public Sprite IconForDialogue;
         public TextAsset DialogueFile;
-
-        public Dialogue GetDialogue(PlayerInventory playerInventory)
-        {
-            return Dialogue.GetDialogue(playerInventory, DialogueFile);
-        }
     }
 }

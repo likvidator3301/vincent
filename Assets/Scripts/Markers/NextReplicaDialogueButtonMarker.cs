@@ -6,6 +6,6 @@ namespace Assets.Scripts.Markers
 {
     public class NextReplicaDialogueButtonMarker: MonoBehaviour
     {
-        public DialogueNode Node;
+        public Node Node;
     }
 }

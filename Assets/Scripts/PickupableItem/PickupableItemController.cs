@@ -3,6 +3,7 @@ using Assets.Scripts.Common;
 using Assets.Scripts.DialogueContainer.Repositories;
 using Assets.Scripts.Inventory;
 using Assets.Scripts.Markers;
+using Assets.Scripts.Npc.Dialogues.Models;
 using Assets.Scripts.Npc.Dialogues.Repositories;
 using Assets.Scripts.PickupableItem.Configs;
 using Assets.Scripts.PickupableItem.Services;
@@ -14,10 +15,14 @@ namespace Assets.Scripts.PickupableItem
     public class PickupableItemController: ControllerBase
     {
         private readonly PickupableItemConfig config;
+        private readonly Dialogue dialogue;
 
         public PickupableItemController(GameObject gameObject, IServiceProvider serviceProvider, PickupableItemConfig config) : base(gameObject, serviceProvider)
         {
             this.config = config ?? throw new ArgumentNullException(nameof(config));
+            var marker = gameObject.GetComponent<PickupableItemMarker>();
+            var dialogueParser = ServiceProvider.GetService<DialogueParser>();
+            dialogue = dialogueParser.FromFile(marker.DialogueFile);
         }
 
         public override void Start()
@@ -32,14 +37,13 @@ namespace Assets.Scripts.PickupableItem
         private void AddStartDialogueService()
         {
             var marker = GameObject.GetComponent<PickupableItemMarker>();
-            var playerInventory = ServiceProvider.GetService<PlayerInventory>();
             var startDialogueEventRepository = ServiceProvider.GetService<StartDialogueEventRepository>();
             var dialogueRepository = ServiceProvider.GetService<DialogueRepository>();
             var iconForDialogueRepository = ServiceProvider.GetService<IconForDialogueRepository>();
             var id = marker.Id;
             var vincentSprite = Resources.Load<Sprite>("vincent");
-            var startDialogueService = new StartItemDialogueService(marker, startDialogueEventRepository,
-                dialogueRepository, id, vincentSprite, iconForDialogueRepository, playerInventory);
+            var startDialogueService = new StartItemDialogueService(startDialogueEventRepository,
+                dialogueRepository, id, vincentSprite, iconForDialogueRepository, dialogue);
 
             Services.Add(startDialogueService);
         }

@@ -12,8 +12,6 @@ using Assets.Scripts.Player.NpcInteraction;
 using Assets.Scripts.Player.NpcInteraction.Repositories;
 using Assets.Scripts.Player.PickUp.Repositories;
 using Assets.Scripts.Player.PickUp.Services;
-using Assets.Scripts.Player.PickupableItemInteraction;
-using Assets.Scripts.Player.PickupableItemInteraction.Repositories;
 using Assets.Scripts.Player.SceneTransfer.Repositories;
 using Assets.Scripts.Player.SceneTransfer.Service;
 using Assets.Scripts.Scenes.Repositories;
@@ -41,26 +39,9 @@ namespace Assets.Scripts.Player
             AddNpcInteractionService();
             AddTeleportPlayerService();
             AddInteractWithSceneTransferService();
-            AddPickupableItemService();
 
             foreach (var service in Services) 
                 service.Start();
-        }
-
-        private void AddPickupableItemService()
-        {
-            var interactEventRepository = ServiceProvider.GetService<InteractWithPickupableItemEventRepository>();
-            var movementEventRepository = ServiceProvider.GetService<MovementEventRepository>();
-            var startDialogueEventRepository = ServiceProvider.GetService<StartDialogueEventRepository>();
-
-            var player = GameObject;
-
-            var config = ServiceProvider.GetService<PlayerConfig>();
-
-            var service = new PickupableItemInteractionService(config, movementEventRepository, interactEventRepository,
-                startDialogueEventRepository, player.transform);
-
-            Services.Add(service);
         }
 
         private void AddNpcInteractionService()
@@ -84,14 +65,13 @@ namespace Assets.Scripts.Player
             var pickupEventRepository = ServiceProvider.GetService<PickupEventRepository>();
             var movementEventRepository = ServiceProvider.GetService<MovementEventRepository>();
             var addToInventoryEventRepository = ServiceProvider.GetService<AddToInventoryEventRepository>();
-            var interactWithPickupableItemRepository = ServiceProvider.GetService<InteractWithPickupableItemEventRepository>();
 
             var player = GameObject;
 
             var config = ServiceProvider.GetService<PlayerConfig>();
 
             var service = new PickupService(pickupEventRepository, movementEventRepository,
-                addToInventoryEventRepository, interactWithPickupableItemRepository, player.transform, config);
+                addToInventoryEventRepository, player.transform, config);
 
             Services.Add(service);
         }
@@ -105,7 +85,7 @@ namespace Assets.Scripts.Player
             var interactEventRepository = ServiceProvider.GetService<InteractWithNpcEventRepository>();
             var finishDialogueRepository = ServiceProvider.GetService<FinishDialogueEventRepository>();
             var interactWithSceneTransferRepository = ServiceProvider.GetService<InteractWithSceneTransferEventRepository>();
-
+            var startDialogueEventRepository = ServiceProvider.GetService<StartDialogueEventRepository>();
             var newTextEventRepository = ServiceProvider.GetService<NewTextEventRepository>();
 
             var playerConfig = ServiceProvider.GetService<PlayerConfig>();
@@ -113,7 +93,7 @@ namespace Assets.Scripts.Player
             var player = GameObject;
 
             var service = new MouseControlService(player.transform, movementHelper, directionHelper, pickupEventRepository, 
-                interactEventRepository, newTextEventRepository, finishDialogueRepository, interactWithSceneTransferRepository, playerConfig);
+                interactEventRepository, newTextEventRepository, finishDialogueRepository, interactWithSceneTransferRepository, startDialogueEventRepository, playerConfig);
             Services.Add(service);
         }
 

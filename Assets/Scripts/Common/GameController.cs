@@ -7,6 +7,7 @@ using Assets.Scripts.Exceptions;
 using Assets.Scripts.Inventory;
 using Assets.Scripts.Markers;
 using Assets.Scripts.Npc;
+using Assets.Scripts.Npc.Dialogues.Models;
 using Assets.Scripts.Npc.Dialogues.Repositories;
 using Assets.Scripts.PickupableItem;
 using Assets.Scripts.PickupableItem.Configs;
@@ -22,12 +23,14 @@ using JetBrains.Annotations;
 using UnityEngine;
 using Microsoft.Extensions.DependencyInjection;
 using UnityEngine.UI;
-using Assets.Scripts.Player.PickupableItemInteraction.Repositories;
 
 namespace Assets.Scripts.Common
 {
     public class GameController: MonoBehaviour
     {
+        [UsedImplicitly]
+        public InventoryItem[] InventoryItems;
+
         private IServiceProvider serviceProvider;
         private List<ControllerBase> controllers;
 
@@ -74,7 +77,9 @@ namespace Assets.Scripts.Common
             services.AddSingleton<TeleportPlayerEventRepository>();
             services.AddSingleton<TransferToSceneEventRepository>();
 
-            services.AddSingleton<InteractWithPickupableItemEventRepository>();
+            services.AddSingleton<DialogueParser>();
+            services.AddSingleton<DialogueActionFactory>(sp => new DialogueActionFactory(sp.GetService<PlayerInventory>(), InventoryItems));
+            services.AddSingleton<DialogueConditionFactory>();
         }
 
         private void CreateControllers()

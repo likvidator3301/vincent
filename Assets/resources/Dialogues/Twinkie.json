@@ -2,7 +2,7 @@
 	{
 		"title": "Start",
 		"tags": "",
-		"body": "Hi Vincent!\n[[Hi Twinky|#1]]\n<<Inventory_has_Forget-me-not>>\n[[Hi, I think i found an answer to your riddle!|#11]]",
+		"body": "Hi Vincent!\n[[Hi Twinky|#1]]\n[[<<Inventory_has_Forget-me-not>>Hi, I think i found an answer to your riddle!|#11]]",
 		"position": {
 			"x": 467,
 			"y": 138
@@ -111,7 +111,7 @@
 	},
 	{
 		"title": "#11",
-		"tags": "Inventory_has_Forget-me-not",
+		"tags": "",
 		"body": "You really mean it? That's so great!\n[[It's forget-me-nots, the flowers|#12]]",
 		"position": {
 			"x": 739,

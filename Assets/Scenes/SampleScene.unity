@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.4465782, g: 0.49641252, b: 0.5748167, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -539,8 +539,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InventoryImage: {fileID: 21300000, guid: 3884e8338c196274d8b09fbbeca36b09, type: 3}
-  Name: Chamomile
-  DialogueFile: {fileID: 4900000, guid: 817119b3474601f4781b0f09dc5df9bf, type: 3}
+  Name: "\u0421hamomile"
+  DialogueFile: {fileID: 4900000, guid: 02e30bbf520cfde488b785110dc9561f, type: 3}
 --- !u!212 &77593472
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -700,7 +700,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &123010023
 GameObject:
@@ -1070,8 +1070,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: b3b01f843f19d1540a0c98c69ebb20b9, type: 3}
-  m_Type: 0
+  m_Sprite: {fileID: 10917, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -1267,7 +1267,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a768043d9532c2408647eaf721d3172, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: Birdperson
+  Name: Billi
   IconForDialogue: {fileID: 21300000, guid: f30d638a623014849bd99485ac1347a2, type: 3}
   DialogueFile: {fileID: 4900000, guid: 817119b3474601f4781b0f09dc5df9bf, type: 3}
 --- !u!212 &183813545
@@ -2110,6 +2110,7 @@ GameObject:
   m_Component:
   - component: {fileID: 297800313}
   - component: {fileID: 297800312}
+  - component: {fileID: 297800314}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -2129,6 +2130,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71bdbfe8f54e8474fa88f2558e64bbea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  InventoryItems:
+  - {fileID: 297800314}
 --- !u!4 &297800313
 Transform:
   m_ObjectHideFlags: 0
@@ -2143,6 +2146,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &297800314
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 297800311}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ca29cb5bf621774eb0c88905e85afc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Hat
+  Sprite: {fileID: 21300000, guid: faa90c4ea6370c441b873950056f08e0, type: 3}
 --- !u!1 &358164809
 GameObject:
   m_ObjectHideFlags: 0
@@ -2278,8 +2295,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: b3b01f843f19d1540a0c98c69ebb20b9, type: 3}
-  m_Type: 0
+  m_Sprite: {fileID: 10917, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -2901,8 +2918,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: b3b01f843f19d1540a0c98c69ebb20b9, type: 3}
-  m_Type: 0
+  m_Sprite: {fileID: 10917, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -3047,7 +3064,7 @@ Transform:
   - {fileID: 264501089}
   - {fileID: 1905183479}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &537655572
 GameObject:
@@ -3223,7 +3240,7 @@ Transform:
   - {fileID: 743418379}
   - {fileID: 824458932}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &559035177
 GameObject:
@@ -3357,8 +3374,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: b3b01f843f19d1540a0c98c69ebb20b9, type: 3}
-  m_Type: 0
+  m_Sprite: {fileID: 10917, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -4036,7 +4053,7 @@ Transform:
   - {fileID: 1959305042}
   - {fileID: 1255187491}
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &738986759
 GameObject:
@@ -4208,8 +4225,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: b3b01f843f19d1540a0c98c69ebb20b9, type: 3}
-  m_Type: 0
+  m_Sprite: {fileID: 10917, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -4281,8 +4298,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: b3b01f843f19d1540a0c98c69ebb20b9, type: 3}
-  m_Type: 0
+  m_Sprite: {fileID: 10917, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -4346,7 +4363,7 @@ Transform:
   - {fileID: 1689465589}
   - {fileID: 849125534}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &769040942
 GameObject:
@@ -4403,8 +4420,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: b3b01f843f19d1540a0c98c69ebb20b9, type: 3}
-  m_Type: 0
+  m_Sprite: {fileID: 10917, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -4468,7 +4485,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InventoryImage: {fileID: 21300000, guid: bfb3071de105e2a4eb8bd688fc54637f, type: 3}
   Name: Jam
-  DialogueFile: {fileID: 4900000, guid: 817119b3474601f4781b0f09dc5df9bf, type: 3}
+  DialogueFile: {fileID: 4900000, guid: 02e30bbf520cfde488b785110dc9561f, type: 3}
 --- !u!61 &777024396
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4969,7 +4986,7 @@ Transform:
   m_LocalScale: {x: 1.194698, y: 1.3237861, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -0.246}
 --- !u!1 &824458931
 GameObject:
@@ -5303,8 +5320,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: b3b01f843f19d1540a0c98c69ebb20b9, type: 3}
-  m_Type: 0
+  m_Sprite: {fileID: 10917, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -5453,8 +5470,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: b3b01f843f19d1540a0c98c69ebb20b9, type: 3}
-  m_Type: 0
+  m_Sprite: {fileID: 10917, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -5677,7 +5694,7 @@ GameObject:
   - component: {fileID: 1074154063}
   - component: {fileID: 1074154062}
   m_Layer: 0
-  m_Name: rope
+  m_Name: thread
   m_TagString: PickupableItem
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5710,8 +5727,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InventoryImage: {fileID: 21300000, guid: 9b01fd43d1b468840968b7a2929a44bd, type: 3}
-  Name: Rope
-  DialogueFile: {fileID: 4900000, guid: 817119b3474601f4781b0f09dc5df9bf, type: 3}
+  Name: Thread
+  DialogueFile: {fileID: 4900000, guid: 02e30bbf520cfde488b785110dc9561f, type: 3}
 --- !u!61 &1074154063
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5922,8 +5939,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: b3b01f843f19d1540a0c98c69ebb20b9, type: 3}
-  m_Type: 0
+  m_Sprite: {fileID: 10917, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -6096,7 +6113,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InventoryImage: {fileID: 21300000, guid: 41033d4f86e75764f8ba5d8e9ff936ba, type: 3}
   Name: Teapot
-  DialogueFile: {fileID: 4900000, guid: 817119b3474601f4781b0f09dc5df9bf, type: 3}
+  DialogueFile: {fileID: 4900000, guid: 02e30bbf520cfde488b785110dc9561f, type: 3}
 --- !u!61 &1137978113
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6376,6 +6393,12 @@ Transform:
   m_Father: {fileID: 540802562}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &1247159681 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2814186607243421762, guid: 3f5c77d1b4d45f64289903eb92ecfbe5,
+    type: 3}
+  m_PrefabInstance: {fileID: 2814186607574046673}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1255187490
 GameObject:
   m_ObjectHideFlags: 0
@@ -6899,9 +6922,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a768043d9532c2408647eaf721d3172, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: Frogs
+  Name: Polly
   IconForDialogue: {fileID: 21300000, guid: 4a727eadf0a73ae48b4c1d43d765193f, type: 3}
-  DialogueFile: {fileID: 4900000, guid: 4bbebdc6f9aae3b458005f6bd54d6968, type: 3}
+  DialogueFile: {fileID: 4900000, guid: 817119b3474601f4781b0f09dc5df9bf, type: 3}
 --- !u!212 &1319784950
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -7550,8 +7573,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: b3b01f843f19d1540a0c98c69ebb20b9, type: 3}
-  m_Type: 0
+  m_Sprite: {fileID: 10917, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -7641,7 +7664,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Fim
   IconForDialogue: {fileID: 21300000, guid: 72465124c5273304babef18b8e676a9c, type: 3}
-  DialogueFile: {fileID: 4900000, guid: 4bbebdc6f9aae3b458005f6bd54d6968, type: 3}
+  DialogueFile: {fileID: 4900000, guid: 817119b3474601f4781b0f09dc5df9bf, type: 3}
 --- !u!212 &1460630496
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -7728,7 +7751,7 @@ Transform:
   - {fileID: 1773577332}
   - {fileID: 1820357333}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1495234364
 GameObject:
@@ -7815,7 +7838,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 1247159681}
     m_Modifications:
     - target: {fileID: 3624518171612728759, guid: ff4ca0d0f8ea3094b8d07a64bd191b20,
         type: 3}
@@ -7830,17 +7853,17 @@ PrefabInstance:
     - target: {fileID: 3342475098625660938, guid: ff4ca0d0f8ea3094b8d07a64bd191b20,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.355
+      value: -9.57
       objectReference: {fileID: 0}
     - target: {fileID: 3342475098625660938, guid: ff4ca0d0f8ea3094b8d07a64bd191b20,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.8200002
+      value: 1.2399998
       objectReference: {fileID: 0}
     - target: {fileID: 3342475098625660938, guid: ff4ca0d0f8ea3094b8d07a64bd191b20,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3342475098625660938, guid: ff4ca0d0f8ea3094b8d07a64bd191b20,
         type: 3}
@@ -7850,12 +7873,12 @@ PrefabInstance:
     - target: {fileID: 3342475098625660938, guid: ff4ca0d0f8ea3094b8d07a64bd191b20,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3342475098625660938, guid: ff4ca0d0f8ea3094b8d07a64bd191b20,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3342475098625660938, guid: ff4ca0d0f8ea3094b8d07a64bd191b20,
         type: 3}
@@ -7865,7 +7888,7 @@ PrefabInstance:
     - target: {fileID: 3342475098625660938, guid: ff4ca0d0f8ea3094b8d07a64bd191b20,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3342475098625660938, guid: ff4ca0d0f8ea3094b8d07a64bd191b20,
         type: 3}
@@ -7885,17 +7908,17 @@ PrefabInstance:
     - target: {fileID: 3342475098625660938, guid: ff4ca0d0f8ea3094b8d07a64bd191b20,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.25
+      value: -0.5
       objectReference: {fileID: 0}
     - target: {fileID: 3342475098625660938, guid: ff4ca0d0f8ea3094b8d07a64bd191b20,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.25
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 3342475098625660938, guid: ff4ca0d0f8ea3094b8d07a64bd191b20,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.25
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 7927731695922295768, guid: ff4ca0d0f8ea3094b8d07a64bd191b20,
         type: 3}
@@ -13601,7 +13624,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InventoryImage: {fileID: 21300000, guid: 12018707c145c4440969e2eca25f2d1c, type: 3}
   Name: Strawberry
-  DialogueFile: {fileID: 4900000, guid: 817119b3474601f4781b0f09dc5df9bf, type: 3}
+  DialogueFile: {fileID: 4900000, guid: 02e30bbf520cfde488b785110dc9561f, type: 3}
 --- !u!61 &1658541593
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -14028,8 +14051,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: b3b01f843f19d1540a0c98c69ebb20b9, type: 3}
-  m_Type: 0
+  m_Sprite: {fileID: 10917, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -14093,7 +14116,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InventoryImage: {fileID: 21300000, guid: 98101b5cd083a7a4f9e828ac50bb9659, type: 3}
   Name: Ribbon
-  DialogueFile: {fileID: 4900000, guid: 817119b3474601f4781b0f09dc5df9bf, type: 3}
+  DialogueFile: {fileID: 4900000, guid: 02e30bbf520cfde488b785110dc9561f, type: 3}
 --- !u!61 &1772029277
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -14811,7 +14834,7 @@ RectTransform:
   - {fileID: 69850757}
   - {fileID: 659430463}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -14851,7 +14874,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InventoryImage: {fileID: 21300000, guid: e3508cc74c1d0be42b6eb10ea05455f6, type: 3}
   Name: Mint
-  DialogueFile: {fileID: 4900000, guid: 4bbebdc6f9aae3b458005f6bd54d6968, type: 3}
+  DialogueFile: {fileID: 4900000, guid: 02e30bbf520cfde488b785110dc9561f, type: 3}
 --- !u!212 &1861228598
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -15668,7 +15691,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InventoryImage: {fileID: 21300000, guid: 3d7cdbc8f1efcfe4da430f2faebae8d0, type: 3}
   Name: Forget-me-not
-  DialogueFile: {fileID: 4900000, guid: 817119b3474601f4781b0f09dc5df9bf, type: 3}
+  DialogueFile: {fileID: 4900000, guid: 02e30bbf520cfde488b785110dc9561f, type: 3}
 --- !u!212 &2112660908
 SpriteRenderer:
   m_ObjectHideFlags: 0
