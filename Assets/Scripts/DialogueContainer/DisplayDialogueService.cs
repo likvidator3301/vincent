@@ -29,6 +29,7 @@ namespace Assets.Scripts.DialogueContainer
             dialogueModel.GameObject.SetActive(true);
 
             newTextEventRepository.SetValue(new NewTextEvent(dialogue.Value));
+            dialogueRepository.Value.SetValue(dialogue.Value);
             dialogueRepository.RemoveValue();
         }
     }

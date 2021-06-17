@@ -2,7 +2,7 @@
 	{
 		"title": "Start",
 		"tags": "",
-		"body": "Hi Vincent!\n[[Hi Twinky|#1]]\n[[<<Inventory_has_Forget-me-not>>Hi, I think i found an answer to your riddle!|#11]]",
+		"body": "Hi Vincent!\n[[Hi Twinky|#1]]\n[[<<Inventory.Has(Forget-me-not)>>Hi, I think i found an answer to your riddle!|#11]]",
 		"position": {
 			"x": 467,
 			"y": 138
@@ -131,7 +131,7 @@
 	},
 	{
 		"title": "#13",
-		"tags": "",
+		"tags": "Inventory.Remove(Forget-me-not);World.Add(SceneTransferTwinkieHouse);",
 		"body": "I'd like to thank you with a gift. There is a jar of jam in my house, you can have it, it's delicious. If you happen to see anything else that you need - feel free to borrow, i don't mind\n[[Thank you|#14]]",
 		"position": {
 			"x": 1315,

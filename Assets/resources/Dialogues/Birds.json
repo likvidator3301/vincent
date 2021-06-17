@@ -2,7 +2,7 @@
 	{
 		"title": "Start",
 		"tags": "",
-		"body": "Hello, Vincent\n[[Hello|#1]]\n[[<<Inventory has ribbon>>I think i found a ribbon that you can use to make the nest more solid|#9]]",
+		"body": "Hello, Vincent\n[[Hello|#1]]\n[[<<Inventory.Has(Ribbon)>>I think i found a ribbon that you can use to make the nest more solid|#9]]",
 		"position": {
 			"x": 136,
 			"y": -507
@@ -91,7 +91,7 @@
 	},
 	{
 		"title": "#9",
-		"tags": "Inventory.Remove(Ribbon);",
+		"tags": "Inventory.Remove(Ribbon);World.Change(Nest);",
 		"body": "You really did? That's great! And it's pretty too, Vivi'll like it. Thank you, Vincent!\n[[What are you going to do now?|#10]]",
 		"position": {
 			"x": 510,

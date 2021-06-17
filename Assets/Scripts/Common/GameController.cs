@@ -28,9 +28,6 @@ namespace Assets.Scripts.Common
 {
     public class GameController: MonoBehaviour
     {
-        [UsedImplicitly]
-        public InventoryItem[] InventoryItems;
-
         private IServiceProvider serviceProvider;
         private List<ControllerBase> controllers;
 
@@ -78,7 +75,7 @@ namespace Assets.Scripts.Common
             services.AddSingleton<TransferToSceneEventRepository>();
 
             services.AddSingleton<DialogueParser>();
-            services.AddSingleton<DialogueActionFactory>(sp => new DialogueActionFactory(sp.GetService<PlayerInventory>(), InventoryItems));
+            services.AddSingleton<DialogueActionFactory>();
             services.AddSingleton<DialogueConditionFactory>();
         }
 

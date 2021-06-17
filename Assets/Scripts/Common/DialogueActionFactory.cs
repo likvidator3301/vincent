@@ -5,18 +5,117 @@ using System.Text;
 using System.Threading.Tasks;
 using Assets.Scripts.Exceptions;
 using Assets.Scripts.Inventory;
+using UnityEngine;
+using Object = UnityEngine.Object;
 
 namespace Assets.Scripts.Common
 {
+    public static class Crutches
+    {
+        public static class Inventory
+        {
+            private const string BasePath = "DialogueActions\\InventoryItemsSprites\\";
+
+            private static PlayerInventoryItem FromPath(string path)
+            {
+                var texture = Resources.Load<Texture2D>(BasePath + path);
+                return new PlayerInventoryItem(Guid.NewGuid().ToString(), path,
+                    Sprite.Create(texture, new Rect(0f, 0f, texture.width, texture.height), Vector2.zero));
+            }
+
+            public static Dictionary<string, PlayerInventoryItem> Items = new Dictionary<string, PlayerInventoryItem>
+            {
+                {"Hat", FromPath("Hat")}
+            };
+        }
+
+        public static class World
+        {
+            private const string BasePath = "DialogueActions\\World\\";
+
+            public static class Add
+            {
+                public static void SceneTransfer(string name)
+                {
+                    var transfer = GameObject.Find(name);
+                    transfer.GetComponent<SpriteRenderer>().enabled = true;
+                    transfer.GetComponent<BoxCollider2D>().enabled = true;
+                }
+
+                public static void RecorderForFim()
+                {
+                    var recordPlayer = GameObject.Find("FimRecorder");
+                    recordPlayer.GetComponent<SpriteRenderer>().enabled = true;
+                }
+            }
+
+            public static class Change
+            {
+                public static void Nest()
+                {
+                    var nestGO = GameObject.Find("nest_broken");
+                    var fixedTexture = Resources.Load<Texture2D>(BasePath + "NestFixed");
+                    nestGO.GetComponent<SpriteRenderer>().sprite = Sprite.Create(fixedTexture, new Rect(0f, 0f, fixedTexture.width, fixedTexture.height), new Vector2(0.5f, 0.5f));
+                }
+
+                public static void RecordPlayer()
+                {
+                    var recorderGO = GameObject.Find("record_player");
+                    var pickupableRecorder = Resources.Load<GameObject>(BasePath + "RecordPlayer");
+                    Object.Instantiate(pickupableRecorder, recorderGO.transform.position, Quaternion.identity);
+                    Object.Destroy(recorderGO);
+                }
+            }
+
+            public static class Remove
+            {
+                public static void Rupert()
+                {
+                    var rupert = GameObject.Find("Rupert");
+                    rupert.GetComponent<SpriteRenderer>().enabled = false;
+                    rupert.GetComponent<BoxCollider2D>().enabled = false;
+                }   
+            }
+        }
+    }
+
+    public sealed class CommandModel
+    {
+        public string Subject { get; }
+
+        public string Action { get; }
+
+        public string[] Arguments { get; }
+
+        private CommandModel(string subject, string action, string[] arguments)
+        {
+            Subject = subject;
+            Action = action;
+            Arguments = arguments;
+        }
+
+        public static CommandModel Parse(string fullCommandString)
+        {
+            var commandString = fullCommandString.Substring(0,
+                fullCommandString.IndexOf("(", StringComparison.InvariantCultureIgnoreCase));
+            var subject = commandString.Split('.')[0];
+            var action = commandString.Split('.')[1];
+            var argumentsString = fullCommandString.Substring(
+                fullCommandString.IndexOf("(", StringComparison.InvariantCultureIgnoreCase) + 1,
+                fullCommandString.Length - fullCommandString.IndexOf("(", StringComparison.InvariantCultureIgnoreCase) -
+                2);
+            var arguments = argumentsString.Split();
+            return new CommandModel(subject, action, arguments);
+        }
+    }
+
     public sealed class DialogueActionFactory
     {
         private readonly PlayerInventory playerInventory;
-        private readonly Dictionary<string, InventoryItem> inventoryItemsByName;
 
-        public DialogueActionFactory(PlayerInventory playerInventory, InventoryItem[] inventoryItems)
+        public DialogueActionFactory(PlayerInventory playerInventory)
         {
             this.playerInventory = playerInventory;
-            inventoryItemsByName = inventoryItems.ToDictionary(x => x.Name);
         }
 
         public Action CreateAction(string commandString)
@@ -41,52 +140,124 @@ namespace Assets.Scripts.Common
 
         private Action CreateSingleAction(string fullCommandString)
         {
-            var commandString = fullCommandString.Substring(0,
-                fullCommandString.IndexOf("(", StringComparison.InvariantCultureIgnoreCase));
-            var subject = commandString.Split('.')[0];
-            var action = commandString.Split('.')[1];
-            var argumentsString = fullCommandString.Substring(
-                fullCommandString.IndexOf("(", StringComparison.InvariantCultureIgnoreCase) + 1,
-                fullCommandString.Length - fullCommandString.IndexOf("(", StringComparison.InvariantCultureIgnoreCase) -
-                2);
-            var arguments = argumentsString.Split();
+            var command = CommandModel.Parse(fullCommandString);
 
-            switch (subject)
+            switch (command.Subject)
             {
                 case "Inventory":
-                    switch (action)
+                    switch (command.Action)
                     {
                         case "Add":
-                            if (arguments.Length != 1)
-                                throw new GameInitializationException(
-                                    $"Error occured while parsing command: '{fullCommandString}'. Expected one argument, but got {arguments.Length}");
-                            var inventoryItem = inventoryItemsByName[arguments[0]];
+                            EnsureCountOfArguments(command, 1);
                             return () =>
                             {
-                                playerInventory.Add(new PlayerInventoryItem(inventoryItem.Id, inventoryItem.Name,
-                                    inventoryItem.Sprite));
+                                Debug.Log($"Adding {command.Arguments[0]}");
+                                playerInventory.Add(Crutches.Inventory.Items[command.Arguments[0]]);
                             };
                         case "Remove":
-                            if (arguments.Length != 1)
-                                throw new GameInitializationException(
-                                    $"Error occured while parsing command: '{fullCommandString}'. Expected one argument, but got {arguments.Length}");
+                            EnsureCountOfArguments(command, 1);
                             return () =>
                             {
-                                playerInventory.RemoveByName(arguments[0]);
+                                playerInventory.RemoveByName(command.Arguments[0]);
                             };
+                    }
+                    break;
+                case "World":
+                    switch (command.Action)
+                    {
+                        case "Add":
+                            EnsureCountOfArguments(command, 1);
+                            switch (command.Arguments[0])
+                            {
+                                case "SceneTransferTwinkieHouse":
+                                    return () => Crutches.World.Add.SceneTransfer("SceneTransferToHouse");
+                                case "SceneTransferShoreToPond":
+                                    return () => Crutches.World.Add.SceneTransfer("SceneTransferShoreToPond");
+                                case "RecorderForFim":
+                                    return Crutches.World.Add.RecorderForFim;
+                            }
+                            break;
+                        case "Change":
+                            EnsureCountOfArguments(command, 1);
+                            switch (command.Arguments[0])
+                            {
+                                case "Nest":
+                                    return Crutches.World.Change.Nest;
+                                case "RecordPlayer":
+                                    return Crutches.World.Change.RecordPlayer;
+                            }
+                            break;
+                        case "Remove":
+                            EnsureCountOfArguments(command, 1);
+                            switch (command.Arguments[0])
+                            {
+                                case "Rupert":
+                                    return Crutches.World.Remove.Rupert;
+                            }
+                            break;
                     }
                     break;
             }
 
-            throw new Exception($"Cannot parse command {fullCommandString}");
+            throw new GameInitializationException($"Cannot parse command {fullCommandString}");
+        }
+
+        private void EnsureCountOfArguments(CommandModel command, int targetCount)
+        {
+            if (command.Arguments.Length != targetCount)
+                throw new GameInitializationException(
+                    $"Error occured while parsing command: '{command.Subject}.{command.Action}({string.Join(",", command.Arguments)})'." +
+                    $" Expected {targetCount} argument, but got {command.Arguments.Length}");
         }
     }
 
     public sealed class DialogueConditionFactory
     {
+
+        private PlayerInventory playerInventory;
+
+        public DialogueConditionFactory(PlayerInventory playerInventory)
+        {
+            this.playerInventory = playerInventory;
+        }
+
         public Func<bool> CreateCondition(string conditionString)
         {
-            return () => true;
+            if (conditionString == "")
+                return () => true;
+            var commandStrings = conditionString.Split('&');
+            var commands = new List<Func<bool>>();
+            foreach (var command in commandStrings.Where(x => !string.IsNullOrWhiteSpace(x)))
+            {
+                commands.Add(CreateSingleCondition(command));
+            }
+
+            return () =>
+            {
+                return commands.All(x => x());
+            };
+        }
+
+        private Func<bool> CreateSingleCondition(string conditionString)
+        {
+            var command = CommandModel.Parse(conditionString);
+
+            if (command.Subject != "Inventory")
+                throw new GameInitializationException("Now we only support conditions for inventory");
+
+            if (command.Action != "Has")
+                throw new GameInitializationException("Now we only support 'has' conditions");
+
+            EnsureCountOfArguments(command, 1);
+            return () => playerInventory.HasItem(x => x.Name == command.Arguments[0]);
+        }
+
+        private void EnsureCountOfArguments(CommandModel command, int targetCount)
+        {
+            if (command.Arguments.Length != targetCount)
+                throw new GameInitializationException(
+                    $"Error occured while parsing command: '{command.Subject}.{command.Action}({string.Join(",", command.Arguments)})'." +
+                    $" Expected {targetCount} argument, but got {command.Arguments.Length}");
         }
     }
 }
