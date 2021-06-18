@@ -1,0 +1,69 @@
+
+TwinkyForRigs.png
+size: 913,330
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Body
+  rotate: true
+  xy: 2, 10
+  size: 318, 300
+  orig: 337, 315
+  offset: 19, 15
+  index: -1
+Ear under Hat
+  rotate: false
+  xy: 617, 90
+  size: 110, 238
+  orig: 115, 240
+  offset: 5, 0
+  index: -1
+Ear under Head
+  rotate: false
+  xy: 500, 47
+  size: 115, 281
+  orig: 115, 281
+  offset: 0, 0
+  index: -1
+Hands
+  rotate: true
+  xy: 500, 5
+  size: 40, 66
+  orig: 40, 66
+  offset: 0, 0
+  index: -1
+Hat
+  rotate: true
+  xy: 304, 15
+  size: 313, 194
+  orig: 313, 194
+  offset: 0, 0
+  index: -1
+Head
+  rotate: true
+  xy: 729, 107
+  size: 221, 182
+  orig: 274, 182
+  offset: 28, 0
+  index: -1
+legs
+  rotate: false
+  xy: 732, 2
+  size: 79, 103
+  orig: 79, 104
+  offset: 0, 1
+  index: -1
+Слой 1
+  rotate: true
+  xy: 813, 46
+  size: 59, 53
+  orig: 59, 53
+  offset: 0, 0
+  index: -1
+Слой 2
+  rotate: true
+  xy: 617, 7
+  size: 81, 113
+  orig: 81, 113
+  offset: 0, 0
+  index: -1

@@ -173,7 +173,7 @@ namespace Assets.Scripts.Player.Movement.Services
             var playerX = player.position.x;
             var destinationX = movementEventRepository.Value.Destination.x;
 
-            directionHelper.Direction = destinationX > playerX ? Direction.Right : Direction.Left;
+            directionHelper.Direction = destinationX > playerX ? Direction.Left : Direction.Right;
         }
     }
 }

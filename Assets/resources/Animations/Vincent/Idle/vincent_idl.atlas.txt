@@ -1,0 +1,48 @@
+
+vincent_idl.png
+size: 789,375
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Hand B
+  rotate: true
+  xy: 489, 4
+  size: 98, 164
+  orig: 101, 164
+  offset: 3, 0
+  index: -1
+Hand F
+  rotate: false
+  xy: 688, 203
+  size: 99, 170
+  orig: 99, 171
+  offset: 0, 1
+  index: -1
+Head + Body
+  rotate: true
+  xy: 2, 12
+  size: 361, 485
+  orig: 388, 485
+  offset: 0, 0
+  index: -1
+Legs 1
+  rotate: true
+  xy: 655, 2
+  size: 77, 116
+  orig: 77, 118
+  offset: 0, 0
+  index: -1
+Legs 2
+  rotate: false
+  xy: 688, 81
+  size: 78, 120
+  orig: 78, 120
+  offset: 0, 0
+  index: -1
+Tail
+  rotate: false
+  xy: 489, 104
+  size: 197, 269
+  orig: 197, 269
+  offset: 0, 0
+  index: -1

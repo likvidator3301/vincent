@@ -5,6 +5,7 @@ using Assets.Scripts.DialogueContainer.Repositories;
 using Assets.Scripts.Markers;
 using Assets.Scripts.Npc.Dialogues.Repositories;
 using Assets.Scripts.PickupableItem;
+using Assets.Scripts.Player.Animation;
 using Assets.Scripts.Player.Configs;
 using Assets.Scripts.Player.Movement.Helpers;
 using Assets.Scripts.Player.Movement.Services;
@@ -39,6 +40,7 @@ namespace Assets.Scripts.Player
             AddNpcInteractionService();
             AddTeleportPlayerService();
             AddInteractWithSceneTransferService();
+            AddAnimationService();
 
             foreach (var service in Services) 
                 service.Start();
@@ -140,6 +142,15 @@ namespace Assets.Scripts.Player
             var player = GameObject;
 
             var service = new DirectionService(player.transform, directionHelper);
+            Services.Add(service);
+        }
+
+        private void AddAnimationService()
+        {
+            var movementHelper = ServiceProvider.GetService<MovementEventRepository>();
+            var player = UnityEngine.Object.FindObjectOfType<PlayerMarker>();
+
+            var service = new AnimationService(movementHelper, player.skeletonAnimation, player);
             Services.Add(service);
         }
 
