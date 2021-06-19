@@ -109,7 +109,7 @@ namespace Assets.Scripts.Player.Movement.Services
                 if (MouseHelper.IsMouseAboveObjectWithTag(Constants.Tags.PickupableItem))
                 {
                     var marker = MouseHelper.GetComponentOnGameObjectUnderMouse<PickupableItemMarker>();
-                    startDialogueEventRepository.SetValue(new StartDialogueEvent(marker.Id));
+                    startDialogueEventRepository.SetValue(new StartDialogueEvent(marker.Id, "You"));
                 }
             }
         }

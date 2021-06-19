@@ -15,13 +15,19 @@ namespace Assets.Scripts.DialogueContainer.Models
 
         public CurrentReplica CurrentReplica { get; }
 
-        private DialogueModel(GameObject gameObject, NextReplicaButtonsContainer nextReplicaNextReplicaButtonsContainerContainer, FinishButton finishButton, IconContainer iconContainer, CurrentReplica currentReplica)
+        public Name Name { get; }
+
+        private DialogueModel(GameObject gameObject, 
+            NextReplicaButtonsContainer nextReplicaNextReplicaButtonsContainerContainer, 
+            FinishButton finishButton, IconContainer iconContainer, 
+            CurrentReplica currentReplica, Name name)
         {
             GameObject = gameObject;
             NextReplicaNextReplicaButtonsContainerContainer = nextReplicaNextReplicaButtonsContainerContainer;
             FinishButton = finishButton;
             IconContainer = iconContainer;
             CurrentReplica = currentReplica;
+            Name = name;
         }
 
         public static DialogueModel FromGameObject(GameObject gameObject)
@@ -53,9 +59,15 @@ namespace Assets.Scripts.DialogueContainer.Models
             if (currentReplicaTransform == null)
                 throw new GameInitializationException("Cannot contruct dialogue model. Cannot find CurrentReplica in DialogueContainer");
 
+            var nameTransform = gameObject.transform.Find("Name");
+            if (nameTransform == null)
+                throw new GameInitializationException("Cannot contruct dialogue model. Cannot find Name in DialogueContainer");
+
             var currentReplica = new CurrentReplica(currentReplicaTransform.gameObject);
 
-            return new DialogueModel(gameObject, buttonsContainer, finishButton, iconContainer, currentReplica);
+            var name = new Name(nameTransform.gameObject);
+
+            return new DialogueModel(gameObject, buttonsContainer, finishButton, iconContainer, currentReplica, name);
         }
     }
 }

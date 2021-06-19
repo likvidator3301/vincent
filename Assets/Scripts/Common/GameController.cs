@@ -69,6 +69,7 @@ namespace Assets.Scripts.Common
             services.AddSingleton<DialogueRepository>();
             services.AddSingleton<IconForDialogueRepository>();
             services.AddSingleton<FinishDialogueEventRepository>();
+            services.AddSingleton<NameRepository>();
 
             services.AddSingleton<InteractWithSceneTransferEventRepository>();
             services.AddSingleton<TeleportPlayerEventRepository>();

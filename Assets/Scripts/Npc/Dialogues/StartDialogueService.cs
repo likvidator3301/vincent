@@ -16,6 +16,7 @@ namespace Assets.Scripts.Npc.Dialogues
         private readonly string npcId;
         private readonly Sprite iconForDialogue;
         private readonly IconForDialogueRepository iconForDialogueRepository;
+        private readonly NameRepository nameRepository;
         private readonly Dialogue dialogue;
 
         public StartDialogueService(
@@ -24,6 +25,7 @@ namespace Assets.Scripts.Npc.Dialogues
             string npcId,
             Sprite iconForDialogue,
             IconForDialogueRepository iconForDialogueRepository,
+            NameRepository nameRepository,
             Dialogue dialogue)
         {
             this.startDialogueEventRepository = startDialogueEventRepository ?? throw new ArgumentNullException(nameof(startDialogueEventRepository));
@@ -31,6 +33,7 @@ namespace Assets.Scripts.Npc.Dialogues
             this.npcId = npcId ?? throw new ArgumentNullException(nameof(npcId));
             this.iconForDialogue = iconForDialogue;
             this.iconForDialogueRepository = iconForDialogueRepository ?? throw new ArgumentNullException(nameof(iconForDialogueRepository));
+            this.nameRepository = nameRepository ?? throw new ArgumentNullException(nameof(nameRepository));
             this.dialogue = dialogue;
         }
 
@@ -44,6 +47,7 @@ namespace Assets.Scripts.Npc.Dialogues
             if (startDialogueEvent.NpcId != npcId)
                 return;
 
+            nameRepository.SetValue(startDialogueEvent.Name);
             iconForDialogueRepository.SetValue(iconForDialogue);
             dialogueRepository.SetValue(dialogue);
 

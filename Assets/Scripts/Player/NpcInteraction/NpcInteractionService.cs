@@ -45,7 +45,7 @@ namespace Assets.Scripts.Player.NpcInteraction
                 interactWithNpcEventRepository.RemoveValue();
                 movementEventRepository.RemoveValue();
 
-                startDialogueEventRepository.SetValue(new StartDialogueEvent(interactEvent.Marker.Id));
+                startDialogueEventRepository.SetValue(new StartDialogueEvent(interactEvent.Marker.Id, interactEvent.Marker.Name));
             }
         }
     }

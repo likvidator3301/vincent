@@ -43,9 +43,10 @@ namespace Assets.Scripts.Npc
             var startDialogueEventRepository = ServiceProvider.GetService<StartDialogueEventRepository>();
             var dialogueRepository = ServiceProvider.GetService<DialogueRepository>();
             var iconForDialogueRepository = ServiceProvider.GetService<IconForDialogueRepository>();
+            var nameRepository = ServiceProvider.GetService<NameRepository>();
 
             var startDialogueService = new StartDialogueService(startDialogueEventRepository, 
-                dialogueRepository, id, marker.IconForDialogue, iconForDialogueRepository, dialogue);
+                dialogueRepository, id, marker.IconForDialogue, iconForDialogueRepository, nameRepository, dialogue);
 
             Services.Add(startDialogueService);
         }

@@ -53,8 +53,9 @@ namespace Assets.Scripts.DialogueContainer
 
         private void AddDisplayTextService()
         {
+            var nameRepository = ServiceProvider.GetService<NameRepository>();
             var newTextEventRepository = ServiceProvider.GetService<NewTextEventRepository>();
-            var service = new DisplayTextService(newTextEventRepository, dialogueModel, dialogueContainerMarker);
+            var service = new DisplayTextService(newTextEventRepository, dialogueModel, dialogueContainerMarker, nameRepository);
 
             Services.Add(service);
         }

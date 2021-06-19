@@ -11,21 +11,26 @@ namespace Assets.Scripts.DialogueContainer
 {
     public class DisplayTextService : ServiceBase
     {
-        private const int ScrollRectWidth = 818;
         private readonly DialogueModel dialogueModel;
         private readonly NewTextEventRepository newTextEventRepository;
+        private readonly NameRepository nameRepository;
         private readonly DialogueContainerMarker dialogueContainerMarker;
 
-        public DisplayTextService(NewTextEventRepository newTextEventRepository, DialogueModel dialogueModel, DialogueContainerMarker dialogueContainerMarker)
+        public DisplayTextService(NewTextEventRepository newTextEventRepository, 
+            DialogueModel dialogueModel, DialogueContainerMarker dialogueContainerMarker,
+            NameRepository nameRepository)
         {
             this.newTextEventRepository = newTextEventRepository ?? throw new ArgumentNullException(nameof(newTextEventRepository));
             this.dialogueContainerMarker = dialogueContainerMarker ?? throw new ArgumentNullException(nameof(dialogueContainerMarker));
             this.dialogueModel = dialogueModel ?? throw new ArgumentNullException(nameof(dialogueModel));
+            this.nameRepository = nameRepository ?? throw new ArgumentNullException(nameof(nameRepository));
         }
 
         private void ShowDialogueState(Node node)
         {
             dialogueModel.CurrentReplica.Text.text = node.Text;
+            dialogueModel.Name.Text.text = nameRepository.Value;
+            nameRepository.RemoveValue();
             var posY = 75;
             var dy = -75;
             foreach (var answer in node.Answers)
@@ -43,6 +48,7 @@ namespace Assets.Scripts.DialogueContainer
             buttonGameObject.gameObject.transform.localPosition = new Vector3(0, y);
             var buttonModel = new NextReplicaButton(buttonGameObject);
             buttonModel.Text.text = answer;
+            buttonModel.Text.fontSize = 15;
             buttonGameObject.GetComponent<NextReplicaDialogueButtonMarker>().Node = nextNode;
             dialogueModel.NextReplicaNextReplicaButtonsContainerContainer.Buttons.Add(buttonModel);
         }
