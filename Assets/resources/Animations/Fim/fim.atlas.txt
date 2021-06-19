@@ -1,0 +1,41 @@
+
+fim.png
+size: 884,319
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Body + Head
+  rotate: true
+  xy: 2, 2
+  size: 315, 418
+  orig: 349, 418
+  offset: 8, 0
+  index: -1
+Hand B
+  rotate: false
+  xy: 422, 22
+  size: 166, 104
+  orig: 177, 113
+  offset: 0, 9
+  index: -1
+Hand F
+  rotate: true
+  xy: 422, 128
+  size: 189, 202
+  orig: 189, 212
+  offset: 0, 10
+  index: -1
+Legs
+  rotate: true
+  xy: 626, 11
+  size: 130, 255
+  orig: 145, 263
+  offset: 2, 8
+  index: -1
+Legs 2
+  rotate: true
+  xy: 626, 143
+  size: 174, 256
+  orig: 185, 260
+  offset: 0, 4
+  index: -1

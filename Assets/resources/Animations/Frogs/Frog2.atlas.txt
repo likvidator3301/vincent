@@ -1,0 +1,48 @@
+
+Frog2.png
+size: 455,632
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Body
+  rotate: true
+  xy: 2, 333
+  size: 297, 325
+  orig: 319, 340
+  offset: 13, 14
+  index: -1
+Hands
+  rotate: false
+  xy: 2, 20
+  size: 145, 311
+  orig: 145, 313
+  offset: 0, 2
+  index: -1
+Head
+  rotate: false
+  xy: 149, 2
+  size: 234, 178
+  orig: 268, 187
+  offset: 17, 0
+  index: -1
+Legs
+  rotate: true
+  xy: 149, 182
+  size: 83, 285
+  orig: 85, 285
+  offset: 1, 0
+  index: -1
+Слой 1
+  rotate: true
+  xy: 149, 267
+  size: 64, 300
+  orig: 72, 300
+  offset: 7, 0
+  index: -1
+Слой 2
+  rotate: false
+  xy: 329, 333
+  size: 124, 297
+  orig: 124, 299
+  offset: 0, 2
+  index: -1

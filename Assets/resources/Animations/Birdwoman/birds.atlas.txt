@@ -1,0 +1,20 @@
+
+birds.png
+size: 310,200
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Bodies
+  rotate: false
+  xy: 2, 2
+  size: 241, 196
+  orig: 254, 201
+  offset: 3, 0
+  index: -1
+Wings
+  rotate: true
+  xy: 245, 76
+  size: 122, 63
+  orig: 122, 63
+  offset: 0, 0
+  index: -1

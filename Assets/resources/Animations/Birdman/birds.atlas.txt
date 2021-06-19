@@ -1,0 +1,20 @@
+
+birds.png
+size: 341,242
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Слой 1
+  rotate: false
+  xy: 2, 2
+  size: 266, 238
+  orig: 266, 238
+  offset: 0, 0
+  index: -1
+Слой 2
+  rotate: true
+  xy: 270, 103
+  size: 137, 69
+  orig: 137, 69
+  offset: 0, 0
+  index: -1
