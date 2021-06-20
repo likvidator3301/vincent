@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Assets.Scripts.Common.Helpers;
 using Assets.Scripts.DialogueContainer;
 using Assets.Scripts.DialogueContainer.Repositories;
 using Assets.Scripts.Exceptions;
@@ -22,6 +23,7 @@ using Assets.Scripts.Scenes.Repositories;
 using JetBrains.Annotations;
 using UnityEngine;
 using Microsoft.Extensions.DependencyInjection;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace Assets.Scripts.Common
@@ -30,6 +32,7 @@ namespace Assets.Scripts.Common
     {
         private IServiceProvider serviceProvider;
         private List<ControllerBase> controllers;
+        private bool isPondTransferOpened;
 
         [UsedImplicitly]
         public void Start()
@@ -176,6 +179,31 @@ namespace Assets.Scripts.Common
         {
             foreach (var controller in controllers)
                 controller.Update();
+
+            {
+                var playerInventory = serviceProvider.GetService<PlayerInventory>();
+                var hasPlayerItems = playerInventory.HasItem(x => x.Name == "Umbrella") &&
+                                     playerInventory.HasItem(x => x.Name == "EmptyJam") &&
+                                     playerInventory.HasItem(x => x.Name == "Rope");
+
+                if (!isPondTransferOpened)
+                {
+                    if (hasPlayerItems)
+                    {
+                        var transfer = GameObject.Find("SceneTransferShoreToPond");
+                        transfer.GetComponent<SpriteRenderer>().enabled = true;
+                        transfer.GetComponent<BoxCollider2D>().enabled = true;
+                        isPondTransferOpened = true;
+                    }
+                }
+
+                if (Input.GetMouseButtonDown(0) && MouseHelper.IsMouseAboveObjectWithTag("ToPond"))
+                {
+                    SceneManager.LoadScene("Pond");
+                }
+            }
+
+            
         }
 
         [UsedImplicitly]

@@ -13,6 +13,8 @@ TagManager:
   - FinishDialogueButton
   - SceneTransfer
   - Container
+  - Star
+  - ToPond
   layers:
   - Default
   - TransparentFX

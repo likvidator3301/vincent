@@ -5,7 +5,7 @@ public class MenuController : MonoBehaviour
 {
     public void PlayPressed()
     {
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene("Intro");
     }
 
     public void ExitPressed()
