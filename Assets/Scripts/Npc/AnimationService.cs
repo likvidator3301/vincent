@@ -9,26 +9,21 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 
-namespace Assets.Scripts.Player.Animation
+namespace Assets.Scripts.Npc.Animation
 {
     public class AnimationService : ServiceBase
     {
-        private readonly MovementEventRepository movementEventRepository;
         private SkeletonAnimation skeletonAnimation;
         private AnimationReferenceAsset idle;
-        private AnimationReferenceAsset walking;
-        private PlayerMarker player;
+        private NpcMarker npc;
         private string state;
         private string currentAnimation;
 
-        public AnimationService(MovementEventRepository movementEventRepository, 
-            SkeletonAnimation skeletonAnimation, PlayerMarker player)
+        public AnimationService(SkeletonAnimation skeletonAnimation, NpcMarker npc)
         {
-            this.movementEventRepository = movementEventRepository ?? throw new ArgumentNullException(nameof(movementEventRepository));
             this.skeletonAnimation = skeletonAnimation ?? throw new ArgumentNullException(nameof(skeletonAnimation));
-            this.idle = player.idle ?? throw new ArgumentNullException(nameof(idle));
-            this.walking = player.walking ?? throw new ArgumentNullException(nameof(walking));
-            this.player = player ?? throw new ArgumentNullException(nameof(player));
+            this.idle = npc.idle ?? throw new ArgumentNullException(nameof(idle));
+            this.npc = npc ?? throw new ArgumentNullException(nameof(npc));
         }
 
         public override void Start()
@@ -39,10 +34,7 @@ namespace Assets.Scripts.Player.Animation
 
         public override void Update()
         {
-            if (!movementEventRepository.HasValue)
-                SetState("Idle");
-            else
-                SetState("Walking");
+            SetState("Idle");
         }
 
         private void SetState(string currentState)
@@ -54,11 +46,6 @@ namespace Assets.Scripts.Player.Animation
                         SetAimation(idle, true, 1f); 
                         break; 
                     }
-                case "Walking":
-                    {
-                        SetAimation(walking, true, 2f);
-                        break;
-                    }
             }
         }
 
@@ -66,7 +53,7 @@ namespace Assets.Scripts.Player.Animation
         {
             if (animation.name.Equals(currentAnimation))
                 return;
-            skeletonAnimation.state.SetAnimation(0, animation, loop).TimeScale = timeScale;
+            skeletonAnimation.state.SetAnimation(0, animation, loop);
             currentAnimation = animation.name;
         }
     }
