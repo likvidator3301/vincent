@@ -56,7 +56,7 @@ namespace Assets.Scripts.Player.Animation
                     }
                 case "Walking":
                     {
-                        SetAimation(walking, true, 2f);
+                        SetAimation(walking, true, 3.5f);
                         break;
                     }
             }

@@ -47,7 +47,7 @@ namespace Assets.Scripts.Common
                 public static void RecorderForFim()
                 {
                     var recordPlayer = GameObject.Find("FimRecorder");
-                    recordPlayer.GetComponent<SpriteRenderer>().enabled = true;
+                    recordPlayer.GetComponent<MeshRenderer>().enabled = true;
                 }
             }
 
@@ -62,7 +62,7 @@ namespace Assets.Scripts.Common
 
                 public static void RecordPlayer()
                 {
-                    var recorderGO = GameObject.Find("record_player");
+                    var recorderGO = GameObject.Find("RecordPlayer");
                     recorderGO.GetComponent<BoxCollider2D>().enabled = true;
                 }
             }
@@ -72,7 +72,7 @@ namespace Assets.Scripts.Common
                 public static void Rupert()
                 {
                     var rupert = GameObject.Find("Rupert");
-                    rupert.GetComponent<SpriteRenderer>().enabled = false;
+                    rupert.GetComponent<MeshRenderer>().enabled = false;
                     rupert.GetComponent<BoxCollider2D>().enabled = false;
                 }
 
