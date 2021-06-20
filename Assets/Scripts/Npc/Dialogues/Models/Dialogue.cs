@@ -8,6 +8,7 @@ using Assets.Scripts.Common.Events;
 using Assets.Scripts.Inventory;
 using Newtonsoft.Json;
 using UnityEngine;
+using Debug = UnityEngine.Debug;
 
 namespace Assets.Scripts.Npc.Dialogues.Models
 {
@@ -67,37 +68,45 @@ namespace Assets.Scripts.Npc.Dialogues.Models
 
         public Dialogue FromFile(TextAsset dialogueFile)
         {
-            var fileNodes = JsonConvert.DeserializeObject<DialogueNodeFileModel[]>(dialogueFile.text);
-            if (fileNodes == null)
-                throw new ArgumentException($"Cannot parse dialogue file: {dialogueFile}");
-
-            var fileNodesCache = fileNodes.ToDictionary(x => x.Id);
-            if (!fileNodesCache.ContainsKey("Start"))
-                throw new ArgumentException($"Dialogue file {dialogueFile} doesn't contain 'Start' node");
-
-            var root = fileNodesCache["Start"];
-            var sorted = TopologicalSort(root, fileNodesCache);
-
-            var dialogueNodesCache = new Dictionary<string, Node>();
-
-            foreach (var fileNode in sorted)
+            try
             {
-                var command = dialogueActionFactory.CreateAction(fileNode.Command);
-                var answers = new List<AnswerLink>();
-                foreach (var kv in fileNode.Answers)
+                var fileNodes = JsonConvert.DeserializeObject<DialogueNodeFileModel[]>(dialogueFile.text);
+                if (fileNodes == null)
+                    throw new ArgumentException($"Cannot parse dialogue file: {dialogueFile}");
+
+                var fileNodesCache = fileNodes.ToDictionary(x => x.Id);
+                if (!fileNodesCache.ContainsKey("Start"))
+                    throw new ArgumentException($"Dialogue file {dialogueFile} doesn't contain 'Start' node");
+
+                var root = fileNodesCache["Start"];
+                var sorted = TopologicalSort(root, fileNodesCache);
+
+                var dialogueNodesCache = new Dictionary<string, Node>();
+
+                foreach (var fileNode in sorted)
                 {
-                    answers.Add(ParseAnswer(kv.Key, kv.Value, dialogueNodesCache));
+                    var command = dialogueActionFactory.CreateAction(fileNode.Command);
+                    var answers = new List<AnswerLink>();
+                    foreach (var kv in fileNode.Answers)
+                    {
+                        answers.Add(ParseAnswer(kv.Key, kv.Value, dialogueNodesCache));
+                    }
+
+                    var node = new Node(fileNode.Id, fileNode.Text, command, answers);
+                    dialogueNodesCache[node.Id] = node;
                 }
 
-                var node = new Node(fileNode.Id, fileNode.Text, command, answers);
-                dialogueNodesCache[node.Id] = node;
+                var startNode = dialogueNodesCache["Start"];
+                var dialogue = new Dialogue();
+                dialogue.SetValue(startNode);
+
+                return dialogue;
             }
-
-            var startNode = dialogueNodesCache["Start"];
-            var dialogue = new Dialogue();
-            dialogue.SetValue(startNode);
-
-            return dialogue;
+            catch(Exception e)
+            {
+                Debug.Log($"Error occurs while parse file: {dialogueFile.name}");
+                throw e;
+            }
         }
 
         private AnswerLink ParseAnswer(string nextNodeId, string answer, Dictionary<string, Node> dialogueNodesCache)

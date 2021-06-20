@@ -540,7 +540,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InventoryImage: {fileID: 21300000, guid: 3884e8338c196274d8b09fbbeca36b09, type: 3}
   Name: "\u0421hamomile"
-  DialogueFile: {fileID: 4900000, guid: 02e30bbf520cfde488b785110dc9561f, type: 3}
+  DialogueFile: {fileID: 4900000, guid: 1d6b0dc2787873646a5aa70a573ad1fd, type: 3}
 --- !u!212 &77593472
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1160,7 +1160,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InventoryImage: {fileID: 21300000, guid: cf5dc34274363ea448a46db2ec940402, type: 3}
   Name: Blueberries
-  DialogueFile: {fileID: 4900000, guid: 02e30bbf520cfde488b785110dc9561f, type: 3}
+  DialogueFile: {fileID: 4900000, guid: 1688f9aff704da74cb7010b47c343b1c, type: 3}
 --- !u!212 &165203054
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5211,7 +5211,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InventoryImage: {fileID: 21300000, guid: bfb3071de105e2a4eb8bd688fc54637f, type: 3}
   Name: Jam
-  DialogueFile: {fileID: 4900000, guid: 02e30bbf520cfde488b785110dc9561f, type: 3}
+  DialogueFile: {fileID: 4900000, guid: 3de75bc9604888a4297282324954be36, type: 3}
 --- !u!61 &777024396
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6757,7 +6757,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InventoryImage: {fileID: 21300000, guid: 9b01fd43d1b468840968b7a2929a44bd, type: 3}
   Name: Thread
-  DialogueFile: {fileID: 4900000, guid: 02e30bbf520cfde488b785110dc9561f, type: 3}
+  DialogueFile: {fileID: 4900000, guid: 7f40217afbfc2c444891a7f47c07c440, type: 3}
 --- !u!61 &1074154063
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -7019,7 +7019,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Rupert
   IconForDialogue: {fileID: 21300000, guid: bf784d5b245856f4ebda0097d973b5d5, type: 3}
-  DialogueFile: {fileID: 4900000, guid: 817119b3474601f4781b0f09dc5df9bf, type: 3}
+  DialogueFile: {fileID: 4900000, guid: 60dd98e743db0ac4ab7ff5cc52d08ef8, type: 3}
 --- !u!61 &1127611046
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -7172,7 +7172,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InventoryImage: {fileID: 21300000, guid: 41033d4f86e75764f8ba5d8e9ff936ba, type: 3}
   Name: Teapot
-  DialogueFile: {fileID: 4900000, guid: 02e30bbf520cfde488b785110dc9561f, type: 3}
+  DialogueFile: {fileID: 4900000, guid: d66b00acce0baa94c9ec7dd73b86355e, type: 3}
 --- !u!61 &1137978113
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -8135,7 +8135,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Fibie
   IconForDialogue: {fileID: 21300000, guid: 4a727eadf0a73ae48b4c1d43d765193f, type: 3}
-  DialogueFile: {fileID: 4900000, guid: 817119b3474601f4781b0f09dc5df9bf, type: 3}
+  DialogueFile: {fileID: 4900000, guid: 259ddf0d02d354c408922072de69b3f4, type: 3}
 --- !u!212 &1319784950
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -14901,7 +14901,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InventoryImage: {fileID: 21300000, guid: 12018707c145c4440969e2eca25f2d1c, type: 3}
   Name: Strawberry
-  DialogueFile: {fileID: 4900000, guid: 02e30bbf520cfde488b785110dc9561f, type: 3}
+  DialogueFile: {fileID: 4900000, guid: fa12b15cae002d846aeece1c93936af6, type: 3}
 --- !u!61 &1658541593
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -15423,7 +15423,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InventoryImage: {fileID: 21300000, guid: 98101b5cd083a7a4f9e828ac50bb9659, type: 3}
   Name: Ribbon
-  DialogueFile: {fileID: 4900000, guid: 02e30bbf520cfde488b785110dc9561f, type: 3}
+  DialogueFile: {fileID: 4900000, guid: 35b199fd067be4d4f88d03cd9f995ad0, type: 3}
 --- !u!61 &1772029277
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -16288,7 +16288,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InventoryImage: {fileID: 21300000, guid: e3508cc74c1d0be42b6eb10ea05455f6, type: 3}
   Name: Mint
-  DialogueFile: {fileID: 4900000, guid: 02e30bbf520cfde488b785110dc9561f, type: 3}
+  DialogueFile: {fileID: 4900000, guid: c6ec7ab0618239a43ad2e2e77d6bd8ba, type: 3}
 --- !u!212 &1861228598
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -17215,7 +17215,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InventoryImage: {fileID: 21300000, guid: 3d7cdbc8f1efcfe4da430f2faebae8d0, type: 3}
   Name: Forget-me-not
-  DialogueFile: {fileID: 4900000, guid: 02e30bbf520cfde488b785110dc9561f, type: 3}
+  DialogueFile: {fileID: 4900000, guid: af62cd7cfb2987141b2304865e31914f, type: 3}
 --- !u!212 &2112660908
 SpriteRenderer:
   m_ObjectHideFlags: 0

@@ -2,7 +2,7 @@
 	{
 		"title": "Start",
 		"tags": "",
-		"body": "Ah, long time no see. Good evening, Vincent!\n[[Hello! What are you up to?|#1]]\n[[<<Inventory_Has_Hat>>Look, the birds took your hat off the tree|#6]]",
+		"body": "Ah, long time no see. Good evening, Vincent!\n[[Hello! What are you up to?|#1]]\n[[<<Inventory.Has(Hat)>>Look, the birds took your hat off the tree|#6]]",
 		"position": {
 			"x": -135,
 			"y": -378
@@ -71,7 +71,7 @@
 	},
 	{
 		"title": "#6",
-		"tags": "",
+		"tags": "Inventory.Remove(Hat);",
 		"body": "Thank you so much for asking them, you did me a great favor! \n[[No problem|#7]]",
 		"position": {
 			"x": 204,
@@ -91,11 +91,11 @@
 	},
 	{
 		"title": "#8",
-		"tags": "",
+		"tags": "Inventory.Add(Umbrella);World.Add(SceneTransferShoreToPond);",
 		"body": "Maybe you should take my umbrella then, just in case\n[[Thanks! But aren't you going to search for the star?|#9]]",
 		"position": {
-			"x": 372,
-			"y": -1091
+			"x": 371,
+			"y": -1095
 		},
 		"colorID": 0
 	},
@@ -105,7 +105,7 @@
 		"body": "What? Me? No, not at all - I'm just an old fox, and I've already had a great amount of time to try something new. I'll leave it to you, my friend\n[[Oh. I think I understand|#10]]",
 		"position": {
 			"x": 492,
-			"y": -1312
+			"y": -1313
 		},
 		"colorID": 0
 	},

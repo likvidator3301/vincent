@@ -1,0 +1,132 @@
+[
+	{
+		"title": "Start",
+		"tags": "",
+		"body": "Oh, hi, Vincent!\n[[Hi |#1]]\n[[<<Inventory.Has(RecordPlayer)>> Hey, I got the record player |#8]]",
+		"position": {
+			"x": 87,
+			"y": -1150
+		},
+		"colorID": 0
+	},
+	{
+		"title": "#1",
+		"tags": "",
+		"body": "Lovely evening, isn't it?\n[[It sure is. What are you up to? |#2]]",
+		"position": {
+			"x": 205,
+			"y": -1372
+		},
+		"colorID": 0
+	},
+	{
+		"title": "It sure is. What are you up to?",
+		"tags": "",
+		"body": "Empty Text",
+		"position": {
+			"x": 326,
+			"y": -1592
+		},
+		"colorID": 0
+	},
+	{
+		"title": "#2",
+		"tags": "",
+		"body": "Just enjoying the view, it's really nice here\n[[Aren't you excited for the star that has fell? |#3]]",
+		"position": {
+			"x": 324,
+			"y": -1593
+		},
+		"colorID": 0
+	},
+	{
+		"title": "#3",
+		"tags": "",
+		"body": "Not quite. I was thinking about it, of course. But I doubt there is anything I need that takes magic to achieve.\n[[Nothing at all? |#4]]",
+		"position": {
+			"x": 443,
+			"y": -1814
+		},
+		"colorID": 0
+	},
+	{
+		"title": "#4",
+		"tags": "",
+		"body": "I guess. I find happiness mostly in simple things - like beautiful flowers or skies at the dawn. Or music, I really love it!\n[[Music? What kind of it? |#5]]\n[[That is a little odd, but in a good way |#6]]",
+		"position": {
+			"x": 563,
+			"y": -2036
+		},
+		"colorID": 0
+	},
+	{
+		"title": "#5",
+		"tags": "",
+		"body": "Well, I love all sorts of things, I mostly listen to old songs lately. I would certainly love to listen something right now - if there is something that can make this moment better - it's music!\n[[I think I heard Fibie and her friends having a party on the meadow. Maybe I can ask them to borrow the record player for a little |#7]]",
+		"position": {
+			"x": 681,
+			"y": -2258
+		},
+		"colorID": 0
+	},
+	{
+		"title": "#6",
+		"tags": "",
+		"body": "Is it? Well, I suppose that can be said for both of us - your friendship with Rick is odd as well, and definitely in a good way \n[[I guess. Maybe I can borrow a record player for you? I heard other frogs having a party at the meadow |#7]]",
+		"position": {
+			"x": 902,
+			"y": -2256
+		},
+		"colorID": 0
+	},
+	{
+		"title": "#7",
+		"tags": "",
+		"body": "Oh, that would be so kind of you! Thanks anyway!",
+		"position": {
+			"x": 820,
+			"y": -2543
+		},
+		"colorID": 0
+	},
+	{
+		"title": "#8",
+		"tags": "Inventory.Remove(RecordPlayer);World.Change(RecordPlayer);",
+		"body": "Wow, thank you so much, i'd really love some music right now! I want to tell you a secret, since you've been so nice to me\n[[A secret? |#9]]",
+		"position": {
+			"x": 448,
+			"y": -1159
+		},
+		"colorID": 0
+	},
+	{
+		"title": "#9",
+		"tags": "",
+		"body": "I saw the star and I know where it is. It was fell exactly when I was sitting here and watching the skies. The star fell in the water, not far away from where\n[[I would never guess to look there. Thank you! |#10]]",
+		"position": {
+			"x": 568,
+			"y": -1380
+		},
+		"colorID": 0
+	},
+	{
+		"title": "#10",
+		"tags": "",
+		"body": "Don't mention it! I'm not sure if it's a useful information since we don't have any vessel here, but I'd like you to be the one who'll get the star. You are very nice, both of you\n[[Thanks a lot, I'll try to come up with something to swim|#11]]",
+		"position": {
+			"x": 685,
+			"y": -1603
+		},
+		"colorID": 0
+	},
+	{
+		"title": "#11",
+		"tags": "",
+		"body": "Good luck!",
+		"position": {
+			"x": 806,
+			"y": -1821
+		},
+		"colorID": 0
+	}
+]

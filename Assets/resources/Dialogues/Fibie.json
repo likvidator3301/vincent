@@ -1,0 +1,142 @@
+[
+	{
+		"title": "Start",
+		"tags": "",
+		"body": "Hey there!\n[[Hi |#1]]\n[[<<Inventory.Has(Blueberries)&&Inventory.Has(Strawberries)&&Inventory.Has(Jam)&&Inventory.Has(Mint)&&Inventory.Has(Chamomile)&&<<Inventory.Has(Teapot)>>I think I found all you asked for |#12]]",
+		"position": {
+			"x": 234,
+			"y": -370
+		},
+		"colorID": 0
+	},
+	{
+		"title": "#1",
+		"tags": "",
+		"body": "You can dance with us too, if you want! It's fun!\n[[Thanks,I've got some business to attend to |#2]]",
+		"position": {
+			"x": 354,
+			"y": -588
+		},
+		"colorID": 0
+	},
+	{
+		"title": "#2",
+		"tags": "",
+		"body": "Looking for that star, eh? We've came here to find it too, we even spent like 20 minutes searching the forest. But we finished as always - dancing our butts off!\n[[Looks like you're having fun |#3]]",
+		"position": {
+			"x": 472,
+			"y": -810
+		},
+		"colorID": 0
+	},
+	{
+		"title": "#3",
+		"tags": "",
+		"body": "You bet! Come join us any time! \n[[Kk. I was actually wondering if I could borrow a record player for a little? |#4]]",
+		"position": {
+			"x": 591,
+			"y": -1031
+		},
+		"colorID": 0
+	},
+	{
+		"title": "#4",
+		"tags": "",
+		"body": "Sure! We actually want to take a break from dancing and have some tea\n[[Sound great |#5]]",
+		"position": {
+			"x": 710,
+			"y": -1252
+		},
+		"colorID": 0
+	},
+	{
+		"title": "#5",
+		"tags": "",
+		"body": "But the thing is - none of us actually wants to do all the preparation. Can you help us out with some ingredients? \n[[Are they hard to find? |#6]]",
+		"position": {
+			"x": 830,
+			"y": -1473
+		},
+		"colorID": 0
+	},
+	{
+		"title": "#6",
+		"tags": "",
+		"body": "No, not really. But there are quite a few, so listen carefully:\n[[... |#7]]",
+		"position": {
+			"x": 949,
+			"y": -1694
+		},
+		"colorID": 0
+	},
+	{
+		"title": "#7",
+		"tags": "",
+		"body": "You can take our teapot with water in it, it's on the picnic carpet\n[[... |#8]]",
+		"position": {
+			"x": 1069,
+			"y": -1915
+		},
+		"colorID": 0
+	},
+	{
+		"title": "#8",
+		"tags": "",
+		"body": "And then you'll also need some blueberries, strawberries, chamomiles, mint and some jam!\n[[Is it really necessary to have both berries and jam at the same time? |#9]]",
+		"position": {
+			"x": 1188,
+			"y": -2136
+		},
+		"colorID": 0
+	},
+	{
+		"title": "#9",
+		"tags": "",
+		"body": "Of course it is! Everything's better with jam,trust me, I know\n[[Okay |#10]]",
+		"position": {
+			"x": 1307,
+			"y": -2357
+		},
+		"colorID": 0
+	},
+	{
+		"title": "#10",
+		"tags": "",
+		"body": "Bring us all the ingredients and we'll take it from there! And you'll get to take the player for as long as you need it\n[[Fine |#11]]",
+		"position": {
+			"x": 1424,
+			"y": -2579
+		},
+		"colorID": 0
+	},
+	{
+		"title": "#11",
+		"tags": "",
+		"body": "Bye~",
+		"position": {
+			"x": 1787,
+			"y": -2756
+		},
+		"colorID": 0
+	},
+	{
+		"title": "#12",
+		"tags": "Inventory.Remove(Blueberries);Inventory.Remove(Strawberries);Inventory.Remove(Mint);Inventory.Remove(Teapot);Inventory.Remove(Jam);Inventory.Remove(Chamomiles);Inventory.Add(EmptyJam);World.Change(RecordPlayer);",
+		"body": "Yay, thank you so much! You can take the record player now, and we'll have a tea party!\n[[Thanks |#13]]",
+		"position": {
+			"x": 725,
+			"y": -489
+		},
+		"colorID": 0
+	},
+	{
+		"title": "#13",
+		"tags": "",
+		"body": "See ya!",
+		"position": {
+			"x": 848,
+			"y": -707
+		},
+		"colorID": 0
+	}
+]

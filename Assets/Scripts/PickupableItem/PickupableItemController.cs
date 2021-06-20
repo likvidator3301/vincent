@@ -41,7 +41,7 @@ namespace Assets.Scripts.PickupableItem
             var dialogueRepository = ServiceProvider.GetService<DialogueRepository>();
             var iconForDialogueRepository = ServiceProvider.GetService<IconForDialogueRepository>();
             var id = marker.Id;
-            var vincentSprite = Resources.Load<Sprite>("vincent");
+            var vincentSprite = Resources.Load<Sprite>("vincentIcon");
             var startDialogueService = new StartItemDialogueService(startDialogueEventRepository,
                 dialogueRepository, id, vincentSprite, iconForDialogueRepository, dialogue);
 

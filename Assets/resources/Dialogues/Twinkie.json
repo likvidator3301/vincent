@@ -5,7 +5,7 @@
 		"body": "Hi Vincent!\n[[Hi Twinky|#1]]\n[[<<Inventory.Has(Forget-me-not)>>Hi, I think i found an answer to your riddle!|#11]]",
 		"position": {
 			"x": 467,
-			"y": 138
+			"y": 135
 		},
 		"colorID": 0
 	},
@@ -32,20 +32,20 @@
 	{
 		"title": "#3",
 		"tags": "",
-		"body": "Best luck you too. I don't really know what kind of wish you would make, but I bet it'be good\n[[Thanks. Can I ask you about your wish?|#6]]",
+		"body": "Best luck to you too. I don't really know what kind of wish you would make, but I bet it'be good\n[[Thanks. Can I ask you about your wish?|#6]]",
 		"position": {
-			"x": -375,
-			"y": -683
+			"x": -376,
+			"y": -684
 		},
 		"colorID": 0
 	},
 	{
 		"title": "#4",
 		"tags": "",
-		"body": "It might have, i think. But birds claim to see it landing somewhere around, and they see higher than we do.\n[[That makes sense. Can I ask you what wish would you make?|#6]]",
+		"body": "It might have, I think. But birds claim to have seen it landing somewhere around, and they see higher than we do.\n[[That makes sense. Can I ask you what wish would you make?|#6]]",
 		"position": {
-			"x": 9,
-			"y": -708
+			"x": 7,
+			"y": -710
 		},
 		"colorID": 1
 	},
@@ -62,10 +62,10 @@
 	{
 		"title": "#6",
 		"tags": "",
-		"body": "Oh, it's not big deal really. I tried to come up with something great, influential and important; but I have already got pretty much anything to be happy.\n[[...|#7]]",
+		"body": "Oh, it's not big deal really. I tried to come up with something great, influential and important; but I have already got pretty much everything I need to be happy.\n[[...|#7]]",
 		"position": {
-			"x": 65,
-			"y": -1139
+			"x": 64,
+			"y": -1142
 		},
 		"colorID": 0
 	},
@@ -74,7 +74,7 @@
 		"tags": "",
 		"body": "There is this one thing that has been bothering me for a very long time - it's a riddle I heard once, and it goes like this:\n[[...|#8]]",
 		"position": {
-			"x": 52,
+			"x": 51,
 			"y": -1501
 		},
 		"colorID": 0
@@ -94,8 +94,8 @@
 		"tags": "",
 		"body": "I made me so curious about the answer that I still wonder! What kind of flower has magic in it to make you remember? That sounds so bizarre \n[[It does indeed|#10]]",
 		"position": {
-			"x": 47,
-			"y": -2104
+			"x": 46,
+			"y": -2105
 		},
 		"colorID": 0
 	},
@@ -114,8 +114,8 @@
 		"tags": "",
 		"body": "You really mean it? That's so great!\n[[It's forget-me-nots, the flowers|#12]]",
 		"position": {
-			"x": 739,
-			"y": -44
+			"x": 737,
+			"y": -46
 		},
 		"colorID": 0
 	},
@@ -124,8 +124,8 @@
 		"tags": "",
 		"body": "Oh, I'm surprised it turned out to be that simple, really. Thank you so much for telling me!\n[[No problem|#13]]",
 		"position": {
-			"x": 1015,
-			"y": -265
+			"x": 1012,
+			"y": -268
 		},
 		"colorID": 0
 	},
@@ -134,8 +134,8 @@
 		"tags": "Inventory.Remove(Forget-me-not);World.Add(SceneTransferTwinkieHouse);",
 		"body": "I'd like to thank you with a gift. There is a jar of jam in my house, you can have it, it's delicious. If you happen to see anything else that you need - feel free to borrow, i don't mind\n[[Thank you|#14]]",
 		"position": {
-			"x": 1315,
-			"y": -507
+			"x": 1313,
+			"y": -510
 		},
 		"colorID": 0
 	},
@@ -144,7 +144,7 @@
 		"tags": "",
 		"body": "Bye then!",
 		"position": {
-			"x": 1659,
+			"x": 1657,
 			"y": -740
 		},
 		"colorID": 0
