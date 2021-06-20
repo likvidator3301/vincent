@@ -121,7 +121,7 @@
 	},
 	{
 		"title": "#12",
-		"tags": "Inventory.Add(Hat)",
+		"tags": "Inventory.Add(Hat);World.Remove(Hat);",
 		"body": "Sure! There it is,take it!",
 		"position": {
 			"x": 1367,

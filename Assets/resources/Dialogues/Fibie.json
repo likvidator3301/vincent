@@ -2,7 +2,7 @@
 	{
 		"title": "Start",
 		"tags": "",
-		"body": "Hey there!\n[[Hi |#1]]\n[[<<Inventory.Has(Blueberries)&&Inventory.Has(Strawberries)&&Inventory.Has(Jam)&&Inventory.Has(Mint)&&Inventory.Has(Chamomile)&&<<Inventory.Has(Teapot)>>I think I found all you asked for |#12]]",
+		"body": "Hey there!\n[[Hi |#1]]\n[[<<Inventory.Has(Blueberries)&Inventory.Has(Strawberries)&Inventory.Has(Jam)&Inventory.Has(Mint)&Inventory.Has(Chamomile)&Inventory.Has(Teapot)>>I think I found all you asked for |#12]]",
 		"position": {
 			"x": 234,
 			"y": -370
@@ -42,7 +42,7 @@
 	{
 		"title": "#4",
 		"tags": "",
-		"body": "Sure! We actually want to take a break from dancing and have some tea\n[[Sound great |#5]]",
+		"body": "Sure! We actually want to take a break from dancing and have some tea\n[[Sounds great |#5]]",
 		"position": {
 			"x": 710,
 			"y": -1252
@@ -121,7 +121,7 @@
 	},
 	{
 		"title": "#12",
-		"tags": "Inventory.Remove(Blueberries);Inventory.Remove(Strawberries);Inventory.Remove(Mint);Inventory.Remove(Teapot);Inventory.Remove(Jam);Inventory.Remove(Chamomiles);Inventory.Add(EmptyJam);World.Change(RecordPlayer);",
+		"tags": "Inventory.Remove(Blueberries);Inventory.Remove(Strawberries);Inventory.Remove(Mint);Inventory.Remove(Teapot);Inventory.Remove(Jam);Inventory.Remove(Chamomile);Inventory.Add(EmptyJam);World.Change(RecordPlayer);",
 		"body": "Yay, thank you so much! You can take the record player now, and we'll have a tea party!\n[[Thanks |#13]]",
 		"position": {
 			"x": 725,

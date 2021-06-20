@@ -16,6 +16,7 @@ namespace Assets.Scripts.Inventory
 
         public void Add(PlayerInventoryItem item)
         {
+            Debug.Log($"Adding {item.Name}");
             items[item.Id] = item;
         }
 

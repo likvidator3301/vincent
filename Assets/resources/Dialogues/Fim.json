@@ -20,16 +20,6 @@
 		"colorID": 0
 	},
 	{
-		"title": "It sure is. What are you up to?",
-		"tags": "",
-		"body": "Empty Text",
-		"position": {
-			"x": 326,
-			"y": -1592
-		},
-		"colorID": 0
-	},
-	{
 		"title": "#2",
 		"tags": "",
 		"body": "Just enjoying the view, it's really nice here\n[[Aren't you excited for the star that has fell? |#3]]",
@@ -91,7 +81,7 @@
 	},
 	{
 		"title": "#8",
-		"tags": "Inventory.Remove(RecordPlayer);World.Change(RecordPlayer);",
+		"tags": "Inventory.Remove(RecordPlayer);World.Add(RecorderForFim);",
 		"body": "Wow, thank you so much, i'd really love some music right now! I want to tell you a secret, since you've been so nice to me\n[[A secret? |#9]]",
 		"position": {
 			"x": 448,

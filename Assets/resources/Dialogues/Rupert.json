@@ -112,7 +112,17 @@
 	{
 		"title": "#10",
 		"tags": "",
-		"body": "Thank you again, Vincent, and goodbye!",
+		"body": "Thank you again, Vincent, and goodbye!\n[[Bye|#11]]",
+		"position": {
+			"x": 609,
+			"y": -1533
+		},
+		"colorID": 0
+	},
+	{
+		"title": "#11",
+		"tags": "World.Remove(Rupert)",
+		"body": "I hope you'll find what you are looking for!",
 		"position": {
 			"x": 609,
 			"y": -1533

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.4465782, g: 0.49641252, b: 0.5748167, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -283,9 +283,11 @@ GameObject:
   m_Component:
   - component: {fileID: 67098846}
   - component: {fileID: 67098845}
+  - component: {fileID: 67098848}
+  - component: {fileID: 67098847}
   m_Layer: 0
   m_Name: record_player
-  m_TagString: Untagged
+  m_TagString: PickupableItem
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -353,6 +355,47 @@ Transform:
   m_Father: {fileID: 521194035}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &67098847
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 67098844}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 530924eef5c06be49b8f936407b81375, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  InventoryImage: {fileID: 21300000, guid: 77de49169583b3c42afa268c735c5435, type: 3}
+  Name: RecordPlayer
+  DialogueFile: {fileID: 4900000, guid: 1688f9aff704da74cb7010b47c343b1c, type: 3}
+--- !u!61 &67098848
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 67098844}
+  m_Enabled: 0
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 3.75, y: 3.06}
+    newSize: {x: 3.75, y: 3.06}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 3.75, y: 3.06}
+  m_EdgeRadius: 0
 --- !u!1 &69850756
 GameObject:
   m_ObjectHideFlags: 0
@@ -539,7 +582,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InventoryImage: {fileID: 21300000, guid: 3884e8338c196274d8b09fbbeca36b09, type: 3}
-  Name: "\u0421hamomile"
+  Name: Chamomile
   DialogueFile: {fileID: 4900000, guid: 1d6b0dc2787873646a5aa70a573ad1fd, type: 3}
 --- !u!212 &77593472
 SpriteRenderer:
@@ -630,6 +673,86 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.98, y: 2.06}
   m_EdgeRadius: 0
+--- !u!1 &78157939
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 78157941}
+  - component: {fileID: 78157940}
+  m_Layer: 0
+  m_Name: bench
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!212 &78157940
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 78157939}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: 6860197238b64fa4a883b9d454b82f0f, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 5.71, y: 2.78}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!4 &78157941
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 78157939}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -99.22, y: -4.02, z: -1.909}
+  m_LocalScale: {x: 0.6294, y: 0.6294, z: 0.6294}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 17
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &97197956 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3342475098625660938, guid: ff4ca0d0f8ea3094b8d07a64bd191b20,
@@ -6999,7 +7122,7 @@ GameObject:
   - component: {fileID: 1127611046}
   - component: {fileID: 1127611045}
   m_Layer: 0
-  m_Name: fox
+  m_Name: Rupert
   m_TagString: Npc
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8859,7 +8982,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1460630492}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.12000275, y: -3.862, z: -1.97}
+  m_LocalPosition: {x: 0.7121718, y: -3.6360002, z: -1.97}
   m_LocalScale: {x: 0.25598353, y: 0.25598353, z: 0.25598353}
   m_Children: []
   m_Father: {fileID: 1479635260}
@@ -8905,7 +9028,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Fim
   IconForDialogue: {fileID: 21300000, guid: 72465124c5273304babef18b8e676a9c, type: 3}
-  DialogueFile: {fileID: 4900000, guid: 817119b3474601f4781b0f09dc5df9bf, type: 3}
+  DialogueFile: {fileID: 4900000, guid: b7060074ae910fa4982afbac2f242548, type: 3}
 --- !u!212 &1460630496
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -9781,7 +9904,7 @@ GameObject:
   - component: {fileID: 1600672116}
   - component: {fileID: 1600672115}
   m_Layer: 0
-  m_Name: hat
+  m_Name: Hat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14900,7 +15023,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InventoryImage: {fileID: 21300000, guid: 12018707c145c4440969e2eca25f2d1c, type: 3}
-  Name: Strawberry
+  Name: Strawberries
   DialogueFile: {fileID: 4900000, guid: fa12b15cae002d846aeece1c93936af6, type: 3}
 --- !u!61 &1658541593
 BoxCollider2D:

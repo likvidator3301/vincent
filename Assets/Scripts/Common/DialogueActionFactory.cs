@@ -25,7 +25,9 @@ namespace Assets.Scripts.Common
 
             public static Dictionary<string, PlayerInventoryItem> Items = new Dictionary<string, PlayerInventoryItem>
             {
-                {"Hat", FromPath("Hat")}
+                {"Hat", FromPath("Hat")},
+                {"Umbrella", FromPath("Umbrella")},
+                {"EmptyJam", FromPath("EmptyJam")}
             };
         }
 
@@ -61,9 +63,7 @@ namespace Assets.Scripts.Common
                 public static void RecordPlayer()
                 {
                     var recorderGO = GameObject.Find("record_player");
-                    var pickupableRecorder = Resources.Load<GameObject>(BasePath + "RecordPlayer");
-                    Object.Instantiate(pickupableRecorder, recorderGO.transform.position, Quaternion.identity);
-                    Object.Destroy(recorderGO);
+                    recorderGO.GetComponent<BoxCollider2D>().enabled = true;
                 }
             }
 
@@ -74,7 +74,13 @@ namespace Assets.Scripts.Common
                     var rupert = GameObject.Find("Rupert");
                     rupert.GetComponent<SpriteRenderer>().enabled = false;
                     rupert.GetComponent<BoxCollider2D>().enabled = false;
-                }   
+                }
+
+                public static void Hat()
+                {
+                    var hat = GameObject.Find("Hat");
+                    hat.GetComponent<SpriteRenderer>().enabled = false;
+                }
             }
         }
     }
@@ -193,6 +199,8 @@ namespace Assets.Scripts.Common
                             {
                                 case "Rupert":
                                     return Crutches.World.Remove.Rupert;
+                                case "Hat":
+                                    return Crutches.World.Remove.Hat;
                             }
                             break;
                     }
@@ -243,7 +251,7 @@ namespace Assets.Scripts.Common
             var command = CommandModel.Parse(conditionString);
 
             if (command.Subject != "Inventory")
-                throw new GameInitializationException("Now we only support conditions for inventory");
+                throw new GameInitializationException($"Now we only support conditions for inventory. Command: {conditionString}");
 
             if (command.Action != "Has")
                 throw new GameInitializationException("Now we only support 'has' conditions");

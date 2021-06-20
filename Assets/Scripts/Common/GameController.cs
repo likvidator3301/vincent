@@ -54,7 +54,7 @@ namespace Assets.Scripts.Common
         private void ConfigureServices(IServiceCollection services)
         {
             //todo(likvidator): читать из конфигурации
-            services.AddSingleton(_ => new PlayerConfig(.69f, .1f, 1));
+            services.AddSingleton(_ => new PlayerConfig(3f, .1f, 1));
 
             services.AddSingleton<DirectionHelper>();
             services.AddSingleton<MovementEventRepository>();
