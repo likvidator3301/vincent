@@ -4,6 +4,7 @@ using Assets.Scripts.DialogueContainer.Repositories;
 using Assets.Scripts.Exceptions;
 using Assets.Scripts.Inventory;
 using Assets.Scripts.Markers;
+using Assets.Scripts.Npc.Animation;
 using Assets.Scripts.Npc.Dialogues;
 using Assets.Scripts.Npc.Dialogues.Models;
 using Assets.Scripts.Npc.Dialogues.Repositories;
@@ -26,9 +27,18 @@ namespace Assets.Scripts.Npc
         public override void Start()
         {
             CreateStartDialogueService();
+            CreateAnimationService();
 
             foreach (var service in Services)
                 service.Start();
+        }
+
+        private void CreateAnimationService()
+        {
+            var marker = GameObject.GetComponent<NpcMarker>();
+            var service = new AnimationService(marker.skeletonAnimation, marker);
+
+            Services.Add(service);
         }
 
         private void CreateStartDialogueService()

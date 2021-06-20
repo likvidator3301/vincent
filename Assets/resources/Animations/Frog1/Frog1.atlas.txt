@@ -1,0 +1,41 @@
+
+Frog1.png
+size: 1115,236
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Body
+  rotate: false
+  xy: 394, 37
+  size: 266, 197
+  orig: 295, 365
+  offset: 0, 168
+  index: -1
+Hands
+  rotate: true
+  xy: 662, 113
+  size: 121, 291
+  orig: 128, 301
+  offset: 0, 10
+  index: -1
+Head
+  rotate: true
+  xy: 955, 14
+  size: 220, 158
+  orig: 250, 165
+  offset: 14, 0
+  index: -1
+Legs
+  rotate: true
+  xy: 2, 2
+  size: 232, 390
+  orig: 357, 398
+  offset: 106, 0
+  index: -1
+Слой 1
+  rotate: true
+  xy: 662, 5
+  size: 106, 262
+  orig: 106, 280
+  offset: 0, 18
+  index: -1

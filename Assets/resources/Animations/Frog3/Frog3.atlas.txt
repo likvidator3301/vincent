@@ -1,0 +1,48 @@
+
+Frog3.png
+size: 459,626
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Body
+  rotate: false
+  xy: 2, 365
+  size: 290, 259
+  orig: 301, 265
+  offset: 2, 2
+  index: -1
+Hands
+  rotate: false
+  xy: 103, 62
+  size: 135, 301
+  orig: 142, 313
+  offset: 0, 12
+  index: -1
+Head
+  rotate: true
+  xy: 294, 393
+  size: 231, 163
+  orig: 266, 173
+  offset: 15, 0
+  index: -1
+Legs
+  rotate: false
+  xy: 2, 17
+  size: 99, 346
+  orig: 213, 346
+  offset: 113, 0
+  index: -1
+Слой 1
+  rotate: false
+  xy: 320, 114
+  size: 116, 277
+  orig: 118, 286
+  offset: 2, 9
+  index: -1
+Слой 2
+  rotate: false
+  xy: 240, 2
+  size: 78, 361
+  orig: 97, 363
+  offset: 0, 2
+  index: -1
